@@ -3,7 +3,7 @@
 //  Pictionary-Pixels
 //
 //  Created by Jason Xu on 11/13/17.
-//  Copyright © 2017 TrinaKat. All rights reserved.
+//  Copyright © 2017 Jason Xu. All rights reserved.
 //
 
 import UIKit

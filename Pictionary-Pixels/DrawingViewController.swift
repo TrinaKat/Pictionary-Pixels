@@ -22,6 +22,7 @@ class GameButton: UIButton {
       layer.masksToBounds = cornerRadius > 0
     }
   }
+  // borderWidth and Color change when button selected / deselected, from action method
   @IBInspectable var borderWidth: CGFloat = 0 {
     didSet {
       layer.borderWidth = borderWidth
@@ -29,7 +30,12 @@ class GameButton: UIButton {
   }
   @IBInspectable var borderColor: UIColor? {
     didSet {
-      layer.borderColor = borderColor?.cgColor
+      if let validColor = borderColor {
+        layer.borderColor = validColor.cgColor
+      }
+      else {
+        layer.borderColor = nil
+      }
     }
   }
 }
@@ -40,16 +46,26 @@ class DrawingViewController: UIViewController {
   
   // 2 image views: main = all drawn so far, temp = current line being drawn
   @IBOutlet weak var mainImageView: UIImageView!
-  @IBOutlet weak var tempImageView: UIImageView!
+  
+  // 9 buttons for drawing
+  @IBOutlet weak var blackButton: GameButton!
+  @IBOutlet weak var redButton: GameButton!
+  @IBOutlet weak var orangeButton: GameButton!
+  @IBOutlet weak var yellowButton: GameButton!
+  @IBOutlet weak var greenButton: GameButton!
+  
+  @IBOutlet weak var blueButton: GameButton!
+  @IBOutlet weak var magentaButton: GameButton!
+  @IBOutlet weak var brownButton: GameButton!
+  @IBOutlet weak var eraserButton: GameButton!
+  
+  var lastButtonHit: GameButton?
   
   // for making continuous brush strokes, store last point drawn
   var lastPoint = CGPoint(x: 0, y: 0)
   // current selected color and other settings
-  var red: CGFloat = 0.0
-  var green: CGFloat = 0.0
-  var blue: CGFloat = 0.0
-  var brushWidth: CGFloat = 10.0
-  var opacity: CGFloat = 1.0
+  var currColor: CGColor = UIColor.black.cgColor
+  var brushWidth: CGFloat = 8.0
   // if continous strokes being made
   var swiped = false
   
@@ -84,26 +100,11 @@ class DrawingViewController: UIViewController {
     if !swiped {
       drawLine(from: lastPoint, to: lastPoint)
     }
-    
-    // not sure if mainImageView's frame and UIVC's frame are different sizes
-    UIGraphicsBeginImageContext(mainImageView.frame.size)
-    guard let frameSize = viewFrameSize else {
-      print("size of view frame not initialized yet!")
-      return
-    }
-    mainImageView.image?.draw(in: CGRect(x: 0, y: 0, width: frameSize.width, height: frameSize.height), blendMode: CGBlendMode.normal, alpha: 1.0)
-    tempImageView.image?.draw(in: CGRect(x: 0, y: 0, width: frameSize.width, height: frameSize.height), blendMode: CGBlendMode.normal, alpha: opacity)
-    mainImageView.image = UIGraphicsGetImageFromCurrentImageContext()
-    UIGraphicsEndImageContext()
-    
-    // reset the temp view, so only 1 stroke ever saved on temp image at a time
-    tempImageView.image = nil
   }
   
   // DRAWING MAGIC
   func drawLine(from p1: CGPoint, to p2: CGPoint) {
-    // set up drawing context with image in tempImageView
-    // starts empty, want to draw into tempImageView
+    // starts empty, want to draw into mainImageView
     // CGContext = 2D drawing environment, with drawing parameters / device info
     // needed to render drawing correctly for destination (e.g. app window, PDF)
     guard let frameSize = viewFrameSize else {
@@ -115,7 +116,7 @@ class DrawingViewController: UIViewController {
       print("No image context to draw to!")
       return
     }
-    tempImageView.image?.draw(in: CGRect(x: 0, y: 0, width: frameSize.width, height: frameSize.height))
+    mainImageView.image?.draw(in: CGRect(x: 0, y: 0, width: frameSize.width, height: frameSize.height))
     
     // add the line data to context from p1 to p2 (p1, p2 very close together)
     context.move(to: p1)
@@ -124,15 +125,15 @@ class DrawingViewController: UIViewController {
     // other settings for drawing
     context.setLineCap(CGLineCap.round)
     context.setLineWidth(brushWidth)
-    context.setStrokeColor(red: red, green: green, blue: blue, alpha: 1.0)
+    context.setStrokeColor(currColor)
     context.setBlendMode(CGBlendMode.normal)
     
     // MAGIC METHOD to actually form the line
     context.strokePath()
     
-    // wrap up drawing context, render newly drawn line in tempImageView
-    tempImageView.image = UIGraphicsGetImageFromCurrentImageContext()
-    tempImageView.alpha = opacity
+    // wrap up drawing context, render newly drawn line in mainImageView
+    // basically captures what is put on screen into actual graphics and put in a view
+    mainImageView.image = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
   }
   
@@ -151,13 +152,43 @@ class DrawingViewController: UIViewController {
   
   // MARK: - Actions
   
-  @IBAction func reset(_ sender: AnyObject) {
-  }
-  
-  @IBAction func share(_ sender: AnyObject) {
-  }
-  
-  @IBAction func pencilPressed(_ sender: AnyObject) {
+  @IBAction func colorPressed(_ sender: AnyObject) {
+    if lastButtonHit == nil {
+      lastButtonHit = blackButton
+    }
+    
+    if let colorButton = sender as? GameButton,
+      let backColor = colorButton.backgroundColor {
+      // check button's label instead of background color
+      // for example, our custom "Black" is NOT same as UIColor.black
+      if colorButton.currentTitle == "Eraser" {
+        brushWidth = 25
+      }
+      else {
+        // see if color picked is dark enough to have a light border
+        var pickedBright: CGFloat = 0
+        if backColor.getHue(nil, saturation: nil, brightness: &pickedBright, alpha: nil),
+          pickedBright < 0.6 {
+          colorButton.borderColor = UIColor(red: 0, green: 150.0/255, blue: 1, alpha: 1)
+        }
+        else {
+          colorButton.borderColor = UIColor.black
+        }
+        brushWidth = 8
+      }
+      colorButton.borderWidth = 3
+      
+      // where actual stroke color is set
+      currColor = backColor.cgColor
+      // deselect last selected color, unless that is same as current
+      if let lastColB = lastButtonHit,
+        lastColB != colorButton {
+        // set last's border to nothing if was normal color, to width 1 if was Eraser
+        lastColB.borderWidth = lastColB.currentTitle != "Eraser" ? 0 : 1
+      }
+      lastButtonHit = colorButton
+    }
+    
   }
 }
 

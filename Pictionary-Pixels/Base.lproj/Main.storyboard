@@ -30,21 +30,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cta-u3-Nbg">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="84t-fE-93J" userLabel="Main Image View">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="84t-fE-93J">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="oeZ-y5-meg">
-                                <rect key="frame" x="26" y="526" width="322" height="121"/>
+                            <stackView contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="oeZ-y5-meg">
+                                <rect key="frame" x="26" y="526" width="323" height="121"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="81h-BQ-VVr">
-                                        <rect key="frame" x="0.0" y="0.0" width="322" height="56.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="323" height="56.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="saY-Bl-msS" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.5" width="56.5" height="56"/>
-                                                <color key="backgroundColor" name="Black"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="saY-Bl-msS" secondAttribute="height" multiplier="1:1" id="j89-9w-GVc"/>
                                                 </constraints>
@@ -55,11 +52,20 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="0.0" green="0.58967871365986402" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="3"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="colorPressed:" destination="E9c-MI-EyP" eventType="touchUpInside" id="MzP-M8-NRK"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oJo-kv-7ym" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
                                                 <rect key="frame" x="66.5" y="0.5" width="56.5" height="56"/>
-                                                <color key="backgroundColor" name="Red"/>
+                                                <color key="backgroundColor" red="0.98431372549019602" green="0.0" blue="0.031372549019607843" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal">
                                                     <color key="titleShadowColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 </state>
@@ -68,10 +74,13 @@
                                                         <real key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="colorPressed:" destination="E9c-MI-EyP" eventType="touchUpInside" id="Mwa-c9-H2X"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Al3-3I-kAJ" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
                                                 <rect key="frame" x="133" y="0.5" width="56.5" height="56"/>
-                                                <color key="backgroundColor" name="Orange"/>
+                                                <color key="backgroundColor" red="0.98922836780548096" green="0.4153139591217041" blue="0.027450980392156862" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal">
                                                     <color key="titleShadowColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 </state>
@@ -80,10 +89,13 @@
                                                         <real key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="colorPressed:" destination="E9c-MI-EyP" eventType="touchUpInside" id="kez-OA-1fs"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uSn-IH-aon" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
                                                 <rect key="frame" x="199.5" y="0.5" width="56.5" height="56"/>
-                                                <color key="backgroundColor" name="Yellow"/>
+                                                <color key="backgroundColor" red="0.95964610576629639" green="0.82745098039215681" blue="0.031372549019607843" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal">
                                                     <color key="titleShadowColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 </state>
@@ -92,10 +104,13 @@
                                                         <real key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="colorPressed:" destination="E9c-MI-EyP" eventType="touchUpInside" id="FO0-JN-g9w"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9mj-mR-1hH" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
-                                                <rect key="frame" x="266" y="0.5" width="56" height="56"/>
-                                                <color key="backgroundColor" name="Green"/>
+                                                <rect key="frame" x="266" y="0.5" width="57" height="56"/>
+                                                <color key="backgroundColor" red="0.086274509803921567" green="0.68607139587402344" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal">
                                                     <color key="titleShadowColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 </state>
@@ -104,6 +119,9 @@
                                                         <real key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="colorPressed:" destination="E9c-MI-EyP" eventType="touchUpInside" id="Bw7-6M-fe5"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -118,11 +136,11 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="HDf-Fu-bsS">
-                                        <rect key="frame" x="0.0" y="64.5" width="322" height="56.5"/>
+                                        <rect key="frame" x="0.0" y="64.5" width="323" height="56.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="efh-xU-EQY" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="56.5" height="56.5"/>
-                                                <color key="backgroundColor" name="Blue"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0039215686274509803" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="efh-xU-EQY" secondAttribute="height" multiplier="1:1" id="syu-gf-NiO"/>
                                                 </constraints>
@@ -134,10 +152,13 @@
                                                         <real key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="colorPressed:" destination="E9c-MI-EyP" eventType="touchUpInside" id="qED-Sy-AGE"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lOz-Td-M4e" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
                                                 <rect key="frame" x="66.5" y="0.0" width="56.5" height="56.5"/>
-                                                <color key="backgroundColor" name="Magenta"/>
+                                                <color key="backgroundColor" red="0.9882352941176471" green="0.0" blue="0.99912583827972412" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal">
                                                     <color key="titleShadowColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 </state>
@@ -146,10 +167,13 @@
                                                         <real key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="colorPressed:" destination="E9c-MI-EyP" eventType="touchUpInside" id="srz-jb-HOx"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sO2-ML-TbY" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
                                                 <rect key="frame" x="133" y="0.0" width="56.5" height="56.5"/>
-                                                <color key="backgroundColor" name="Brown"/>
+                                                <color key="backgroundColor" red="0.42352941176470588" green="0.1803921568627451" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal">
                                                     <color key="titleShadowColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 </state>
@@ -158,10 +182,13 @@
                                                         <real key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="colorPressed:" destination="E9c-MI-EyP" eventType="touchUpInside" id="ktK-qu-78L"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewg-Ng-eT1" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
-                                                <rect key="frame" x="199.5" y="0.0" width="122.5" height="56.5"/>
-                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <rect key="frame" x="199.5" y="0.0" width="123.5" height="56.5"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <state key="normal" title="Eraser">
                                                     <color key="titleColor" name="Black"/>
                                                 </state>
@@ -170,12 +197,15 @@
                                                         <real key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="3"/>
+                                                        <real key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                         <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="colorPressed:" destination="E9c-MI-EyP" eventType="touchUpInside" id="ahk-1M-5jJ"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -196,20 +226,24 @@
                         <constraints>
                             <constraint firstItem="84t-fE-93J" firstAttribute="centerX" secondItem="oeZ-y5-meg" secondAttribute="centerX" id="1au-l7-eQl"/>
                             <constraint firstItem="84t-fE-93J" firstAttribute="leading" secondItem="AIm-2J-3hm" secondAttribute="leading" id="5TC-Yu-yIT"/>
-                            <constraint firstItem="cta-u3-Nbg" firstAttribute="bottom" secondItem="nD6-ue-EuE" secondAttribute="top" id="FoO-HR-Qzx"/>
                             <constraint firstItem="oeZ-y5-meg" firstAttribute="leading" secondItem="AIm-2J-3hm" secondAttribute="leadingMargin" constant="10" id="Ppk-QS-GTg"/>
                             <constraint firstItem="84t-fE-93J" firstAttribute="bottom" secondItem="nD6-ue-EuE" secondAttribute="top" id="QOr-8U-Mah"/>
-                            <constraint firstItem="84t-fE-93J" firstAttribute="leading" secondItem="cta-u3-Nbg" secondAttribute="leading" id="T9K-Fa-yu2"/>
                             <constraint firstAttribute="bottom" secondItem="oeZ-y5-meg" secondAttribute="bottom" constant="20" symbolic="YES" id="Vqm-aK-iqI"/>
-                            <constraint firstItem="84t-fE-93J" firstAttribute="trailing" secondItem="cta-u3-Nbg" secondAttribute="trailing" id="Z4e-c8-oKw"/>
                             <constraint firstItem="84t-fE-93J" firstAttribute="top" secondItem="AIm-2J-3hm" secondAttribute="top" id="aVb-df-LRN"/>
-                            <constraint firstItem="cta-u3-Nbg" firstAttribute="top" secondItem="84t-fE-93J" secondAttribute="top" id="lbT-xK-COv"/>
-                            <constraint firstAttribute="trailing" secondItem="cta-u3-Nbg" secondAttribute="trailing" id="qPF-kU-i1l"/>
+                            <constraint firstItem="oeZ-y5-meg" firstAttribute="centerX" secondItem="AIm-2J-3hm" secondAttribute="centerX" id="c4m-Wy-rz8"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="mainImageView" destination="cta-u3-Nbg" id="lCy-1f-935"/>
-                        <outlet property="tempImageView" destination="84t-fE-93J" id="ajQ-ix-Hhq"/>
+                        <outlet property="blackButton" destination="saY-Bl-msS" id="oMr-AP-Fcv"/>
+                        <outlet property="blueButton" destination="efh-xU-EQY" id="UXE-4g-aRB"/>
+                        <outlet property="brownButton" destination="sO2-ML-TbY" id="VGb-K7-fDp"/>
+                        <outlet property="eraserButton" destination="ewg-Ng-eT1" id="F3X-dE-iZq"/>
+                        <outlet property="greenButton" destination="9mj-mR-1hH" id="GmK-gI-3an"/>
+                        <outlet property="magentaButton" destination="lOz-Td-M4e" id="rES-rW-ylJ"/>
+                        <outlet property="mainImageView" destination="84t-fE-93J" id="bR9-oK-2U0"/>
+                        <outlet property="orangeButton" destination="Al3-3I-kAJ" id="CHx-1w-e7N"/>
+                        <outlet property="redButton" destination="oJo-kv-7ym" id="sNJ-cZ-SzJ"/>
+                        <outlet property="yellowButton" destination="uSn-IH-aon" id="wPl-5q-xpo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p0W-36-j7o" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -321,27 +355,6 @@
     <resources>
         <namedColor name="Black">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="Blue">
-            <color red="0.0" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="Brown">
-            <color red="0.50300002098083496" green="0.25299999117851257" blue="0.081000000238418579" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="Green">
-            <color red="0.0" green="0.72299998998641968" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="Magenta">
-            <color red="1" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="Orange">
-            <color red="1" green="0.5" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="Red">
-            <color red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="Yellow">
-            <color red="0.97000002861022949" green="0.85000002384185791" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
