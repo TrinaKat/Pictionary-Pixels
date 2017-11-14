@@ -8,7 +8,33 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+// IBInspectable allows you to add custom attributes to Interface Builder!
+// now all buttons have an option for corner radius, border width and color
+// IBDesignable renders these custom attribute changes in the storyboard live
+// for this to work, buttons in the app must be of class GameButton (set in IB)
+@IBDesignable
+class GameButton: UIButton {
+  // didSet means this variable actually defined by a setter function,
+  // called when cornerRadius is changed (from IB in this case)
+  @IBInspectable var cornerRadius: CGFloat = 0.0 {
+    didSet {
+      layer.cornerRadius = cornerRadius
+      layer.masksToBounds = cornerRadius > 0
+    }
+  }
+  @IBInspectable var borderWidth: CGFloat = 0 {
+    didSet {
+      layer.borderWidth = borderWidth
+    }
+  }
+  @IBInspectable var borderColor: UIColor? {
+    didSet {
+      layer.borderColor = borderColor?.cgColor
+    }
+  }
+}
+
+class DrawingViewController: UIViewController {
 
   // MARK: Properties
   
