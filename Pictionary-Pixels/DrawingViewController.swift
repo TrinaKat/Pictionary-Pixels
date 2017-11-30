@@ -8,43 +8,11 @@
 
 import UIKit
 
-// IBInspectable allows you to add custom attributes to Interface Builder!
-// now all buttons have an option for corner radius, border width and color
-// IBDesignable renders these custom attribute changes in the storyboard live
-// for this to work, buttons in the app must be of class GameButton (set in IB)
-@IBDesignable
-class GameButton: UIButton {
-  // didSet means this variable actually defined by a setter function,
-  // called when cornerRadius is changed (from IB in this case)
-  @IBInspectable var cornerRadius: CGFloat = 0.0 {
-    didSet {
-      layer.cornerRadius = cornerRadius
-      layer.masksToBounds = cornerRadius > 0
-    }
-  }
-  // borderWidth and Color change when button selected / deselected, from action method
-  @IBInspectable var borderWidth: CGFloat = 0 {
-    didSet {
-      layer.borderWidth = borderWidth
-    }
-  }
-  @IBInspectable var borderColor: UIColor? {
-    didSet {
-      if let validColor = borderColor {
-        layer.borderColor = validColor.cgColor
-      }
-      else {
-        layer.borderColor = nil
-      }
-    }
-  }
-}
-
 class DrawingViewController: UIViewController {
 
   // MARK: Properties
   
-  // 2 image views: main = all drawn so far, temp = current line being drawn
+  // where the drawing is
   @IBOutlet weak var mainImageView: UIImageView!
   
   // 9 buttons for drawing
@@ -61,6 +29,8 @@ class DrawingViewController: UIViewController {
   
   var lastButtonHit: GameButton?
   
+  @IBOutlet weak var timeLeftLabel: UILabel!
+  @IBOutlet weak var currentWordLabel: UILabel!
   // for making continuous brush strokes, store last point drawn
   var lastPoint = CGPoint(x: 0, y: 0)
   // current selected color and other settings
@@ -141,7 +111,7 @@ class DrawingViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    viewFrameSize = view.frame.size
+    viewFrameSize = mainImageView.frame.size
     // Do any additional setup after loading the view, typically from a nib.
   }
   
@@ -188,11 +158,10 @@ class DrawingViewController: UIViewController {
       }
       lastButtonHit = colorButton
     }
-    
   }
-    
-    @IBAction func clear(_ sender: Any) {
-        self.mainImageView.image = nil;
-    }
+  
+  @IBAction func clear(_ sender: Any) {
+      self.mainImageView.image = nil;
+  }
 }
 
