@@ -190,5 +190,9 @@ class DrawingViewController: UIViewController {
     }
     
   }
+    
+    @IBAction func clear(_ sender: Any) {
+        self.mainImageView.image = nil;
+    }
 }
 
