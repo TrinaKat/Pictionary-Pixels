@@ -141,7 +141,7 @@ class DrawingViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    viewFrameSize = view.frame.size
+    viewFrameSize = mainImageView.frame.size
     // Do any additional setup after loading the view, typically from a nib.
   }
   
