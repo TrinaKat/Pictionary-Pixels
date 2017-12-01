@@ -10,8 +10,14 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    @IBOutlet weak var connectionsLabel: UILabel!
+    
+    let multipeerService = MultipeerServiceManager()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        connectionsLabel.numberOfLines = 0;
+        multipeerService.delegate = self as MultipeerServiceManagerDelegate
 
         // Do any additional setup after loading the view.
     }
@@ -32,4 +38,18 @@ class HomeViewController: UIViewController {
     }
     */
 
+}
+
+extension HomeViewController : MultipeerServiceManagerDelegate {
+    
+    func connectedDevicesChanged(manager: MultipeerServiceManager, connectedDevices: [String]) {
+        OperationQueue.main.addOperation {
+            if connectedDevices.count == 0 {
+                self.connectionsLabel.text = "Players:"
+            } else {
+                self.connectionsLabel.text = "Players: \(connectedDevices)"
+            }
+        }
+    }
+    
 }

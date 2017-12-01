@@ -168,7 +168,7 @@
 				TargetAttributes = {
 					5C3284DA1FB08FD0006DFC58 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 875DEKZMKR;
+						DevelopmentTeam = L2LQJE55V6;
 						ProvisioningStyle = Automatic;
 					};
 					5C3284EE1FB08FD0006DFC58 = {
@@ -380,11 +380,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 875DEKZMKR;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L2LQJE55V6;
 				INFOPLIST_FILE = "Pictionary-Pixels/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.2K3X.Pictionary-Pixels";
+				PRODUCT_BUNDLE_IDENTIFIER = "katie.Pictionary-Pixels";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -393,11 +396,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 875DEKZMKR;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L2LQJE55V6;
 				INFOPLIST_FILE = "Pictionary-Pixels/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.2K3X.Pictionary-Pixels";
+				PRODUCT_BUNDLE_IDENTIFIER = "katie.Pictionary-Pixels";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
