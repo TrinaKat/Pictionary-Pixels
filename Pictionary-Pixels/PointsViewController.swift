@@ -9,6 +9,7 @@
 import UIKit
 
 class PointsViewController: UIViewController {
+  @IBOutlet weak var PlayToTextField: UITextField!
   @IBOutlet weak var leastPointsButton: GameButton!
   @IBOutlet weak var averagePointsButton: GameButton!
   @IBOutlet weak var mostPointsButton: GameButton!

@@ -832,13 +832,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="NIL-R6-KlV">
-                                <rect key="frame" x="93.5" y="241.5" width="188" height="184"/>
+                                <rect key="frame" x="126" y="241.5" width="123" height="184"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XPH-Bs-968" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="188" height="48"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="123" height="48"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                         <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
-                                        <state key="normal" title="Play to 5 Points"/>
+                                        <state key="normal" title="5 Points"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                 <integer key="value" value="3"/>
@@ -852,7 +852,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jOJ-sz-ckt" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="68" width="188" height="48"/>
+                                        <rect key="frame" x="0.0" y="68" width="123" height="48"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                         <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
                                         <state key="normal" title="10 Points"/>
@@ -869,7 +869,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vin-jq-nHF" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="136" width="188" height="48"/>
+                                        <rect key="frame" x="0.0" y="136" width="123" height="48"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                         <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
                                         <state key="normal" title="20 Points"/>
@@ -887,14 +887,29 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Play to..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rum-Fc-BYC">
+                                <rect key="frame" x="90" y="158" width="195" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                    <bool key="isElement" value="NO"/>
+                                </accessibility>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="45"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <accessibilityTraits key="traits" notEnabled="YES"/>
+                        </accessibility>
                         <constraints>
                             <constraint firstItem="NIL-R6-KlV" firstAttribute="centerX" secondItem="OyV-Yd-XO3" secondAttribute="centerX" id="6sw-8P-59t"/>
                             <constraint firstItem="NIL-R6-KlV" firstAttribute="centerY" secondItem="OyV-Yd-XO3" secondAttribute="centerY" id="eWT-FU-JLs"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="PlayToTextField" destination="Rum-Fc-BYC" id="qlf-LM-fVD"/>
                         <outlet property="averagePointsButton" destination="jOJ-sz-ckt" id="7sp-GM-Den"/>
                         <outlet property="leastPointsButton" destination="XPH-Bs-968" id="rfg-jb-sWf"/>
                         <outlet property="mostPointsButton" destination="Vin-jq-nHF" id="bGA-x7-lIU"/>
@@ -902,7 +917,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="flL-vx-evK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-668" y="197"/>
+            <point key="canvasLocation" x="-668" y="196.55172413793105"/>
         </scene>
         <!--Message View Controller-->
         <scene sceneID="Hhz-gR-4sy">
