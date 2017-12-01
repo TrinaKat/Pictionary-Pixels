@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="E9c-MI-EyP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="soJ-b2-fSh">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -8,7 +8,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -32,9 +31,6 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="84t-fE-93J" userLabel="Main Image View">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="472"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="375" id="RVj-88-zyS"/>
-                                </constraints>
                             </imageView>
                             <stackView contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="oeZ-y5-meg">
                                 <rect key="frame" x="26" y="526" width="323" height="121"/>
@@ -193,7 +189,7 @@
                                                 <rect key="frame" x="199.5" y="0.0" width="123.5" height="56.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <state key="normal" title="Eraser">
-                                                    <color key="titleColor" name="Black"/>
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -224,10 +220,10 @@
                                     <constraint firstItem="efh-xU-EQY" firstAttribute="width" secondItem="saY-Bl-msS" secondAttribute="width" id="NhK-qI-s8B"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgn-x4-hFP">
-                                <rect key="frame" x="21" y="13" width="58" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Clear">
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgn-x4-hFP">
+                                <rect key="frame" x="21" y="22" width="77" height="36"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <state key="normal" title="Clear All">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
@@ -235,7 +231,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30s" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b0q-2A-u1e">
-                                <rect key="frame" x="166" y="20" width="43" height="30"/>
+                                <rect key="frame" x="166" y="25" width="43" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -246,18 +242,27 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="88 pts." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ceY-gO-mZE">
+                                <rect key="frame" x="276" y="25" width="78" height="29"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="hgn-x4-hFP" firstAttribute="top" secondItem="AIm-2J-3hm" secondAttribute="top" constant="13" id="2Fe-Ii-Wod"/>
-                            <constraint firstItem="b0q-2A-u1e" firstAttribute="top" secondItem="AIm-2J-3hm" secondAttribute="top" constant="20" id="34N-nT-Xe6"/>
+                            <constraint firstItem="b0q-2A-u1e" firstAttribute="top" secondItem="wTj-63-qAV" secondAttribute="bottom" constant="5" id="34N-nT-Xe6"/>
                             <constraint firstItem="84t-fE-93J" firstAttribute="leading" secondItem="AIm-2J-3hm" secondAttribute="leading" id="5TC-Yu-yIT"/>
                             <constraint firstItem="7B3-k0-pm5" firstAttribute="top" secondItem="84t-fE-93J" secondAttribute="bottom" constant="15" id="9QU-qK-PGJ"/>
                             <constraint firstItem="7B3-k0-pm5" firstAttribute="centerX" secondItem="AIm-2J-3hm" secondAttribute="centerX" id="BMt-m0-pd9"/>
+                            <constraint firstItem="ceY-gO-mZE" firstAttribute="centerY" secondItem="b0q-2A-u1e" secondAttribute="centerY" id="CxM-Zq-4BT"/>
                             <constraint firstItem="b0q-2A-u1e" firstAttribute="centerX" secondItem="AIm-2J-3hm" secondAttribute="centerX" id="Dzq-Kw-uTb"/>
                             <constraint firstItem="hgn-x4-hFP" firstAttribute="leading" secondItem="AIm-2J-3hm" secondAttribute="leadingMargin" constant="5" id="GSX-xN-Bs4"/>
+                            <constraint firstItem="b0q-2A-u1e" firstAttribute="centerY" secondItem="hgn-x4-hFP" secondAttribute="centerY" id="Mht-IP-d2r"/>
                             <constraint firstItem="oeZ-y5-meg" firstAttribute="leading" secondItem="AIm-2J-3hm" secondAttribute="leadingMargin" constant="10" id="Ppk-QS-GTg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ceY-gO-mZE" secondAttribute="trailing" constant="5" id="VXr-ir-ANM"/>
                             <constraint firstAttribute="bottom" secondItem="oeZ-y5-meg" secondAttribute="bottom" constant="20" symbolic="YES" id="Vqm-aK-iqI"/>
+                            <constraint firstItem="84t-fE-93J" firstAttribute="width" secondItem="AIm-2J-3hm" secondAttribute="width" id="YuO-SW-te2"/>
                             <constraint firstItem="84t-fE-93J" firstAttribute="top" secondItem="AIm-2J-3hm" secondAttribute="top" id="aVb-df-LRN"/>
                             <constraint firstItem="oeZ-y5-meg" firstAttribute="centerX" secondItem="AIm-2J-3hm" secondAttribute="centerX" id="c4m-Wy-rz8"/>
                             <constraint firstItem="oeZ-y5-meg" firstAttribute="top" secondItem="7B3-k0-pm5" secondAttribute="bottom" constant="15" id="dtV-HB-Q7t"/>
@@ -273,6 +278,7 @@
                         <outlet property="magentaButton" destination="lOz-Td-M4e" id="rES-rW-ylJ"/>
                         <outlet property="mainImageView" destination="84t-fE-93J" id="bR9-oK-2U0"/>
                         <outlet property="orangeButton" destination="Al3-3I-kAJ" id="CHx-1w-e7N"/>
+                        <outlet property="pointsLabel" destination="ceY-gO-mZE" id="TQG-2f-vaY"/>
                         <outlet property="redButton" destination="oJo-kv-7ym" id="sNJ-cZ-SzJ"/>
                         <outlet property="timeLeftLabel" destination="b0q-2A-u1e" id="HAB-tO-hwz"/>
                         <outlet property="yellowButton" destination="uSn-IH-aon" id="wPl-5q-xpo"/>
@@ -295,22 +301,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VcD-Dp-BFi">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="472"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="472" id="4RW-pq-hEL"/>
-                                    <constraint firstAttribute="width" constant="375" id="r40-uH-tEJ"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="469"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30s" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ypf-6t-kkJ">
-                                <rect key="frame" x="166" y="20" width="43" height="30"/>
+                                <rect key="frame" x="166" y="25" width="43" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gIV-Ul-iOD">
-                                <rect key="frame" x="21" y="13" width="58" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Clear">
+                                <rect key="frame" x="21" y="22" width="77" height="36"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <state key="normal" title="Clear All">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
@@ -318,73 +320,481 @@
                                     <action selector="clear:" destination="E9c-MI-EyP" eventType="touchUpInside" id="yrV-2e-o9S"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N2c-dY-H2A">
-                                <rect key="frame" x="290" y="13" width="64" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Send!">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="sendGuess:" destination="gv4-XO-b4s" eventType="touchUpInside" id="FtY-TQ-RhQ"/>
-                                </connections>
-                            </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="DlA-mw-bYV">
-                                <rect key="frame" x="16" y="482" width="343" height="24"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="DlA-mw-bYV">
+                                <rect key="frame" x="16" y="481" width="343" height="29"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fSM-Om-sWV">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="34" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="B" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="biq-ua-Dmi" userLabel="B">
+                                        <rect key="frame" x="44" y="0.0" width="34.5" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9X-tk-agP" userLabel="C">
+                                        <rect key="frame" x="88.5" y="0.0" width="34" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="D" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VV4-OD-4xr">
+                                        <rect key="frame" x="132.5" y="0.0" width="34" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ckz-Js-lgg">
+                                        <rect key="frame" x="176.5" y="0.0" width="34" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="F" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hw4-jE-0bT">
+                                        <rect key="frame" x="220.5" y="0.0" width="34.5" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="G" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E3N-9W-BX8">
+                                        <rect key="frame" x="265" y="0.0" width="34" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="H" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xES-XL-nFS">
+                                        <rect key="frame" x="309" y="0.0" width="34" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Rsx-eM-LVD">
-                                <rect key="frame" x="16" y="518" width="46" height="137"/>
+                                <rect key="frame" x="16" y="522" width="343" height="133"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="fLT-KT-AIt">
-                                        <rect key="frame" x="0.0" y="0.0" width="46" height="64.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="fLT-KT-AIt">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="39"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plC-tv-vZG">
-                                                <rect key="frame" x="0.0" y="0.0" width="46" height="64.5"/>
-                                                <state key="normal" title="Button"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plC-tv-vZG" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="2.5" width="38" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                <state key="normal" title="1">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="6"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="enterLetter:" destination="gv4-XO-b4s" eventType="touchUpInside" id="MOI-cf-t9F"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7C8-ip-scm" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
+                                                <rect key="frame" x="44" y="2.5" width="37.5" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                <state key="normal" title="2">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="6"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="enterLetter:" destination="gv4-XO-b4s" eventType="touchUpInside" id="ojf-sc-0Gy"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h4i-by-CcM" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
+                                                <rect key="frame" x="87.5" y="2.5" width="37.5" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                <state key="normal" title="3">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="6"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="enterLetter:" destination="gv4-XO-b4s" eventType="touchUpInside" id="Jr2-a0-shm"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mc1-Bk-3th" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
+                                                <rect key="frame" x="131" y="2.5" width="37.5" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                <state key="normal" title="4">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="6"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="enterLetter:" destination="gv4-XO-b4s" eventType="touchUpInside" id="VqT-JY-xsB"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D39-fO-tFV" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
+                                                <rect key="frame" x="174.5" y="2.5" width="38" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                <state key="normal" title="5">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="6"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="enterLetter:" destination="gv4-XO-b4s" eventType="touchUpInside" id="5S9-qh-uzy"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZcS-XC-bIx" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
+                                                <rect key="frame" x="218.5" y="2.5" width="37.5" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                <state key="normal" title="6">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="6"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="enterLetter:" destination="gv4-XO-b4s" eventType="touchUpInside" id="ZE5-Fc-pgN"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oha-wS-2yb" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
+                                                <rect key="frame" x="262" y="2.5" width="37.5" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                <state key="normal" title="7">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="6"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="enterLetter:" destination="gv4-XO-b4s" eventType="touchUpInside" id="5kP-vK-LSx"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K0M-w1-eF2" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
+                                                <rect key="frame" x="305.5" y="2.5" width="37.5" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                <state key="normal" title="8">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="6"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="enterLetter:" destination="gv4-XO-b4s" eventType="touchUpInside" id="hb0-z6-k4i"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="7C8-ip-scm" firstAttribute="width" secondItem="plC-tv-vZG" secondAttribute="width" id="DYq-0x-qoU"/>
+                                            <constraint firstItem="D39-fO-tFV" firstAttribute="width" secondItem="plC-tv-vZG" secondAttribute="width" id="F7F-yo-f8a"/>
+                                            <constraint firstItem="h4i-by-CcM" firstAttribute="width" secondItem="plC-tv-vZG" secondAttribute="width" id="Gnh-SC-tpt"/>
+                                            <constraint firstItem="mc1-Bk-3th" firstAttribute="width" secondItem="plC-tv-vZG" secondAttribute="width" id="HfX-qa-8WE"/>
+                                            <constraint firstItem="ZcS-XC-bIx" firstAttribute="width" secondItem="plC-tv-vZG" secondAttribute="width" id="Jb4-dF-sua"/>
+                                            <constraint firstItem="Oha-wS-2yb" firstAttribute="width" secondItem="plC-tv-vZG" secondAttribute="width" id="SwN-52-lm3"/>
+                                            <constraint firstItem="K0M-w1-eF2" firstAttribute="width" secondItem="plC-tv-vZG" secondAttribute="width" id="fZ0-oa-EqQ"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="cex-dB-wrm">
+                                        <rect key="frame" x="0.0" y="47" width="343" height="39"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RSS-fE-5um" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="2.5" width="38" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                <state key="normal" title="9">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="6"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="enterLetter:" destination="gv4-XO-b4s" eventType="touchUpInside" id="GTn-as-nMP"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5yX-mm-ccT" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
+                                                <rect key="frame" x="44" y="2.5" width="37.5" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                <state key="normal" title="10">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="6"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="enterLetter:" destination="gv4-XO-b4s" eventType="touchUpInside" id="AVm-SC-dZO"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cUE-fc-ufV" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
+                                                <rect key="frame" x="87.5" y="2.5" width="37.5" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                <state key="normal" title="11">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="6"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="enterLetter:" destination="gv4-XO-b4s" eventType="touchUpInside" id="wAu-7Y-ARV"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvU-P1-LGe" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
+                                                <rect key="frame" x="131" y="2.5" width="37.5" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                <state key="normal" title="12">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="6"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="enterLetter:" destination="gv4-XO-b4s" eventType="touchUpInside" id="mhT-cg-tca"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6x1-1j-ut0" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
+                                                <rect key="frame" x="174.5" y="2.5" width="38" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                <state key="normal" title="13">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="6"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="enterLetter:" destination="gv4-XO-b4s" eventType="touchUpInside" id="8QR-2h-YQJ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpH-oq-YTf" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
+                                                <rect key="frame" x="218.5" y="2.5" width="37.5" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                <state key="normal" title="14">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="6"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="enterLetter:" destination="gv4-XO-b4s" eventType="touchUpInside" id="KCg-jW-HAQ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13m-dx-f2v" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
+                                                <rect key="frame" x="262" y="2.5" width="81" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                <state key="normal" title="Delete">
+                                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="6"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="deleteLetter:" destination="gv4-XO-b4s" eventType="touchUpInside" id="hBA-H4-CdR"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="cex-dB-wrm">
-                                        <rect key="frame" x="0.0" y="72.5" width="46" height="64.5"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RSS-fE-5um">
-                                                <rect key="frame" x="0.0" y="0.0" width="46" height="64.5"/>
-                                                <state key="normal" title="Button"/>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N2c-dY-H2A" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="94" width="343" height="39"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                        <state key="normal" title="Guess!">
+                                            <color key="titleColor" red="0.0" green="0.27598852040816324" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.0" green="0.2728794642857143" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="12"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="sendGuess:" destination="gv4-XO-b4s" eventType="touchUpInside" id="g15-dk-ntM"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="cUE-fc-ufV" firstAttribute="width" secondItem="plC-tv-vZG" secondAttribute="width" id="AtX-Cn-8Zh"/>
+                                    <constraint firstItem="vvU-P1-LGe" firstAttribute="width" secondItem="plC-tv-vZG" secondAttribute="width" id="ClZ-pt-zEk"/>
+                                    <constraint firstItem="RSS-fE-5um" firstAttribute="height" secondItem="plC-tv-vZG" secondAttribute="height" id="EEe-bY-EYD"/>
+                                    <constraint firstItem="6x1-1j-ut0" firstAttribute="width" secondItem="plC-tv-vZG" secondAttribute="width" id="Nzx-dR-6ug"/>
+                                    <constraint firstItem="RSS-fE-5um" firstAttribute="width" secondItem="plC-tv-vZG" secondAttribute="width" id="Zec-LJ-b4u"/>
+                                    <constraint firstItem="bpH-oq-YTf" firstAttribute="width" secondItem="plC-tv-vZG" secondAttribute="width" id="ecd-kw-Ucn"/>
+                                    <constraint firstItem="5yX-mm-ccT" firstAttribute="width" secondItem="plC-tv-vZG" secondAttribute="width" id="qs4-Cf-Y24"/>
+                                </constraints>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="88 pts." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8n-pB-DkH">
+                                <rect key="frame" x="276" y="26" width="78" height="29"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Rsx-eM-LVD" secondAttribute="bottom" constant="12" id="4Oa-yY-aym"/>
+                            <constraint firstItem="HgY-wW-cMC" firstAttribute="top" secondItem="Rsx-eM-LVD" secondAttribute="bottom" constant="12" id="4Oa-yY-aym"/>
                             <constraint firstItem="Rsx-eM-LVD" firstAttribute="top" secondItem="DlA-mw-bYV" secondAttribute="bottom" constant="12" id="E7w-my-kkq"/>
                             <constraint firstItem="ypf-6t-kkJ" firstAttribute="centerX" secondItem="NJk-XC-wAa" secondAttribute="centerX" id="LbP-mS-fnv"/>
+                            <constraint firstItem="ypf-6t-kkJ" firstAttribute="centerY" secondItem="gIV-Ul-iOD" secondAttribute="centerY" id="Ltk-uT-ol1"/>
                             <constraint firstItem="Rsx-eM-LVD" firstAttribute="leading" secondItem="NJk-XC-wAa" secondAttribute="leadingMargin" id="O7t-11-L9S"/>
-                            <constraint firstItem="gIV-Ul-iOD" firstAttribute="top" secondItem="NJk-XC-wAa" secondAttribute="top" constant="13" id="Qjj-JW-VFe"/>
-                            <constraint firstItem="N2c-dY-H2A" firstAttribute="top" secondItem="NJk-XC-wAa" secondAttribute="top" constant="13" id="Swu-fZ-r1W"/>
+                            <constraint firstItem="Rsx-eM-LVD" firstAttribute="centerX" secondItem="NJk-XC-wAa" secondAttribute="centerX" id="VOP-Pn-JtA"/>
                             <constraint firstItem="gIV-Ul-iOD" firstAttribute="leading" secondItem="NJk-XC-wAa" secondAttribute="leadingMargin" constant="5" id="YhZ-4x-bhz"/>
-                            <constraint firstItem="ypf-6t-kkJ" firstAttribute="top" secondItem="NJk-XC-wAa" secondAttribute="top" constant="20" id="ZX3-49-jRz"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="N2c-dY-H2A" secondAttribute="trailing" constant="5" id="a3w-bA-Nub"/>
+                            <constraint firstItem="ypf-6t-kkJ" firstAttribute="top" secondItem="oz5-Mw-4lJ" secondAttribute="bottom" constant="5" id="ZX3-49-jRz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="DlA-mw-bYV" secondAttribute="trailing" id="cEZ-6M-1Gt"/>
-                            <constraint firstItem="DlA-mw-bYV" firstAttribute="top" secondItem="VcD-Dp-BFi" secondAttribute="bottom" constant="10" id="dOC-5E-hEX"/>
+                            <constraint firstItem="DlA-mw-bYV" firstAttribute="top" secondItem="VcD-Dp-BFi" secondAttribute="bottom" constant="12" id="dOC-5E-hEX"/>
                             <constraint firstItem="DlA-mw-bYV" firstAttribute="leading" secondItem="NJk-XC-wAa" secondAttribute="leadingMargin" id="gD2-EE-JMH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="w8n-pB-DkH" secondAttribute="trailing" constant="5" id="ivt-R5-0Oh"/>
+                            <constraint firstItem="VcD-Dp-BFi" firstAttribute="width" secondItem="NJk-XC-wAa" secondAttribute="width" id="l11-wu-Q08"/>
+                            <constraint firstItem="w8n-pB-DkH" firstAttribute="centerY" secondItem="ypf-6t-kkJ" secondAttribute="centerY" id="pdX-p8-M1g"/>
                             <constraint firstItem="VcD-Dp-BFi" firstAttribute="top" secondItem="NJk-XC-wAa" secondAttribute="top" id="yno-wH-eOT"/>
                             <constraint firstItem="VcD-Dp-BFi" firstAttribute="leading" secondItem="NJk-XC-wAa" secondAttribute="leading" id="zmB-xc-qdD"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="letter1Button" destination="plC-tv-vZG" id="NMg-vd-yyr"/>
+                        <outlet property="inputImageView" destination="VcD-Dp-BFi" id="OCb-op-AoT"/>
+                        <outlet property="pointsLabel" destination="w8n-pB-DkH" id="bHA-YR-d0u"/>
                         <outlet property="timeLeftLabel" destination="ypf-6t-kkJ" id="pgm-oY-6y4"/>
-                        <outletCollection property="guessLabels" destination="fSM-Om-sWV" collectionClass="NSMutableArray" id="8fS-Ez-yZI"/>
+                        <outletCollection property="letterButtons" destination="plC-tv-vZG" collectionClass="NSMutableArray" id="hJz-Op-7KD"/>
+                        <outletCollection property="guessedLetterLabels" destination="fSM-Om-sWV" collectionClass="NSMutableArray" id="ugL-Ba-m62"/>
+                        <outletCollection property="guessedLetterLabels" destination="biq-ua-Dmi" collectionClass="NSMutableArray" id="Hns-KQ-SuS"/>
+                        <outletCollection property="guessedLetterLabels" destination="c9X-tk-agP" collectionClass="NSMutableArray" id="jr2-q5-zbV"/>
+                        <outletCollection property="guessedLetterLabels" destination="VV4-OD-4xr" collectionClass="NSMutableArray" id="t2D-pu-8uj"/>
+                        <outletCollection property="guessedLetterLabels" destination="Ckz-Js-lgg" collectionClass="NSMutableArray" id="gxc-B2-dob"/>
+                        <outletCollection property="guessedLetterLabels" destination="hw4-jE-0bT" collectionClass="NSMutableArray" id="yZ0-pz-kEU"/>
+                        <outletCollection property="guessedLetterLabels" destination="E3N-9W-BX8" collectionClass="NSMutableArray" id="YWN-xU-8wh"/>
+                        <outletCollection property="guessedLetterLabels" destination="xES-XL-nFS" collectionClass="NSMutableArray" id="tNh-qj-tZM"/>
+                        <outletCollection property="letterButtons" destination="7C8-ip-scm" collectionClass="NSMutableArray" id="y7E-ky-aaN"/>
+                        <outletCollection property="letterButtons" destination="h4i-by-CcM" collectionClass="NSMutableArray" id="Ztm-g2-wnT"/>
+                        <outletCollection property="letterButtons" destination="mc1-Bk-3th" collectionClass="NSMutableArray" id="NOR-aa-TYr"/>
+                        <outletCollection property="letterButtons" destination="D39-fO-tFV" collectionClass="NSMutableArray" id="rG4-sg-etq"/>
+                        <outletCollection property="letterButtons" destination="ZcS-XC-bIx" collectionClass="NSMutableArray" id="HOG-Se-igM"/>
+                        <outletCollection property="letterButtons" destination="Oha-wS-2yb" collectionClass="NSMutableArray" id="nBl-Gc-Cmz"/>
+                        <outletCollection property="letterButtons" destination="K0M-w1-eF2" collectionClass="NSMutableArray" id="M1j-hf-470"/>
+                        <outletCollection property="letterButtons" destination="RSS-fE-5um" collectionClass="NSMutableArray" id="Evz-Rq-2de"/>
+                        <outletCollection property="letterButtons" destination="5yX-mm-ccT" collectionClass="NSMutableArray" id="ujk-8z-7yL"/>
+                        <outletCollection property="letterButtons" destination="cUE-fc-ufV" collectionClass="NSMutableArray" id="5mw-D7-Jfj"/>
+                        <outletCollection property="letterButtons" destination="6x1-1j-ut0" collectionClass="NSMutableArray" id="eEo-hb-X8y"/>
+                        <outletCollection property="letterButtons" destination="bpH-oq-YTf" collectionClass="NSMutableArray" id="p5Q-wC-FtI"/>
+                        <outletCollection property="letterButtons" destination="vvU-P1-LGe" collectionClass="NSMutableArray" id="xNS-Dd-sI0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uFg-9o-eRh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -408,6 +818,91 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LfZ-My-qoK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1388" y="197"/>
+        </scene>
+        <!--Points View Controller-->
+        <scene sceneID="iHO-aj-zhL">
+            <objects>
+                <viewController id="soJ-b2-fSh" customClass="PointsViewController" customModule="Pictionary_Pixels" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3Qr-6C-RcI"/>
+                        <viewControllerLayoutGuide type="bottom" id="jne-1E-Us8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OyV-Yd-XO3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="NIL-R6-KlV">
+                                <rect key="frame" x="93.5" y="241.5" width="188" height="184"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XPH-Bs-968" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="188" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                        <state key="normal" title="Play to 5 Points"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <integer key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.19987776960544221" green="0.83189838435374153" blue="0.21042730191836739" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jOJ-sz-ckt" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="68" width="188" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                        <state key="normal" title="10 Points"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <integer key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.017007386310000001" green="0.47469806669999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vin-jq-nHF" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="136" width="188" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                        <state key="normal" title="20 Points"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <integer key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="NIL-R6-KlV" firstAttribute="centerX" secondItem="OyV-Yd-XO3" secondAttribute="centerX" id="6sw-8P-59t"/>
+                            <constraint firstItem="NIL-R6-KlV" firstAttribute="centerY" secondItem="OyV-Yd-XO3" secondAttribute="centerY" id="eWT-FU-JLs"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="averagePointsButton" destination="jOJ-sz-ckt" id="7sp-GM-Den"/>
+                        <outlet property="leastPointsButton" destination="XPH-Bs-968" id="rfg-jb-sWf"/>
+                        <outlet property="mostPointsButton" destination="Vin-jq-nHF" id="bGA-x7-lIU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="flL-vx-evK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-668" y="197"/>
         </scene>
         <!--Message View Controller-->
         <scene sceneID="Hhz-gR-4sy">
@@ -453,12 +948,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9my-WZ-rTT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1665" y="197"/>
+            <point key="canvasLocation" x="1596" y="197"/>
         </scene>
     </scenes>
-    <resources>
-        <namedColor name="Black">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-    </resources>
 </document>

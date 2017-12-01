@@ -29,6 +29,7 @@ class DrawingViewController: UIViewController {
   
   var lastButtonHit: GameButton?
   
+  @IBOutlet weak var pointsLabel: UILabel!
   @IBOutlet weak var timeLeftLabel: UILabel!
   @IBOutlet weak var currentWordLabel: UILabel!
   // for making continuous brush strokes, store last point drawn
