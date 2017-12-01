@@ -813,16 +813,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Players:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="195" translatesAutoresizingMaskIntoConstraints="NO" id="J9v-xg-YYX">
-                                <rect key="frame" x="90" y="276" width="194" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Players:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="195" translatesAutoresizingMaskIntoConstraints="NO" id="J9v-xg-YYX">
+                                <rect key="frame" x="157" y="323.5" width="60" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8KL-ej-79v" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
-                                <rect key="frame" x="116" y="220" width="143" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8KL-ej-79v" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
+                                <rect key="frame" x="116" y="243.5" width="143" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
                                 <state key="normal" title="Start Game"/>
@@ -844,6 +842,12 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="J9v-xg-YYX" firstAttribute="centerY" secondItem="Od4-Mt-W1M" secondAttribute="centerY" id="J3Z-8y-pxr"/>
+                            <constraint firstItem="J9v-xg-YYX" firstAttribute="top" secondItem="8KL-ej-79v" secondAttribute="bottom" constant="32" id="Jve-23-Lt0"/>
+                            <constraint firstItem="8KL-ej-79v" firstAttribute="centerX" secondItem="Od4-Mt-W1M" secondAttribute="centerX" id="cY5-Yf-ygD"/>
+                            <constraint firstItem="J9v-xg-YYX" firstAttribute="centerX" secondItem="Od4-Mt-W1M" secondAttribute="centerX" id="kog-cf-NID"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="connectionsLabel" destination="J9v-xg-YYX" id="Fg4-GE-5hX"/>
@@ -933,9 +937,8 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Play to..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rum-Fc-BYC">
-                                <rect key="frame" x="90" y="158" width="195" height="58"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Play to..." textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="45" translatesAutoresizingMaskIntoConstraints="NO" id="Rum-Fc-BYC">
+                                <rect key="frame" x="99" y="159.5" width="177" height="54"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                     <bool key="isElement" value="NO"/>
@@ -950,7 +953,9 @@
                             <accessibilityTraits key="traits" notEnabled="YES"/>
                         </accessibility>
                         <constraints>
+                            <constraint firstItem="NIL-R6-KlV" firstAttribute="top" secondItem="Rum-Fc-BYC" secondAttribute="bottom" constant="28" id="2Ne-Zv-cRH"/>
                             <constraint firstItem="NIL-R6-KlV" firstAttribute="centerX" secondItem="OyV-Yd-XO3" secondAttribute="centerX" id="6sw-8P-59t"/>
+                            <constraint firstItem="Rum-Fc-BYC" firstAttribute="centerX" secondItem="OyV-Yd-XO3" secondAttribute="centerX" id="Y2y-mU-qDc"/>
                             <constraint firstItem="NIL-R6-KlV" firstAttribute="centerY" secondItem="OyV-Yd-XO3" secondAttribute="centerY" id="eWT-FU-JLs"/>
                         </constraints>
                     </view>
