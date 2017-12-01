@@ -838,6 +838,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="startPressed:" destination="qYy-aT-CdV" eventType="touchUpInside" id="1B7-wL-gbr"/>
                                     <segue destination="soJ-b2-fSh" kind="show" id="Am3-Mi-gQR"/>
                                 </connections>
                             </button>
@@ -855,7 +856,7 @@
         <!--Points View Controller-->
         <scene sceneID="iHO-aj-zhL">
             <objects>
-                <viewController id="soJ-b2-fSh" customClass="PointsViewController" customModule="Pictionary_Pixels" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PointsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="soJ-b2-fSh" customClass="PointsViewController" customModule="Pictionary_Pixels" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3Qr-6C-RcI"/>
                         <viewControllerLayoutGuide type="bottom" id="jne-1E-Us8"/>
@@ -1012,6 +1013,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="wwV-CH-PRY"/>
+        <segue reference="EOz-Of-FV7"/>
     </inferredMetricsTieBreakers>
 </document>

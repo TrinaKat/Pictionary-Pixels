@@ -13,6 +13,10 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var connectionsLabel: UILabel!
     
     let multipeerService = MultipeerServiceManager()
+    
+    @IBAction func startPressed(_ sender: Any) {
+        multipeerService.stopAdvertisingSelf()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +53,14 @@ extension HomeViewController : MultipeerServiceManagerDelegate {
             } else {
                 self.connectionsLabel.text = "Players: \(connectedDevices)"
             }
+        }
+    }
+    
+    func startGame(manager: MultipeerServiceManager) {
+        DispatchQueue.main.async() {
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "PointsViewController") as! PointsViewController
+            self.present(newViewController, animated: true, completion: nil)
         }
     }
     

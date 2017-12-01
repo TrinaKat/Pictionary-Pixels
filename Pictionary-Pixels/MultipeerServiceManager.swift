@@ -17,8 +17,8 @@ class MultipeerServiceManager : NSObject {
     var delegate : MultipeerServiceManagerDelegate?
     
     private let myPeerId = MCPeerID(displayName: UIDevice.current.name)
-    private let serviceAdvertiser : MCNearbyServiceAdvertiser
-    private let serviceBrowser : MCNearbyServiceBrowser
+    public let serviceAdvertiser : MCNearbyServiceAdvertiser
+    public let serviceBrowser : MCNearbyServiceBrowser
     
     lazy var session : MCSession = {
         let session = MCSession(peer: self.myPeerId, securityIdentity: nil, encryptionPreference: .required)
@@ -41,6 +41,20 @@ class MultipeerServiceManager : NSObject {
         self.serviceBrowser.stopBrowsingForPeers()
     }
     
+    func stopAdvertisingSelf() {
+        NSLog("%@", "Stopped advertising \(UIDevice.current.name) and all other players")
+        self.serviceAdvertiser.stopAdvertisingPeer()
+        self.serviceBrowser.stopBrowsingForPeers()
+        if (session.connectedPeers.count > 0) {
+            do {
+                try self.session.send("startGame".data(using: .utf8)!, toPeers: session.connectedPeers, with: .reliable)
+            }
+            catch let error {
+                NSLog("%@", "Error: Could not stop advertising all players: \(error)")
+            }
+        }
+    }
+    
 }
 
 extension MultipeerServiceManager : MCNearbyServiceAdvertiserDelegate {
@@ -51,7 +65,15 @@ extension MultipeerServiceManager : MCNearbyServiceAdvertiserDelegate {
     
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
         NSLog("%@", "didReceiveInvitationFromPeer \(peerID)")
-        invitationHandler(true, self.session)
+        if let wd = UIApplication.shared.delegate?.window {
+            var vc = wd!.rootViewController
+            if (vc is UINavigationController) {
+                vc = (vc as! UINavigationController).visibleViewController
+            }
+            if (vc is HomeViewController) {
+                invitationHandler(true, self.session)
+            }
+        }
     }
     
 }
@@ -65,13 +87,19 @@ extension MultipeerServiceManager : MCNearbyServiceBrowserDelegate {
     func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
         NSLog("%@", "foundPeer: \(peerID)")
         NSLog("%@", "invitePeer: \(peerID)")
-        browser.invitePeer(peerID, to: self.session, withContext: nil, timeout: 10)
+        if let wd = UIApplication.shared.delegate?.window {
+            var vc = wd!.rootViewController
+            if (vc is UINavigationController) {
+                vc = (vc as! UINavigationController).visibleViewController
+            }
+            if (vc is HomeViewController) {
+                browser.invitePeer(peerID, to: self.session, withContext: nil, timeout: 10)
+            }
+        }
     }
     
     func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
         NSLog("%@", "lostPeer: \(peerID)")
-        self.delegate?.connectedDevicesChanged(manager: self, connectedDevices:
-            session.connectedPeers.map{$0.displayName})
     }
     
 }
@@ -86,6 +114,12 @@ extension MultipeerServiceManager : MCSessionDelegate {
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
         NSLog("%@", "didReceiveData: \(data)")
+        let str = String(data: data, encoding: .utf8)!
+        if (str == "startGame") {
+            self.serviceAdvertiser.stopAdvertisingPeer()
+            self.serviceBrowser.stopBrowsingForPeers()
+            self.delegate?.startGame(manager: self)
+        }
     }
     
     func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
@@ -104,4 +138,5 @@ extension MultipeerServiceManager : MCSessionDelegate {
 
 protocol MultipeerServiceManagerDelegate {
     func connectedDevicesChanged(manager : MultipeerServiceManager, connectedDevices: [String])
+    func startGame(manager: MultipeerServiceManager)
 }
