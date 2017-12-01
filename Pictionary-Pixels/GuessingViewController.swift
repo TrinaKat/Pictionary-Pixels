@@ -19,7 +19,50 @@ class GuessingViewController: UIViewController {
   override func viewDidLoad() {
       super.viewDidLoad()
 
-      // Do any additional setup after loading the view.
+    let answer = "hello"
+    let alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y","z"]
+    
+    // Do any additional setup after loading the view.
+    
+    // generating keyboard
+    var counter: Int = 0
+    
+    var slots = [Int]()
+    var lettersAlreadyOnBoard = [String]()
+    
+    while counter < answer.count {
+        let letter = String(answer[answer.index(answer.startIndex, offsetBy: counter)])
+        if !lettersAlreadyOnBoard.contains(letter) {
+            let num = arc4random_uniform(14)
+            
+            if !slots.contains(Int(num)) {
+                lettersAlreadyOnBoard.append(letter)
+                slots.append(Int(num))
+                counter+=1
+            }
+        } else {
+            counter+=1
+        }
+    }
+    
+    counter = 0
+    
+    for i in 0 ... slots.count-1 {
+        letterButtons[slots[i]].setTitle(String(lettersAlreadyOnBoard[i]), for: UIControlState.normal)
+    }
+    
+    while counter < 14 {
+        if !slots.contains(counter) {
+            let chosenLetter = alphabet[alphabet.index(alphabet.startIndex, offsetBy: Int(arc4random_uniform(26)))]
+            if !lettersAlreadyOnBoard.contains(chosenLetter) {
+                lettersAlreadyOnBoard.append(chosenLetter)
+                letterButtons[counter].setTitle(chosenLetter, for: UIControlState.normal)
+                counter+=1
+            }
+        } else {
+            counter+=1
+        }
+    }
   }
 
   override func didReceiveMemoryWarning() {
