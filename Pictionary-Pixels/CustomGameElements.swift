@@ -38,6 +38,9 @@ class GameButton: UIButton {
       }
     }
   }
-  
+}
 
+@IBDesignable
+class GameLetters: UILabel {
+  
 }
