@@ -10,10 +10,11 @@ import UIKit
 
 class GuessingViewController: UIViewController {
   
+  @IBOutlet weak var inputImageView: UIImageView!
   @IBOutlet weak var timeLeftLabel: UILabel!
-  @IBOutlet var guessLabels: [UILabel]!
-  
-  @IBOutlet weak var letter1Button: GameButton!
+  @IBOutlet weak var pointsLabel: UILabel!
+  @IBOutlet var guessedLetterLabels: [UILabel]!
+  @IBOutlet var letterButtons: [UIButton]!
   
   override func viewDidLoad() {
       super.viewDidLoad()
@@ -25,11 +26,17 @@ class GuessingViewController: UIViewController {
       super.didReceiveMemoryWarning()
       // Dispose of any resources that can be recreated.
   }
-    
-  @IBAction func sendGuess(_ sender: Any) {
+  
+  @IBAction func enterLetter(_ sender: Any) {
+  }
+  
+  @IBAction func deleteLetter(_ sender: Any) {
   }
   
   @IBAction func clear(_ sender: Any) {
+  }
+  
+  @IBAction func sendGuess(_ sender: Any) {
   }
   
   /*
