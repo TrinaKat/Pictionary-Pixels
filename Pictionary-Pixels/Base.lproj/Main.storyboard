@@ -20,7 +20,7 @@
         <!--Drawing View Controller-->
         <scene sceneID="VkC-3P-E9s">
             <objects>
-                <viewController id="E9c-MI-EyP" customClass="DrawingViewController" customModule="Pictionary_Pixels" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DrawingView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="E9c-MI-EyP" customClass="DrawingViewController" customModule="Pictionary_Pixels" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wTj-63-qAV"/>
                         <viewControllerLayoutGuide type="bottom" id="nD6-ue-EuE"/>
@@ -850,6 +850,10 @@
                                                 <integer key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="drawFor5:" destination="soJ-b2-fSh" eventType="touchUpInside" id="cnh-BC-N6q"/>
+                                            <segue destination="E9c-MI-EyP" kind="show" id="wwV-CH-PRY"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jOJ-sz-ckt" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="68" width="123" height="48"/>
@@ -867,6 +871,10 @@
                                                 <integer key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="drawFor10:" destination="soJ-b2-fSh" eventType="touchUpInside" id="WHL-ZU-Jbc"/>
+                                            <segue destination="E9c-MI-EyP" kind="show" id="OAq-BK-LUs"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vin-jq-nHF" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="136" width="123" height="48"/>
@@ -884,6 +892,10 @@
                                                 <integer key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="drawFor20:" destination="soJ-b2-fSh" eventType="touchUpInside" id="Qd0-Ez-vQW"/>
+                                            <segue destination="E9c-MI-EyP" kind="show" id="EOz-Of-FV7"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -966,4 +978,7 @@
             <point key="canvasLocation" x="1596" y="197"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="wwV-CH-PRY"/>
+    </inferredMetricsTieBreakers>
 </document>

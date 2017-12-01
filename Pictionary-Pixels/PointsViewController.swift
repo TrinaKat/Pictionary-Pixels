@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//import "DrawingViewController.h"
 
 class PointsViewController: UIViewController {
   @IBOutlet weak var PlayToTextField: UITextField!
@@ -35,5 +36,17 @@ class PointsViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    // MARK: Actions
+    @IBAction func drawFor5(_ sender: GameButton) {
+        print("Least")
+    }
+    
+    @IBAction func drawFor10(_ sender: GameButton) {
+        print("10 Pts 4 u")
+    }
+    
+    @IBAction func drawFor20(_ sender: GameButton) {
+        print("Most")
+    }
 }
