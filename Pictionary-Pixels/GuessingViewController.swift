@@ -128,6 +128,8 @@ class GuessingViewController: UIViewController {
             letterButtons[i].isEnabled = true
             letterButtons[i].alpha = 1.0
         }
+        
+        guessedLetterIndex = 0
     }
 
     // Send guess and check it with the answer string
