@@ -49,7 +49,7 @@ extension HomeViewController : MultipeerServiceManagerDelegate {
     func connectedDevicesChanged(manager: MultipeerServiceManager, connectedDevices: [String]) {
         OperationQueue.main.addOperation {
             if connectedDevices.count == 0 {
-                self.connectionsLabel.text = "Players:"
+                self.connectionsLabel.text = "Players: Just you so far!"
             } else {
                 self.connectionsLabel.text = "Players: \(connectedDevices)"
             }
