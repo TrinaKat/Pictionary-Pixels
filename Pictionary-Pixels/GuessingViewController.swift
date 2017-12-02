@@ -20,7 +20,7 @@ class GuessingViewController: UIViewController {
     var hiddenLetterLabels = 0
 
     let answer = "hello"
-    var letterButtonCount: Int = 12
+    var letterButtonCount: Int = 11
     
   override func viewDidLoad() {
     super.viewDidLoad()
