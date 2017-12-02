@@ -85,6 +85,8 @@ class GuessingViewController: UIViewController {
     func loadData() {
         // Choose answer string
         // Backup if getting words from URL didn't work (takes time)
+        // Next round will try to access url_words again
+        // TODO: keep track of used words
         self.readLocalJSON()
 
         if url_words.count <= 0  && local_words.count > 0{
@@ -101,7 +103,7 @@ class GuessingViewController: UIViewController {
         print("The chosen answer is:")
         print(answer)
 
-        print("Using following word array in HomeView:")
+        print("Using following word array in PointsView:")
         print(words)
         
         // Do any additional setup after loading the view.
