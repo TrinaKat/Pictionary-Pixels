@@ -20,8 +20,8 @@ class GuessingViewController: UIViewController {
     var hiddenLetterLabels = 0
 
     let answer = "hello"
-    var letterButtonCount: Int = 11
-    
+    var letterButtonCount: Int = 12
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -48,7 +48,7 @@ class GuessingViewController: UIViewController {
     
     // For every letter in the answer assign it a random position on the board
     while counter < answer.count {
-        let num = arc4random_uniform(UInt32(letterButtonCount+1))
+        let num = arc4random_uniform(UInt32(letterButtonCount))
     
         // 1:1, slot number stored in slots[], actual char stored in lettersAlreadyOnBoard[]
         if !slots.contains(Int(num)) {
@@ -66,7 +66,7 @@ class GuessingViewController: UIViewController {
     
     // Fill in remaining empty slots with random letters
     // We allow duplicate/triplicate/multiples of letters, because it's random
-    while counter < letterButtonCount+1 {
+    while counter < letterButtonCount {
         if !slots.contains(counter) {
             let chosenLetter = alphabet[alphabet.index(alphabet.startIndex, offsetBy: Int(arc4random_uniform(26)))]
             letterButtons[counter].setTitle(chosenLetter, for: UIControlState.normal)
@@ -147,7 +147,7 @@ class GuessingViewController: UIViewController {
             guessedLetterLabels[guessedLetterIndex].text = " "
             
             // Reactivate button
-            for i in 0 ... letterButtonCount {
+            for i in 0 ... letterButtonCount-1 {
                 if !letterButtons[i].isEnabled && letterButtons[i].titleLabel!.text == deleteChar {
                     letterButtons[i].isEnabled = true
                     letterButtons[i].alpha = 1.0
@@ -166,7 +166,7 @@ class GuessingViewController: UIViewController {
             guessedLetterLabels[i].text = " "
         }
         
-        for i in 0 ... letterButtonCount {
+        for i in 0 ... letterButtonCount-1 {
             letterButtons[i].isEnabled = true
             letterButtons[i].alpha = 1.0
         }
