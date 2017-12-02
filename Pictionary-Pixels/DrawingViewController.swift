@@ -14,6 +14,8 @@ class DrawingViewController: UIViewController {
   
   // where the drawing is
   @IBOutlet weak var mainImageView: UIImageView!
+  // RELEVANT TO IMAGE
+  let multipeerService = MultipeerServiceManager!
   
   // 9 buttons for drawing
   @IBOutlet weak var blackButton: GameButton!
@@ -64,6 +66,11 @@ class DrawingViewController: UIViewController {
       // make sure to update last point
       lastPoint = currentPoint
     }
+    // RELEVANT TO IMAGE
+    let image = mainImageView.image
+    let dataDict: NSDictionary = ["image": image]
+    let data = NSKeyedArchiver.archivedData(withRootObject: dataDict)
+    multipeerService.sendImage(image: data)
   }
   
   override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -113,6 +120,8 @@ class DrawingViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     viewFrameSize = mainImageView.frame.size
+    // RELEVANT TO IMAGE
+    self.multipeerService.delegate = self as MultipeerServiceManagerDelegate
     // Do any additional setup after loading the view, typically from a nib.
   }
   

@@ -14,6 +14,8 @@ class PointsViewController: UIViewController {
   @IBOutlet weak var leastPointsButton: GameButton!
   @IBOutlet weak var averagePointsButton: GameButton!
   @IBOutlet weak var mostPointsButton: GameButton!
+    
+  let multipeerService = MultipeerServiceManager()
   
   override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,14 +41,21 @@ class PointsViewController: UIViewController {
     
     // MARK: Actions
     @IBAction func drawFor5(_ sender: GameButton) {
-        print("Least")
+        let dataDict: NSDictionary = ["pointsChosen": 5]
+        let data = NSKeyedArchiver.archivedData(withRootObject: dataDict)
+        multipeerService.setPoints(points: data)
     }
     
     @IBAction func drawFor10(_ sender: GameButton) {
-        print("10 Pts 4 u")
+        let dataDict: NSDictionary = ["pointsChosen": 10]
+        let data = NSKeyedArchiver.archivedData(withRootObject: dataDict)
+        multipeerService.setPoints(points: data)
     }
     
     @IBAction func drawFor20(_ sender: GameButton) {
-        print("Most")
+        let dataDict: NSDictionary = ["pointsChosen": 20]
+        let data = NSKeyedArchiver.archivedData(withRootObject: dataDict)
+        multipeerService.setPoints(points: data)
     }
 }
+

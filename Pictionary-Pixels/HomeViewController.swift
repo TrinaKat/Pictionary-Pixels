@@ -45,6 +45,14 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController : MultipeerServiceManagerDelegate {
+    func setPoints(manager: MultipeerServiceManager, points: Int) {
+        print("REACHED CHANGE VIEW HOME \n \n")
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "PointsViewController") as! PointsViewController
+         DispatchQueue.main.async() {
+            self.view?.window?.rootViewController?.present(newViewController, animated: true, completion: nil)
+        }
+    }
     
     func connectedDevicesChanged(manager: MultipeerServiceManager, connectedDevices: [String]) {
         OperationQueue.main.addOperation {
@@ -57,11 +65,18 @@ extension HomeViewController : MultipeerServiceManagerDelegate {
     }
     
     func startGame(manager: MultipeerServiceManager) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "PointsViewController") as! PointsViewController
         DispatchQueue.main.async() {
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let newViewController = storyBoard.instantiateViewController(withIdentifier: "PointsViewController") as! PointsViewController
             self.present(newViewController, animated: true, completion: nil)
         }
+    }
+    
+    // RELEVANT TO IMAGE
+    func sendImage(manager: MultipeerServiceManager, image: UIImage) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let drawingController = storyBoard.instantiateViewController(withIdentifier: "DrawingView") as! DrawingViewController
+        drawingController.mainImageView?.image = image
     }
     
 }

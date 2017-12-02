@@ -46,12 +46,33 @@ class MultipeerServiceManager : NSObject {
         self.serviceAdvertiser.stopAdvertisingPeer()
         self.serviceBrowser.stopBrowsingForPeers()
         if (session.connectedPeers.count > 0) {
+            let dataDict: NSDictionary = ["startGame": "startGame"]
+            let data = NSKeyedArchiver.archivedData(withRootObject: dataDict)
             do {
-                try self.session.send("startGame".data(using: .utf8)!, toPeers: session.connectedPeers, with: .reliable)
+                try self.session.send(data, toPeers: session.connectedPeers, with: .reliable)
             }
             catch let error {
                 NSLog("%@", "Error: Could not stop advertising all players: \(error)")
             }
+        }
+    }
+    
+    func setPoints(points: Data) {
+        do {
+            try self.session.send(points, toPeers: session.connectedPeers, with: .reliable)
+        }
+        catch let error {
+            NSLog("%@", "Error choosing points: \(error)")
+        }
+    }
+    
+    // RELEVANT TO IMAGE
+    func sendImage(image: Data) {
+        do {
+            try self.session.send(image, toPeers: session.connectedPeers, with: .reliable)
+        }
+        catch let error {
+            NSLog("%@", "Error choosing points: \(error)")
         }
     }
     
@@ -114,11 +135,20 @@ extension MultipeerServiceManager : MCSessionDelegate {
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
         NSLog("%@", "didReceiveData: \(data)")
-        let str = String(data: data, encoding: .utf8)!
-        if (str == "startGame") {
-            self.serviceAdvertiser.stopAdvertisingPeer()
-            self.serviceBrowser.stopBrowsingForPeers()
+        let unarchivedDictionary = NSKeyedUnarchiver.unarchiveObject(with: data) as! Dictionary<String, Any>
+        let key = Array(unarchivedDictionary.keys)[0]
+        // RELEVANT TO IMAGE
+        if (key == "image") {
+            let imageUIImage = unarchivedDictionary["image"] as! UIImage
+            self.delegate?.sendImage(manager: self, image: imageUIImage)
+        } else if (key == "startGame") {
+            // let str = String(data: data, encoding: .utf8)!
+            print("startGame \n \n \n \n \n")
+    //            self.serviceAdvertiser.stopAdvertisingPeer()
+    //            self.serviceBrowser.stopBrowsingForPeers()
             self.delegate?.startGame(manager: self)
+        } else if (key == "pointsChosen") {
+            self.delegate?.setPoints(manager: self, points: unarchivedDictionary["pointsChosen"] as! Int)
         }
     }
     
@@ -139,4 +169,7 @@ extension MultipeerServiceManager : MCSessionDelegate {
 protocol MultipeerServiceManagerDelegate {
     func connectedDevicesChanged(manager : MultipeerServiceManager, connectedDevices: [String])
     func startGame(manager: MultipeerServiceManager)
+    func setPoints(manager: MultipeerServiceManager, points: Int)
+    // RELEVANT TO IMAGE
+    func sendImage(manager: MultipeerServiceManager, image: UIImage)
 }
