@@ -1,14 +1,13 @@
 {
-  "person":[
-    {
-      "name": "Bob",
-      "age": "16",
-      "employed": "No"
-    },
-    {
-      "name": "Vinny",
-      "age": "56",
-      "employed": "Yes"
-    }
+  "words": [
+    "hello", 
+    "world", 
+    "mango", 
+    "matcha", 
+    "mochi", 
+    "stickers", 
+    "candy", 
+    "ucla", 
+    "bruins"
   ]
-} 
+}
