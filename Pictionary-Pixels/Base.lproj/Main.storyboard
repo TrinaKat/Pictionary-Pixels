@@ -1000,7 +1000,7 @@
         <!--Message View Controller-->
         <scene sceneID="Hhz-gR-4sy">
             <objects>
-                <viewController id="5BE-dg-ANx" customClass="MessageViewController" customModule="Pictionary_Pixels" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MessageView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5BE-dg-ANx" customClass="MessageViewController" customModule="Pictionary_Pixels" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ef3-dI-Iso"/>
                         <viewControllerLayoutGuide type="bottom" id="BmD-4X-Ono"/>

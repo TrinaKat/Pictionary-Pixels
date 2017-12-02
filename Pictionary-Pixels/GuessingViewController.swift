@@ -19,16 +19,17 @@ class GuessingViewController: UIViewController {
     @IBOutlet weak var incorrectGuessLabel: UILabel!
     @IBOutlet weak var correctGuessLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
+    
     var hiddenLetterLabels = 0
     let answer = "hello"
     var letterButtonCount: Int = 12
     let alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y","z"]
     
-    // MARK: Actions
     var guessedLetterIndex = 0
     var deleteChar = " "
     var guess = ""
     var score = 0
+    var winningScore = 3 // TODO: set this with button press
     
     func loadData() {
         // Do any additional setup after loading the view.
@@ -109,6 +110,7 @@ class GuessingViewController: UIViewController {
       // Dispose of any resources that can be recreated.
   }
     
+    // MARK: Actions
     // Get letter on pushed button
     // Assign it to the first available guessedLetterLabel
     // Make button inactive both programmatically + visually
@@ -160,10 +162,17 @@ class GuessingViewController: UIViewController {
                 // Waits until correctGuessLabel is displayed before loading new round
                 let when = DispatchTime.now() + 2
                 DispatchQueue.main.asyncAfter(deadline: when) {
+                    // Check if guesser won game
+                    if self.score == self.winningScore {
+                        // TODO: everyone transitions to end game screen
+                        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                        let messageController = storyBoard.instantiateViewController(withIdentifier: "MessageView") as! MessageViewController
+                        self.present(messageController, animated: true, completion: nil)
+                    }
+                    
                     // reload the screen
                     self.loadData()
                 }
-                // TODO: give guesser 1 point
                 // TODO: notify everyone by displaying "Correct Guess by <device_name>!" on all screens
             } else {
                 incorrectGuessLabel.isHidden = false
