@@ -69,17 +69,33 @@ class GuessingViewController: UIViewController {
       // Dispose of any resources that can be recreated.
   }
   
-  @IBAction func enterLetter(_ sender: Any) {
-  }
-  
-  @IBAction func deleteLetter(_ sender: Any) {
-  }
-  
-  @IBAction func clear(_ sender: Any) {
-  }
-  
-  @IBAction func sendGuess(_ sender: Any) {
-  }
+    // MARK: Actions
+    // Get letter on pushed button
+    // Assign it to the first available guessedLetterLabel
+    // Make button inactive both programmatically + visually
+    @IBAction func enterLetter(_ sender: Any) {
+
+    }
+
+    // Delete the last assigned guessedLetterLabel
+    // Make corresponding letterButton available again
+    // If "Incorrect Guess" text label is shown, hide it
+    @IBAction func deleteLetter(_ sender: Any) {
+    }
+
+    // Delete all assigned guessedLetterLabels
+    // Make all corresponding letterButtons available again
+    @IBAction func clear(_ sender: Any) {
+    }
+
+    // Send guess and check it with the answer string
+    // If correct, display "Correct Guess by <device_name>!" on all screens
+    // Give correct guesser 1 point
+    // Transition to next round
+    // If incorrect, display "Incorrect Guess!" on the incorrect guesser's screen
+    // Display of "Incorrect Guess!" should GO AWAY after player hits delete again
+    @IBAction func sendGuess(_ sender: Any) {
+    }
   
   /*
   // MARK: - Navigation
