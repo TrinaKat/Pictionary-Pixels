@@ -309,9 +309,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gIV-Ul-iOD">
-                                <rect key="frame" x="21" y="22" width="77" height="36"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gIV-Ul-iOD">
+                                <rect key="frame" x="27" y="20" width="92" height="41"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                 <state key="normal" title="Clear All">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
@@ -806,12 +806,6 @@
                                     <constraint firstItem="5yX-mm-ccT" firstAttribute="width" secondItem="plC-tv-vZG" secondAttribute="width" id="qs4-Cf-Y24"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="88 pts." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8n-pB-DkH">
-                                <rect key="frame" x="276" y="26" width="78" height="29"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Incorrect Guess!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNu-dg-xZ0">
                                 <rect key="frame" x="91" y="435" width="192" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -824,6 +818,12 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
                                 <color key="textColor" red="0.0015931425636496351" green="0.79270563471502586" blue="0.034884346696702651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Score: 0" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8n-pB-DkH">
+                                <rect key="frame" x="267" y="25" width="91.5" height="29"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -852,6 +852,7 @@
                         <outlet property="incorrectGuessLabel" destination="fNu-dg-xZ0" id="XIF-JY-oQJ"/>
                         <outlet property="inputImageView" destination="VcD-Dp-BFi" id="OCb-op-AoT"/>
                         <outlet property="pointsLabel" destination="w8n-pB-DkH" id="bHA-YR-d0u"/>
+                        <outlet property="scoreLabel" destination="w8n-pB-DkH" id="eoY-gY-Sq8"/>
                         <outlet property="timeLeftLabel" destination="ypf-6t-kkJ" id="pgm-oY-6y4"/>
                         <outletCollection property="letterButtons" destination="plC-tv-vZG" collectionClass="NSMutableArray" id="hJz-Op-7KD"/>
                         <outletCollection property="guessedLetterLabels" destination="fSM-Om-sWV" collectionClass="NSMutableArray" id="ugL-Ba-m62"/>

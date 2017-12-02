@@ -17,6 +17,7 @@ class GuessingViewController: UIViewController {
     @IBOutlet var letterButtons: [GameButton]!
     @IBOutlet weak var incorrectGuessLabel: UILabel!
     @IBOutlet weak var correctGuessLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
     
     let answer = "hello"
     
@@ -77,6 +78,7 @@ class GuessingViewController: UIViewController {
     var guessedLetterIndex = 0
     var deleteChar = " "
     var guess = ""
+    var score = 0
     
     // Get letter on pushed button
     // Assign it to the first available guessedLetterLabel
@@ -156,6 +158,8 @@ class GuessingViewController: UIViewController {
         // Check guess string against answer string
         if guess == answer {
             correctGuessLabel.isHidden = false
+            score+=1
+            scoreLabel.text = "Score: " + String(score)
             // TODO: give guesser 1 point
             // TODO: transition to next round
             // TODO: notify everyone by displaying "Correct Guess by <device_name>!" on all screens
