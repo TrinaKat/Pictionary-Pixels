@@ -309,8 +309,30 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" alignment="top" spacing="-2" translatesAutoresizingMaskIntoConstraints="NO" id="DlA-mw-bYV">
-                                <rect key="frame" x="16" y="493" width="343" height="29"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13m-dx-f2v" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
+                                <rect key="frame" x="284" y="537" width="75" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <state key="normal" title="Delete">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="deleteLetter:" destination="gv4-XO-b4s" eventType="touchUpInside" id="hBA-H4-CdR"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" spacing="-2" translatesAutoresizingMaskIntoConstraints="NO" id="DlA-mw-bYV">
+                                <rect key="frame" x="16" y="490" width="343" height="29"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fSM-Om-sWV" customClass="GameLetter" customModule="Pictionary_Pixels" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="44.5" height="29"/>
@@ -447,13 +469,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Rsx-eM-LVD">
-                                <rect key="frame" x="16" y="543" width="343" height="112"/>
+                                <rect key="frame" x="18" y="537" width="257" height="112"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="fLT-KT-AIt">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="257" height="34"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plC-tv-vZG" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="81.5" height="34"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                 <state key="normal" title="0">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -474,7 +496,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7C8-ip-scm" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
-                                                <rect key="frame" x="87.5" y="0.0" width="81" height="34"/>
+                                                <rect key="frame" x="66" y="0.0" width="59.5" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                 <state key="normal" title="1">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -495,7 +517,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h4i-by-CcM" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
-                                                <rect key="frame" x="174.5" y="0.0" width="81.5" height="34"/>
+                                                <rect key="frame" x="131.5" y="0.0" width="60" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                 <state key="normal" title="2">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -516,7 +538,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mc1-Bk-3th" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
-                                                <rect key="frame" x="262" y="0.0" width="81" height="34"/>
+                                                <rect key="frame" x="197.5" y="0.0" width="59.5" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                 <state key="normal" title="3">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -544,10 +566,10 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="cex-dB-wrm">
-                                        <rect key="frame" x="0.0" y="39" width="343" height="34"/>
+                                        <rect key="frame" x="0.0" y="39" width="257" height="34"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D39-fO-tFV" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="81.5" height="34"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                 <state key="normal" title="4">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -568,7 +590,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZcS-XC-bIx" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
-                                                <rect key="frame" x="87.5" y="0.0" width="81" height="34"/>
+                                                <rect key="frame" x="66" y="0.0" width="59.5" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                 <state key="normal" title="5">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -589,7 +611,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oha-wS-2yb" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
-                                                <rect key="frame" x="174.5" y="0.0" width="81.5" height="34"/>
+                                                <rect key="frame" x="131.5" y="0.0" width="60" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                 <state key="normal" title="6">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -610,7 +632,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K0M-w1-eF2" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
-                                                <rect key="frame" x="262" y="0.0" width="81" height="34"/>
+                                                <rect key="frame" x="197.5" y="0.0" width="59.5" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                 <state key="normal" title="7">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -633,10 +655,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Xto-A4-1ME">
-                                        <rect key="frame" x="0.0" y="78" width="343" height="34"/>
+                                        <rect key="frame" x="0.0" y="78" width="257" height="34"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RSS-fE-5um" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="81.5" height="34"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                 <state key="normal" title="8">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -657,7 +679,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5yX-mm-ccT" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
-                                                <rect key="frame" x="87.5" y="0.0" width="81" height="34"/>
+                                                <rect key="frame" x="66" y="0.0" width="59.5" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                 <state key="normal" title="9">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -678,7 +700,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cUE-fc-ufV" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
-                                                <rect key="frame" x="174.5" y="0.0" width="81.5" height="34"/>
+                                                <rect key="frame" x="131.5" y="0.0" width="60" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                 <state key="normal" title="10">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -699,7 +721,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvU-P1-LGe" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
-                                                <rect key="frame" x="262" y="0.0" width="81" height="34"/>
+                                                <rect key="frame" x="197.5" y="0.0" width="59.5" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                 <state key="normal" title="11">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -723,19 +745,16 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="Xto-A4-1ME" firstAttribute="bottom" secondItem="Rsx-eM-LVD" secondAttribute="bottomMargin" constant="5" id="92a-V9-hR1"/>
-                                    <constraint firstItem="fLT-KT-AIt" firstAttribute="top" secondItem="Rsx-eM-LVD" secondAttribute="topMargin" constant="5" id="CW0-uO-d41"/>
-                                    <constraint firstItem="fLT-KT-AIt" firstAttribute="top" secondItem="Rsx-eM-LVD" secondAttribute="top" id="Enw-SK-ebO"/>
                                     <constraint firstItem="cex-dB-wrm" firstAttribute="top" secondItem="fLT-KT-AIt" secondAttribute="bottom" constant="39" id="kIX-BW-ObI"/>
                                     <constraint firstItem="cex-dB-wrm" firstAttribute="top" secondItem="fLT-KT-AIt" secondAttribute="bottom" constant="5" id="lQy-ge-LEP"/>
                                     <constraint firstItem="Xto-A4-1ME" firstAttribute="top" secondItem="cex-dB-wrm" secondAttribute="bottom" constant="5" id="pgy-pN-jfQ"/>
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZtH-Qm-sOY" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
-                                <rect key="frame" x="117" y="316" width="165.5" height="34"/>
+                                <rect key="frame" x="284" y="597" width="75" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                <state key="normal" title="Clear All">
+                                <state key="normal" title="Clear">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -754,43 +773,22 @@
                                     <action selector="deleteLetter:" destination="gv4-XO-b4s" eventType="touchUpInside" id="PiF-g0-rEL"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13m-dx-f2v" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
-                                <rect key="frame" x="117" y="274" width="165.5" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                <state key="normal" title="Delete">
-                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <integer key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <integer key="value" value="6"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="deleteLetter:" destination="gv4-XO-b4s" eventType="touchUpInside" id="hBA-H4-CdR"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="HgY-wW-cMC" firstAttribute="top" secondItem="Rsx-eM-LVD" secondAttribute="bottom" constant="12" id="4Oa-yY-aym"/>
-                            <constraint firstItem="Rsx-eM-LVD" firstAttribute="top" secondItem="DlA-mw-bYV" secondAttribute="bottom" constant="12" id="E7w-my-kkq"/>
                             <constraint firstItem="ypf-6t-kkJ" firstAttribute="centerX" secondItem="NJk-XC-wAa" secondAttribute="centerX" id="LbP-mS-fnv"/>
-                            <constraint firstItem="Rsx-eM-LVD" firstAttribute="leading" secondItem="NJk-XC-wAa" secondAttribute="leadingMargin" id="O7t-11-L9S"/>
                             <constraint firstItem="Rsx-eM-LVD" firstAttribute="centerX" secondItem="NJk-XC-wAa" secondAttribute="centerX" id="VOP-Pn-JtA"/>
+                            <constraint firstItem="Rsx-eM-LVD" firstAttribute="leading" secondItem="NJk-XC-wAa" secondAttribute="leading" constant="18" id="VoM-DY-akE"/>
                             <constraint firstItem="ypf-6t-kkJ" firstAttribute="top" secondItem="oz5-Mw-4lJ" secondAttribute="bottom" constant="5" id="ZX3-49-jRz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="DlA-mw-bYV" secondAttribute="trailing" id="cEZ-6M-1Gt"/>
                             <constraint firstItem="DlA-mw-bYV" firstAttribute="top" secondItem="VcD-Dp-BFi" secondAttribute="bottom" constant="12" id="dOC-5E-hEX"/>
+                            <constraint firstItem="Rsx-eM-LVD" firstAttribute="top" secondItem="DlA-mw-bYV" secondAttribute="bottom" constant="18" id="fiV-Z7-yWY"/>
                             <constraint firstItem="DlA-mw-bYV" firstAttribute="leading" secondItem="NJk-XC-wAa" secondAttribute="leadingMargin" id="gD2-EE-JMH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="w8n-pB-DkH" secondAttribute="trailing" constant="5" id="ivt-R5-0Oh"/>
                             <constraint firstItem="VcD-Dp-BFi" firstAttribute="width" secondItem="NJk-XC-wAa" secondAttribute="width" id="l11-wu-Q08"/>
+                            <constraint firstAttribute="trailing" secondItem="Rsx-eM-LVD" secondAttribute="trailing" constant="100" id="l7U-3H-bFA"/>
                             <constraint firstItem="w8n-pB-DkH" firstAttribute="centerY" secondItem="ypf-6t-kkJ" secondAttribute="centerY" id="pdX-p8-M1g"/>
+                            <constraint firstItem="HgY-wW-cMC" firstAttribute="top" secondItem="Rsx-eM-LVD" secondAttribute="bottom" constant="18" id="sTy-dx-HEC"/>
                             <constraint firstItem="VcD-Dp-BFi" firstAttribute="top" secondItem="NJk-XC-wAa" secondAttribute="top" id="yno-wH-eOT"/>
                             <constraint firstItem="VcD-Dp-BFi" firstAttribute="leading" secondItem="NJk-XC-wAa" secondAttribute="leading" id="zmB-xc-qdD"/>
                         </constraints>
