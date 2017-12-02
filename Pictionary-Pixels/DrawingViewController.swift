@@ -214,6 +214,7 @@ extension DrawingViewController: MultipeerServiceManagerDelegate {
                 self.answerString = answer as! String
             } else if message["newRound"] != nil {
                 self.currentWordLabel.text = self.answerString
+                self.mainImageView.image = nil
             }
         }
     }

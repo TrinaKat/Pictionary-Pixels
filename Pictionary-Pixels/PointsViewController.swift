@@ -66,9 +66,10 @@ extension PointsViewController : MultipeerServiceManagerDelegate {
         OperationQueue.main.addOperation {
             // message
             if message["roundPoints"] != nil {
-                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let newViewController = storyBoard.instantiateViewController(withIdentifier: "DrawingView") as! DrawingViewController
-                self.present(newViewController, animated: true, completion: nil)
+                // TODO: need to load drawer first so on guesser load it works, but many answer strings generated????
+//                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//                let newViewController = storyBoard.instantiateViewController(withIdentifier: "DrawingView") as! DrawingViewController
+//                self.present(newViewController, animated: true, completion: nil)
             }
             
 //            let points = message["roundPoints"]
