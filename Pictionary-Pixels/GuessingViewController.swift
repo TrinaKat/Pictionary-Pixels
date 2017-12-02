@@ -30,35 +30,34 @@ class GuessingViewController: UIViewController {
     var slots = [Int]()
     var lettersAlreadyOnBoard = [String]()
     
+    // For every letter in the answer assign it a random position on the board
     while counter < answer.count {
         let letter = String(answer[answer.index(answer.startIndex, offsetBy: counter)])
-        if !lettersAlreadyOnBoard.contains(letter) {
-            let num = arc4random_uniform(14)
-            
-            if !slots.contains(Int(num)) {
-                lettersAlreadyOnBoard.append(letter)
-                slots.append(Int(num))
-                counter+=1
-            }
-        } else {
+        let num = arc4random_uniform(14)
+    
+        // 1:1, slot number stored in slots[], actual char stored in lettersAlreadyOnBoard[]
+        if !slots.contains(Int(num)) {
+            lettersAlreadyOnBoard.append(letter)
+            slots.append(Int(num))
             counter+=1
         }
     }
     
     counter = 0
     
+    // For every slot, assign the letterButtons to the char determined in above loop
     for i in 0 ... slots.count-1 {
         letterButtons[slots[i]].setTitle(String(lettersAlreadyOnBoard[i]), for: UIControlState.normal)
     }
     
+    // Fill in remaining empty slots with random letters
+    // We allow duplicate/triplicate/multiples of letters, because it's random
     while counter < 14 {
         if !slots.contains(counter) {
             let chosenLetter = alphabet[alphabet.index(alphabet.startIndex, offsetBy: Int(arc4random_uniform(26)))]
-            if !lettersAlreadyOnBoard.contains(chosenLetter) {
-                lettersAlreadyOnBoard.append(chosenLetter)
-                letterButtons[counter].setTitle(chosenLetter, for: UIControlState.normal)
-                counter+=1
-            }
+            lettersAlreadyOnBoard.append(chosenLetter)
+            letterButtons[counter].setTitle(chosenLetter, for: UIControlState.normal)
+            counter+=1
         } else {
             counter+=1
         }
