@@ -88,7 +88,7 @@ class GuessingViewController: UIViewController {
             
             // Deactivate button
             sender.isEnabled = false
-            sender.alpha = 0.5
+            sender.alpha = 0.3
         }
     }
 
@@ -120,6 +120,14 @@ class GuessingViewController: UIViewController {
     // Delete all assigned guessedLetterLabels
     // Make all corresponding letterButtons available again
     @IBAction func clear(_ sender: Any) {
+        for i in 0 ... 7 {
+            guessedLetterLabels[i].text = " "
+        }
+        
+        for i in 0 ... 13 {
+            letterButtons[i].isEnabled = true
+            letterButtons[i].alpha = 1.0
+        }
     }
 
     // Send guess and check it with the answer string
