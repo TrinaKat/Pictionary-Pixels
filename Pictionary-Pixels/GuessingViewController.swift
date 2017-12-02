@@ -70,11 +70,23 @@ class GuessingViewController: UIViewController {
   }
   
     // MARK: Actions
+    var guessedLetterIndex = 0
+    
     // Get letter on pushed button
     // Assign it to the first available guessedLetterLabel
     // Make button inactive both programmatically + visually
-    @IBAction func enterLetter(_ sender: Any) {
-
+    @IBAction func enterLetter(_ sender: UIButton) {
+        print("User clicked \(sender.titleLabel!.text ?? "FAILURE")")
+        // print("User clicked \(sender.titleLabel?.text ?? "FAILURE")")
+        if guessedLetterIndex < 8 {
+            // Assign letter to label
+            guessedLetterLabels[guessedLetterIndex].text = sender.titleLabel!.text
+            guessedLetterIndex+=1
+            
+            // Deactivate button
+            sender.isEnabled = false
+            sender.alpha = 0.5
+        }
     }
 
     // Delete the last assigned guessedLetterLabel
