@@ -108,6 +108,31 @@ class GuessingViewController: UIViewController {
             sender.isEnabled = false
             sender.alpha = 0.3
         }
+        
+        // Automatically send guess
+        // If correct, display "Correct Guess by <device_name>!" on all screens
+        // Give correct guesser 1 point
+        // Transition to next round
+        // If incorrect, display "Incorrect Guess!" on the incorrect guesser's screen
+        // Display of "Incorrect Guess!" should GO AWAY after player hits delete again
+        if guessedLetterIndex == answer.count {
+            for i in 0 ... answer.count-1 {
+                guess += guessedLetterLabels[i].text!
+            }
+            
+            // Check guess string against answer string
+            if guess == answer {
+                correctGuessLabel.isHidden = false
+                score+=1
+                scoreLabel.text = "Score: " + String(score)
+                // TODO: give guesser 1 point
+                // TODO: transition to next round
+                // TODO: notify everyone by displaying "Correct Guess by <device_name>!" on all screens
+            } else {
+                incorrectGuessLabel.isHidden = false
+                guess = ""
+            }
+        }
     }
 
     // Delete the last assigned guessedLetterLabel
@@ -115,7 +140,7 @@ class GuessingViewController: UIViewController {
     // If "Incorrect Guess" text label is shown, hide it
     @IBAction func deleteLetter(_ sender: UIButton) {
         incorrectGuessLabel.isHidden = true
-        
+
         if guessedLetterIndex > 0 {
             guessedLetterIndex-=1
             
@@ -149,34 +174,6 @@ class GuessingViewController: UIViewController {
         }
         
         guessedLetterIndex = 0
-    }
-
-    // Send guess and check it with the answer string
-    // If correct, display "Correct Guess by <device_name>!" on all screens
-    // Give correct guesser 1 point
-    // Transition to next round
-    // If incorrect, display "Incorrect Guess!" on the incorrect guesser's screen
-    // Display of "Incorrect Guess!" should GO AWAY after player hits delete again
-    @IBAction func sendGuess(_ sender: Any) {
-        // TODO: It would be easy to automatically check guess rather than requiring them to press guess
-        for i in 0 ... answer.count-1 {
-            if guessedLetterLabels[i].text! != " " {
-                guess += guessedLetterLabels[i].text!
-            }
-        }
-        
-        // Check guess string against answer string
-        if guess == answer {
-            correctGuessLabel.isHidden = false
-            score+=1
-            scoreLabel.text = "Score: " + String(score)
-            // TODO: give guesser 1 point
-            // TODO: transition to next round
-            // TODO: notify everyone by displaying "Correct Guess by <device_name>!" on all screens
-        } else {
-            incorrectGuessLabel.isHidden = false
-            guess = ""
-        }
     }
   
   /*
