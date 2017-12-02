@@ -10,12 +10,13 @@ import UIKit
 
 class GuessingViewController: UIViewController {
   
-  @IBOutlet weak var inputImageView: UIImageView!
-  @IBOutlet weak var timeLeftLabel: UILabel!
-  @IBOutlet weak var pointsLabel: UILabel!
-  @IBOutlet var guessedLetterLabels: [GameLetter]!
-  @IBOutlet var letterButtons: [GameButton]!
-  
+    @IBOutlet weak var inputImageView: UIImageView!
+    @IBOutlet weak var timeLeftLabel: UILabel!
+    @IBOutlet weak var pointsLabel: UILabel!
+    @IBOutlet var guessedLetterLabels: [GameLetter]!
+    @IBOutlet var letterButtons: [GameButton]!
+    @IBOutlet weak var incorrectGuessLabel: UILabel!
+    
   override func viewDidLoad() {
       super.viewDidLoad()
 
@@ -95,6 +96,9 @@ class GuessingViewController: UIViewController {
     // Make corresponding letterButton available again
     // If "Incorrect Guess" text label is shown, hide it
     @IBAction func deleteLetter(_ sender: UIButton) {
+        if guessedLetterIndex == 8 {
+            incorrectGuessLabel.isHidden = true
+        }
         if guessedLetterIndex > 0 {
             guessedLetterIndex-=1
             
@@ -107,6 +111,7 @@ class GuessingViewController: UIViewController {
                 if !letterButtons[i].isEnabled && letterButtons[i].titleLabel!.text == deleteChar {
                     letterButtons[i].isEnabled = true
                     letterButtons[i].alpha = 1.0
+                    break
                 }
             }
         }

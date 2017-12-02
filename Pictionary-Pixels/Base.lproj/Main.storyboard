@@ -812,6 +812,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Incorrect Guess!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNu-dg-xZ0">
+                                <rect key="frame" x="91" y="435" width="192" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
+                                <color key="textColor" red="1" green="0.086390556651065542" blue="0.10044762755115788" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -834,6 +841,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="incorrectGuessLabel" destination="fNu-dg-xZ0" id="XIF-JY-oQJ"/>
                         <outlet property="inputImageView" destination="VcD-Dp-BFi" id="OCb-op-AoT"/>
                         <outlet property="pointsLabel" destination="w8n-pB-DkH" id="bHA-YR-d0u"/>
                         <outlet property="timeLeftLabel" destination="ypf-6t-kkJ" id="pgm-oY-6y4"/>
