@@ -794,7 +794,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="clearButton" destination="ZtH-Qm-sOY" id="36N-eP-Z9y"/>
                         <outlet property="correctGuessLabel" destination="Fzo-Bw-HLP" id="KJL-Xw-w6d"/>
+                        <outlet property="deleteButton" destination="13m-dx-f2v" id="eVl-k7-aUq"/>
                         <outlet property="incorrectGuessLabel" destination="fNu-dg-xZ0" id="XIF-JY-oQJ"/>
                         <outlet property="inputImageView" destination="VcD-Dp-BFi" id="OCb-op-AoT"/>
                         <outlet property="pointsLabel" destination="w8n-pB-DkH" id="bHA-YR-d0u"/>
