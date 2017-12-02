@@ -823,9 +823,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="clearButton" destination="ZtH-Qm-sOY" id="daF-kG-qu9"/>
+                        <outlet property="deleteButton" destination="13m-dx-f2v" id="QQF-qM-jeM"/>
                         <outlet property="guessStatusLabel" destination="fNu-dg-xZ0" id="fyi-hg-Eov"/>
                         <outlet property="inputImageView" destination="VcD-Dp-BFi" id="OCb-op-AoT"/>
-                        <outlet property="pointsLabel" destination="w8n-pB-DkH" id="bHA-YR-d0u"/>
                         <outlet property="scoreLabel" destination="w8n-pB-DkH" id="eoY-gY-Sq8"/>
                         <outlet property="timeLeftLabel" destination="ypf-6t-kkJ" id="pgm-oY-6y4"/>
                         <outletCollection property="guessedLetterLabels" destination="fSM-Om-sWV" collectionClass="NSMutableArray" id="ugL-Ba-m62"/>
@@ -1026,7 +1027,7 @@
         <!--Message View Controller-->
         <scene sceneID="Hhz-gR-4sy">
             <objects>
-                <viewController id="5BE-dg-ANx" customClass="MessageViewController" customModule="Pictionary_Pixels" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MessageView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5BE-dg-ANx" customClass="MessageViewController" customModule="Pictionary_Pixels" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ef3-dI-Iso"/>
                         <viewControllerLayoutGuide type="bottom" id="BmD-4X-Ono"/>

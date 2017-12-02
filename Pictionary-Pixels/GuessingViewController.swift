@@ -11,83 +11,103 @@ import UIKit
 class GuessingViewController: UIViewController {
     @IBOutlet weak var inputImageView: UIImageView!
     @IBOutlet weak var timeLeftLabel: UILabel!
-    @IBOutlet weak var pointsLabel: UILabel!
     @IBOutlet var guessedLetterLabels: [GameLetter]!
+    @IBOutlet weak var deleteButton: GameButton!
+    @IBOutlet weak var clearButton: GameButton!
     @IBOutlet var letterButtons: [GameButton]!
     @IBOutlet weak var guessStatusLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
+    
     var hiddenLetterLabels = 0
-
     let answer = "hello"
     var letterButtonCount: Int = 12
-
-  override func viewDidLoad() {
-    super.viewDidLoad()
-
     let alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y","z"]
     
-    // Do any additional setup after loading the view.
+    var guessedLetterIndex = 0
+    var deleteChar = " "
+    var guess = ""
+    var score = 0
+    var winningScore = 3 // TODO: set this with button press
     
-    // initializing guessed letter labels
-    if (answer.count < 8) {
-        hiddenLetterLabels = 8 - answer.count
+    func loadData() {
+        // Do any additional setup after loading the view.
         
-        for i in 1 ... hiddenLetterLabels {
-            guessedLetterLabels[8-i].isHidden = true
+        // Initialize variables
+        guessedLetterIndex = 0
+        deleteChar = " "
+        guess = ""
+        
+        // Enable all the buttons
+        deleteButton.isEnabled = true
+        deleteButton.alpha = 1.0
+        clearButton.isEnabled = true
+        clearButton.alpha = 1.0
+        
+        for i in 0 ... letterButtonCount-1 {
+            letterButtons[i].isEnabled = true
+            letterButtons[i].alpha = 1.0
         }
-    }
-    
-    for i in 0 ... answer.count-1 {
-        guessedLetterLabels[i].text = " "
-    }
-    
-    // generating keyboard
-    var counter: Int = 0
-    var slots = [Int]()
-    
-    // For every letter in the answer assign it a random position on the board
-    while counter < answer.count {
-        let num = arc4random_uniform(UInt32(letterButtonCount))
-    
-        // 1:1, slot number stored in slots[], actual char stored in lettersAlreadyOnBoard[]
-        if !slots.contains(Int(num)) {
-            slots.append(Int(num))
-            counter+=1
+        
+        // Initializing guessed letter labels
+        if (answer.count < 8) {
+            hiddenLetterLabels = 8 - answer.count
+            
+            for i in 1 ... hiddenLetterLabels {
+                guessedLetterLabels[8-i].isHidden = true
+            }
         }
-    }
-    
-    counter = 0
-    
-    // For every slot, assign the letterButtons to the char determined in above loop
-    for i in 0 ... answer.count-1 {
+        
+        for i in 0 ... answer.count-1 {
+            guessedLetterLabels[i].text = " "
+        }
+        
+        // generating keyboard
+        var counter: Int = 0
+        var slots = [Int]()
+        
+        // For every letter in the answer assign it a random position on the board
+        while counter < answer.count {
+            let num = arc4random_uniform(UInt32(letterButtonCount))
+            
+            // 1:1, slot number stored in slots[], actual char stored in lettersAlreadyOnBoard[]
+            if !slots.contains(Int(num)) {
+                slots.append(Int(num))
+                counter+=1
+            }
+        }
+        
+        counter = 0
+        
+        // For every slot, assign the letterButtons to the char determined in above loop
+        for i in 0 ... answer.count-1 {
         letterButtons[slots[i]].setTitle(String(answer[answer.index(answer.startIndex, offsetBy: i)]), for: UIControlState.normal)
-    }
-    
-    // Fill in remaining empty slots with random letters
-    // We allow duplicate/triplicate/multiples of letters, because it's random
-    while counter < letterButtonCount {
-        if !slots.contains(counter) {
-            let chosenLetter = alphabet[alphabet.index(alphabet.startIndex, offsetBy: Int(arc4random_uniform(26)))]
-            letterButtons[counter].setTitle(chosenLetter, for: UIControlState.normal)
-            counter+=1
-        } else {
-            counter+=1
+        }
+        
+        // Fill in remaining empty slots with random letters
+        // We allow duplicate/triplicate/multiples of letters, because it's random
+        while counter < letterButtonCount {
+            if !slots.contains(counter) {
+                let chosenLetter = alphabet[alphabet.index(alphabet.startIndex, offsetBy: Int(arc4random_uniform(26)))]
+                letterButtons[counter].setTitle(chosenLetter, for: UIControlState.normal)
+                counter+=1
+            } else {
+                counter+=1
+            }
         }
     }
+    
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    self.loadData()
   }
 
   override func didReceiveMemoryWarning() {
       super.didReceiveMemoryWarning()
       // Dispose of any resources that can be recreated.
   }
+    // MARK: Actions
   
-    // MARK: Actions and their Properties
-  
-    var guessedLetterIndex = 0
-    var deleteChar = " "
-    var guess = ""
-    var score = 0
-  
+    // helper just for the status label
     let CONTINUE_GUESSING = 0, CORRECT_GUESS = 1, INCORRECT_GUESS = 2
   
     func updateGuessStatus(toState state: Int) {
@@ -106,7 +126,7 @@ class GuessingViewController: UIViewController {
         guessStatusLabel.textColor = UIColor.black
       }
     }
-    
+
     // Get letter on pushed button
     // Assign it to the first available guessedLetterLabel
     // Make button inactive both programmatically + visually
@@ -139,8 +159,33 @@ class GuessingViewController: UIViewController {
                 updateGuessStatus(toState: CORRECT_GUESS)
                 score+=1
                 scoreLabel.text = "Score: " + String(score)
-                // TODO: give guesser 1 point
-                // TODO: transition to next round
+                
+                // Disable all the buttons
+                for i in 0 ... letterButtonCount-1 {
+                    letterButtons[i].isEnabled = false
+                    letterButtons[i].alpha = 0.3
+                    
+                    deleteButton.isEnabled = false
+                    deleteButton.alpha = 0.3
+                    
+                    clearButton.isEnabled = false
+                    clearButton.alpha = 0.3
+                }
+                
+                // Waits until correctGuessLabel is displayed before loading new round
+                let when = DispatchTime.now() + 2
+                DispatchQueue.main.asyncAfter(deadline: when) {
+                    // Check if guesser won game
+                    if self.score == self.winningScore {
+                        // TODO: everyone transitions to end game screen
+                        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                        let messageController = storyBoard.instantiateViewController(withIdentifier: "MessageView") as! MessageViewController
+                        self.present(messageController, animated: true, completion: nil)
+                    }
+                    
+                    // reload the screen
+                    self.loadData()
+                }
                 // TODO: notify everyone by displaying "Correct Guess by <device_name>!" on all screens
             } else {
                 updateGuessStatus(toState: INCORRECT_GUESS)
