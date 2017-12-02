@@ -9,6 +9,9 @@
 import UIKit
 
 class DrawingViewController: UIViewController {
+    
+//    var multipeerService: MultipeerServiceManager!
+    let multipeerService = MultipeerServiceManager()
 
   // MARK: Properties
   
@@ -32,6 +35,7 @@ class DrawingViewController: UIViewController {
   @IBOutlet weak var pointsLabel: UILabel!
   @IBOutlet weak var timeLeftLabel: UILabel!
   @IBOutlet weak var currentWordLabel: UILabel!
+    
   // for making continuous brush strokes, store last point drawn
   var lastPoint = CGPoint(x: 0, y: 0)
   // current selected color and other settings
@@ -39,6 +43,9 @@ class DrawingViewController: UIViewController {
   var brushWidth: CGFloat = 8.0
   // if continous strokes being made
   var swiped = false
+    
+    var other_isSwiping = false
+    var otherLastPoint = CGPoint(x: 0, y: 0)
   
   // assuming this stays same for both views, across app lifecycle, set in viewDidLoad
   var viewFrameSize: CGSize?
@@ -53,6 +60,9 @@ class DrawingViewController: UIViewController {
     if let touch = touches.first {
       lastPoint = touch.location(in: self.view)
     }
+    
+    let dictionary:NSDictionary = ["newPoint": NSValue(cgPoint: lastPoint)]
+    multipeerService.sendMessage(message: dictionary)
   }
   
   // as finger moves, we draw line between every new point sensed and last point
@@ -61,6 +71,10 @@ class DrawingViewController: UIViewController {
     if let touch = touches.first {
       let currentPoint = touch.location(in: self.view)
       drawLine(from: lastPoint, to: currentPoint)
+        
+        let dictionary:NSDictionary = ["drawPoint": NSValue(cgPoint: currentPoint)]
+        multipeerService.sendMessage(message: dictionary)
+        
       // make sure to update last point
       lastPoint = currentPoint
     }
@@ -70,6 +84,9 @@ class DrawingViewController: UIViewController {
     // didn't move, so draw 1 point only (since drawLine called in touchesMoved)
     if !swiped {
       drawLine(from: lastPoint, to: lastPoint)
+        
+        let dictionary:NSDictionary = ["lastPoint": NSValue(cgPoint: lastPoint)]
+        multipeerService.sendMessage(message: dictionary)
     }
   }
   
@@ -114,6 +131,7 @@ class DrawingViewController: UIViewController {
     super.viewDidLoad()
     viewFrameSize = mainImageView.frame.size
     // Do any additional setup after loading the view, typically from a nib.
+    self.multipeerService.delegate = self as? MultipeerServiceManagerDelegate
   }
   
   override func didReceiveMemoryWarning() {
@@ -146,6 +164,7 @@ class DrawingViewController: UIViewController {
           colorButton.borderColor = UIColor.black
         }
         brushWidth = 8
+        // TODO: get colors and send bluetooth, also eraser
       }
       colorButton.borderWidth = 3
       
@@ -163,6 +182,38 @@ class DrawingViewController: UIViewController {
   
   @IBAction func clear(_ sender: Any) {
       self.mainImageView.image = nil;
+    
+    let dictionary:NSDictionary = ["reset": "_"]
+    multipeerService.sendMessage(message: dictionary)
   }
+}
+    
+extension DrawingViewController: MultipeerServiceManagerDelegate {
+    func messageReceived(manager: MultipeerServiceManager, message: NSDictionary) {
+        OperationQueue.main.addOperation {
+            // message
+            if let point = message["newPoint"] {
+                self.other_isSwiping = true
+                self.otherLastPoint = ((point as? NSValue)?.cgPointValue)! //point.cgPointValue()
+            }
+            else if let point = message["drawPoint"] {
+                self.drawLine(from: self.otherLastPoint, to: ((point as? NSValue)?.cgPointValue)!)
+                self.otherLastPoint = ((point as? NSValue)?.cgPointValue)!
+            }
+            else if let point = message["lastPoint"] {
+                self.other_isSwiping = false
+                self.drawLine(from: self.otherLastPoint, to: ((point as? NSValue)?.cgPointValue)!)
+            }
+            else if message["reset"] != nil {
+                self.mainImageView.image = nil
+            }
+        }
+    }
+    
+        func connectedDevicesChanged(manager: MultipeerServiceManager, connectedDevices: [String]) {
+            OperationQueue.main.addOperation {
+                // do nothing
+            }
+        }
 }
 

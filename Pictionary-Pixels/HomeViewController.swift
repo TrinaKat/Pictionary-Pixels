@@ -15,7 +15,8 @@ class HomeViewController: UIViewController {
     let multipeerService = MultipeerServiceManager()
     
     @IBAction func startPressed(_ sender: Any) {
-        multipeerService.stopAdvertisingSelf()
+        let dictionary:NSDictionary = ["startGame": "true"]
+        multipeerService.sendMessage(message: dictionary)
     }
 
     override func viewDidLoad() {
@@ -23,6 +24,7 @@ class HomeViewController: UIViewController {
         self.readLocalJSON()
         self.readMapJSON()
         connectionsLabel.numberOfLines = 0;
+        
         multipeerService.delegate = self as MultipeerServiceManagerDelegate
 
         // Do any additional setup after loading the view.
@@ -100,6 +102,17 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController : MultipeerServiceManagerDelegate {
+    func messageReceived(manager: MultipeerServiceManager, message: NSDictionary) {
+        OperationQueue.main.addOperation {
+            // message
+            if message["startGame"] != nil {
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let newViewController = storyBoard.instantiateViewController(withIdentifier: "PointsViewController") as! PointsViewController
+                self.present(newViewController, animated: true, completion: nil)
+            }
+        }
+    }
+    
     
     func connectedDevicesChanged(manager: MultipeerServiceManager, connectedDevices: [String]) {
         OperationQueue.main.addOperation {
@@ -110,13 +123,4 @@ extension HomeViewController : MultipeerServiceManagerDelegate {
             }
         }
     }
-    
-    func startGame(manager: MultipeerServiceManager) {
-        DispatchQueue.main.async() {
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let newViewController = storyBoard.instantiateViewController(withIdentifier: "PointsViewController") as! PointsViewController
-            self.present(newViewController, animated: true, completion: nil)
-        }
-    }
-    
 }

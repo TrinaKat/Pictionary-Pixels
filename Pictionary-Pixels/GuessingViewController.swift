@@ -9,6 +9,55 @@
 import UIKit
 
 class GuessingViewController: UIViewController {
+    
+//    var multipeerService: MultipeerServiceManager!
+    let multipeerService = MultipeerServiceManager()
+    
+    var other_isSwiping = false
+    var otherLastPoint = CGPoint(x: 0, y: 0)
+    
+    // current selected color and other settings
+    var currColor: CGColor = UIColor.black.cgColor
+    var brushWidth: CGFloat = 8.0
+    
+    // assuming this stays same for both views, across app lifecycle, set in viewDidLoad
+    var viewFrameSize: CGSize?
+    
+    // DRAWING MAGIC
+    func drawLine(from p1: CGPoint, to p2: CGPoint) {
+        // starts empty, want to draw into mainImageView
+        // CGContext = 2D drawing environment, with drawing parameters / device info
+        // needed to render drawing correctly for destination (e.g. app window, PDF)
+        guard let frameSize = viewFrameSize else {
+            print("size of view frame not initialized yet!")
+            return
+        }
+        UIGraphicsBeginImageContext(frameSize)
+        guard let context = UIGraphicsGetCurrentContext() else {
+            print("No image context to draw to!")
+            return
+        }
+        inputImageView.image?.draw(in: CGRect(x: 0, y: 0, width: frameSize.width, height: frameSize.height))
+        
+        // add the line data to context from p1 to p2 (p1, p2 very close together)
+        context.move(to: p1)
+        context.addLine(to: p2)
+        
+        // other settings for drawing
+        context.setLineCap(CGLineCap.round)
+        context.setLineWidth(brushWidth)
+        context.setStrokeColor(currColor)
+        context.setBlendMode(CGBlendMode.normal)
+        
+        // MAGIC METHOD to actually form the line
+        context.strokePath()
+        
+        // wrap up drawing context, render newly drawn line in mainImageView
+        // basically captures what is put on screen into actual graphics and put in a view
+        inputImageView.image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+    }
+    
     @IBOutlet weak var inputImageView: UIImageView!
     @IBOutlet weak var timeLeftLabel: UILabel!
     @IBOutlet var guessedLetterLabels: [GameLetter]!
@@ -100,6 +149,8 @@ class GuessingViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.loadData()
+    
+    self.multipeerService.delegate = self as? MultipeerServiceManagerDelegate
   }
 
   override func didReceiveMemoryWarning() {
@@ -247,3 +298,33 @@ class GuessingViewController: UIViewController {
   */
 
 }
+
+extension GuessingViewController: MultipeerServiceManagerDelegate{
+    func connectedDevicesChanged(manager: MultipeerServiceManager, connectedDevices: [String]) {
+        OperationQueue.main.addOperation {
+            // do nothing
+        }
+    }
+    
+    func messageReceived(manager: MultipeerServiceManager, message: NSDictionary) {
+        OperationQueue.main.addOperation {
+            // message
+            if let point = message["newPoint"] {
+                self.other_isSwiping = true
+                self.otherLastPoint = ((point as? NSValue)?.cgPointValue)!
+            }
+            else if let point = message["drawPoint"] {
+                self.drawLine(from: self.otherLastPoint, to: ((point as? NSValue)?.cgPointValue)!)
+                self.otherLastPoint = ((point as? NSValue)?.cgPointValue)!
+            }
+            else if let point = message["endPoint"] {
+                self.other_isSwiping = false
+                self.drawLine(from: self.otherLastPoint, to: ((point as? NSValue)?.cgPointValue)!)
+            }
+            else if message["reset"] != nil {
+                self.inputImageView.image = nil
+            }
+        }
+    }
+}
+
