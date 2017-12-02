@@ -20,7 +20,7 @@ class PointsViewController: UIViewController {
   
   override func viewDidLoad() {
         super.viewDidLoad()
-    self.multipeerService.delegate = self as? MultipeerServiceManagerDelegate
+        self.multipeerService.delegate = self as? MultipeerServiceManagerDelegate
 
         // Do any additional setup after loading the view.
     }
@@ -44,7 +44,8 @@ class PointsViewController: UIViewController {
     // MARK: Actions
     @IBAction func drawFor5(_ sender: GameButton) {
         print("Least")
-        let dictionary:NSDictionary = ["roundPoints": 5]
+        
+        let dictionary:NSDictionary = ["roundPoints": 5] //, "words": self.words]
         multipeerService.sendMessage(message: dictionary)
     }
     
