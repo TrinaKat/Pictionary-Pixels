@@ -13,8 +13,8 @@ class GuessingViewController: UIViewController {
   @IBOutlet weak var inputImageView: UIImageView!
   @IBOutlet weak var timeLeftLabel: UILabel!
   @IBOutlet weak var pointsLabel: UILabel!
-  @IBOutlet var guessedLetterLabels: [UILabel]!
-  @IBOutlet var letterButtons: [UIButton]!
+  @IBOutlet var guessedLetterLabels: [GameLetter]!
+  @IBOutlet var letterButtons: [GameButton]!
   
   override func viewDidLoad() {
       super.viewDidLoad()

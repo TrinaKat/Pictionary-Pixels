@@ -38,6 +38,25 @@ class GameButton: UIButton {
       }
     }
   }
-  
+}
 
+@IBDesignable
+class GameLetter: UILabel {
+  
+  // borderWidth and Color change when button selected / deselected, from action method
+  @IBInspectable var borderWidth: CGFloat = 0 {
+    didSet {
+      layer.borderWidth = borderWidth
+    }
+  }
+  @IBInspectable var borderColor: UIColor? {
+    didSet {
+      if let validColor = borderColor {
+        layer.borderColor = validColor.cgColor
+      }
+      else {
+        layer.borderColor = nil
+      }
+    }
+  }
 }
