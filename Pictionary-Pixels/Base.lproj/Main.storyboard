@@ -819,6 +819,13 @@
                                 <color key="textColor" red="1" green="0.086390556651065542" blue="0.10044762755115788" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Correct Guess by &lt;device_name&gt;!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fzo-Bw-HLP">
+                                <rect key="frame" x="40" y="195" width="294" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
+                                <color key="textColor" red="0.0015931425636496351" green="0.79270563471502586" blue="0.034884346696702651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -841,6 +848,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="correctGuessLabel" destination="Fzo-Bw-HLP" id="KJL-Xw-w6d"/>
                         <outlet property="incorrectGuessLabel" destination="fNu-dg-xZ0" id="XIF-JY-oQJ"/>
                         <outlet property="inputImageView" destination="VcD-Dp-BFi" id="OCb-op-AoT"/>
                         <outlet property="pointsLabel" destination="w8n-pB-DkH" id="bHA-YR-d0u"/>
