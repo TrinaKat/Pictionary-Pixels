@@ -14,10 +14,12 @@ class PointsViewController: UIViewController {
   @IBOutlet weak var leastPointsButton: GameButton!
   @IBOutlet weak var averagePointsButton: GameButton!
   @IBOutlet weak var mostPointsButton: GameButton!
+    
+  let multipeerService = MultipeerServiceManager()
   
   override func viewDidLoad() {
         super.viewDidLoad()
-
+        multipeerService.viewController = self as MultipeerServiceViewManager
         // Do any additional setup after loading the view.
     }
 
@@ -40,13 +42,36 @@ class PointsViewController: UIViewController {
     // MARK: Actions
     @IBAction func drawFor5(_ sender: GameButton) {
         print("Least")
+        multipeerService.start()
     }
     
     @IBAction func drawFor10(_ sender: GameButton) {
         print("10 Pts 4 u")
+        multipeerService.start()
     }
     
     @IBAction func drawFor20(_ sender: GameButton) {
         print("Most")
+        multipeerService.start()
     }
+}
+
+extension PointsViewController : MultipeerServiceViewManager {
+    func allToDraw(manager : MultipeerServiceManager) {
+        DispatchQueue.main.async() {
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "DrawingView") as! DrawingViewController
+            self.present(newViewController, animated: true, completion: nil)
+        }
+    }
+    /*func assignViews(manager: MultipeerServiceManager, connectedDevices: [String], firstDrawer: Int) {
+        OperationQueue.main.addOperation {
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            for i in 0..<connectedDevices.count {
+                
+            }
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "DrawingViewController") as! DrawingViewController
+            self.present(newViewController, animated: true, completion: nil)
+        }
+    }*/
 }

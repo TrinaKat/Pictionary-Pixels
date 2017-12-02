@@ -165,4 +165,3 @@ class DrawingViewController: UIViewController {
       self.mainImageView.image = nil;
   }
 }
-
