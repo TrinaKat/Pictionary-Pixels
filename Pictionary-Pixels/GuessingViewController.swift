@@ -71,13 +71,15 @@ class GuessingViewController: UIViewController {
   
     // MARK: Actions
     var guessedLetterIndex = 0
+    var deleteChar = " "
     
     // Get letter on pushed button
     // Assign it to the first available guessedLetterLabel
     // Make button inactive both programmatically + visually
     @IBAction func enterLetter(_ sender: UIButton) {
-        print("User clicked \(sender.titleLabel!.text ?? "FAILURE")")
+        print("User clicked \(String(describing: sender.titleLabel!.text))")
         // print("User clicked \(sender.titleLabel?.text ?? "FAILURE")")
+        
         if guessedLetterIndex < 8 {
             // Assign letter to label
             guessedLetterLabels[guessedLetterIndex].text = sender.titleLabel!.text
@@ -92,7 +94,22 @@ class GuessingViewController: UIViewController {
     // Delete the last assigned guessedLetterLabel
     // Make corresponding letterButton available again
     // If "Incorrect Guess" text label is shown, hide it
-    @IBAction func deleteLetter(_ sender: Any) {
+    @IBAction func deleteLetter(_ sender: UIButton) {
+        if guessedLetterIndex > 0 {
+            guessedLetterIndex-=1
+            
+            // Figure out which letter to remove from guessed chars and add to buttons
+            let deleteChar = guessedLetterLabels[guessedLetterIndex].text
+            guessedLetterLabels[guessedLetterIndex].text = " "
+            
+            // Reactivate button
+            for i in 0 ... 13 {
+                if !letterButtons[i].isEnabled && letterButtons[i].titleLabel!.text == deleteChar {
+                    letterButtons[i].isEnabled = true
+                    letterButtons[i].alpha = 1.0
+                }
+            }
+        }
     }
 
     // Delete all assigned guessedLetterLabels
