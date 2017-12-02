@@ -13,6 +13,10 @@ class GuessingViewController: UIViewController {
 //    var multipeerService: MultipeerServiceManager!
     let multipeerService = MultipeerServiceManager()
     
+    var words: [Any] = []
+    var url_words: [Any] = []
+    var local_words: [Any] = []
+    
     var other_isSwiping = false
     var otherLastPoint = CGPoint(x: 0, y: 0)
     
@@ -68,7 +72,7 @@ class GuessingViewController: UIViewController {
     @IBOutlet weak var scoreLabel: UILabel!
     
     var hiddenLetterLabels = 0
-    let answer = "hello"
+    var answer: String = "hello"
     var letterButtonCount: Int = 12
     let alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y","z"]
     
@@ -79,6 +83,27 @@ class GuessingViewController: UIViewController {
     var winningScore = 3 // TODO: set this with button press
     
     func loadData() {
+        // Choose answer string
+        // Backup if getting words from URL didn't work (takes time)
+        self.readLocalJSON()
+
+        if url_words.count <= 0  && local_words.count > 0{
+            words = local_words
+        } else if local_words.count <= 0 {
+            let hard_coded_words = ["this", "is", "hard", "coded", "mochi", "stickers", "candy", "ucla", "bruins"]
+            words = hard_coded_words
+        } else {
+            words = url_words
+        }
+        
+        let answer_num = arc4random_uniform(UInt32(words.count))
+        answer = words[Int(answer_num)] as! String
+        print("The chosen answer is:")
+        print(answer)
+
+        print("Using following word array in HomeView:")
+        print(words)
+        
         // Do any additional setup after loading the view.
         updateGuessStatus(toState: 0)
         
@@ -148,6 +173,10 @@ class GuessingViewController: UIViewController {
     
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    // Get words with wifi/cellular
+    self.readUrlJSON()
+    
     self.loadData()
     
     self.multipeerService.delegate = self as? MultipeerServiceManagerDelegate
@@ -296,6 +325,66 @@ class GuessingViewController: UIViewController {
       // Pass the selected object to the new view controller.
   }
   */
+    
+    // Test JSON parsing
+    func readLocalJSON() {
+        //        print("Getting word data locally")
+        if let path = Bundle.main.path(forResource: "words", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+                do{
+                    
+                    let json =  try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
+                    
+                    // JSONObjectWithData returns AnyObject so the first thing to do is to downcast to dictionary type
+                    //                    print("Entire json file contents:")
+                    //                    print(json)
+                    
+                    // Print all the key/value from the json
+                    //                    let jsonDictionary =  json
+                    //                    print("Mapping key - values in json:")
+                    //                    for (key, value) in jsonDictionary {
+                    //                        print("\(key) - \(value) ")
+                    //                    }
+                    
+                    // e.g to get a word
+                    //                    print("Getting words array from json:")
+                    let json_words = json["words"]  as! [Any]
+                    //                    print(json_words)
+                    //                    print(json_words[0])
+                    local_words = json_words
+                    
+                } catch let error {
+                    
+                    print(error.localizedDescription)
+                }
+                
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        } else {
+            print("Invalid filename/path.")
+        }
+    }
+    
+    func readUrlJSON() {
+        //        print("Getting word data from server via wifi/cellular")
+        let url = URL(string: "https://pictionary-pixels.herokuapp.com/")
+        URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
+            guard let data = data, error == nil else { return }
+            
+            do {
+                //                print("Getting words array and individual words from url")
+                let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
+                let json_words = json["words"]  as! [Any]
+                //                print(json_words)
+                //                print(json_words[0])
+                self.url_words = json_words
+            } catch let error as NSError {
+                print(error)
+            }
+        }).resume()
+    }
 
 }
 

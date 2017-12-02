@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import "DrawingViewController.h"
 
 class PointsViewController: UIViewController {
 //    var multipeerService: MultipeerServiceManager!
@@ -17,8 +16,8 @@ class PointsViewController: UIViewController {
   @IBOutlet weak var leastPointsButton: GameButton!
   @IBOutlet weak var averagePointsButton: GameButton!
   @IBOutlet weak var mostPointsButton: GameButton!
-  
-  override func viewDidLoad() {
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
         self.multipeerService.delegate = self as? MultipeerServiceManagerDelegate
 
