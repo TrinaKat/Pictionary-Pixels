@@ -14,8 +14,7 @@ class GuessingViewController: UIViewController {
     @IBOutlet weak var pointsLabel: UILabel!
     @IBOutlet var guessedLetterLabels: [GameLetter]!
     @IBOutlet var letterButtons: [GameButton]!
-    @IBOutlet weak var incorrectGuessLabel: UILabel!
-    @IBOutlet weak var correctGuessLabel: UILabel!
+    @IBOutlet weak var guessStatusLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     var hiddenLetterLabels = 0
 
@@ -82,11 +81,31 @@ class GuessingViewController: UIViewController {
       // Dispose of any resources that can be recreated.
   }
   
-    // MARK: Actions
+    // MARK: Actions and their Properties
+  
     var guessedLetterIndex = 0
     var deleteChar = " "
     var guess = ""
     var score = 0
+  
+    let CONTINUE_GUESSING = 0, CORRECT_GUESS = 1, INCORRECT_GUESS = 2
+  
+    func updateGuessStatus(toState state: Int) {
+      switch (state) {
+      case CORRECT_GUESS:
+        guessStatusLabel.alpha = 1
+        guessStatusLabel.text = "Correct!"
+        guessStatusLabel.textColor = UIColor.green
+      case INCORRECT_GUESS:
+        guessStatusLabel.alpha = 1
+        guessStatusLabel.text = "Incorrect Answer!"
+        guessStatusLabel.textColor = UIColor.red
+      default:
+        guessStatusLabel.alpha = 0.4
+        guessStatusLabel.text = "Keep Guessing..."
+        guessStatusLabel.textColor = UIColor.black
+      }
+    }
     
     // Get letter on pushed button
     // Assign it to the first available guessedLetterLabel
@@ -94,8 +113,6 @@ class GuessingViewController: UIViewController {
     @IBAction func enterLetter(_ sender: UIButton) {
         print("User clicked \(String(describing: sender.titleLabel!.text))")
         // print("User clicked \(sender.titleLabel?.text ?? "FAILURE")")
-        
-        incorrectGuessLabel.isHidden = true
         
         if guessedLetterIndex < answer.count {
             // Assign letter to label
@@ -117,17 +134,16 @@ class GuessingViewController: UIViewController {
             for i in 0 ... answer.count-1 {
                 guess += guessedLetterLabels[i].text!
             }
-            
             // Check guess string against answer string
             if guess == answer {
-                correctGuessLabel.isHidden = false
+                updateGuessStatus(toState: CORRECT_GUESS)
                 score+=1
                 scoreLabel.text = "Score: " + String(score)
                 // TODO: give guesser 1 point
                 // TODO: transition to next round
                 // TODO: notify everyone by displaying "Correct Guess by <device_name>!" on all screens
             } else {
-                incorrectGuessLabel.isHidden = false
+                updateGuessStatus(toState: INCORRECT_GUESS)
                 guess = ""
             }
         }
@@ -137,7 +153,7 @@ class GuessingViewController: UIViewController {
     // Make corresponding letterButton available again
     // If "Incorrect Guess" text label is shown, hide it
     @IBAction func deleteLetter(_ sender: UIButton) {
-        incorrectGuessLabel.isHidden = true
+        updateGuessStatus(toState: CONTINUE_GUESSING)
 
         if guessedLetterIndex > 0 {
             guessedLetterIndex-=1
@@ -160,7 +176,7 @@ class GuessingViewController: UIViewController {
     // Delete all assigned guessedLetterLabels
     // Make all corresponding letterButtons available again
     @IBAction func clearAll(_ sender: Any) {
-        incorrectGuessLabel.isHidden = true
+        updateGuessStatus(toState: CONTINUE_GUESSING)
         
         for i in 0 ... 7 {
             guessedLetterLabels[i].text = " "
