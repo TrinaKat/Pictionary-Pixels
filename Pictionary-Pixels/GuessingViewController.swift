@@ -9,7 +9,6 @@
 import UIKit
 
 class GuessingViewController: UIViewController {
-  
     @IBOutlet weak var inputImageView: UIImageView!
     @IBOutlet weak var timeLeftLabel: UILabel!
     @IBOutlet weak var pointsLabel: UILabel!
@@ -18,7 +17,8 @@ class GuessingViewController: UIViewController {
     @IBOutlet weak var incorrectGuessLabel: UILabel!
     @IBOutlet weak var correctGuessLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
-    
+    var hiddenLetterLabels = 0
+
     let answer = "hello"
     
   override func viewDidLoad() {
@@ -29,11 +29,23 @@ class GuessingViewController: UIViewController {
     
     // Do any additional setup after loading the view.
     
+    // initializing guessed letter labels
+    if (answer.count < 8) {
+        hiddenLetterLabels = 8 - answer.count
+        
+        for i in 1 ... hiddenLetterLabels {
+            guessedLetterLabels[8-i].isHidden = true
+        }
+    }
+    
+    for i in 0 ... answer.count-1 {
+        guessedLetterLabels[i].text = " "
+    }
+    
     // generating keyboard
     var counter: Int = 0
     
     var slots = [Int]()
-    var lettersAlreadyOnBoard = [String]()
     
     // For every letter in the answer assign it a random position on the board
     while counter < answer.count {
@@ -42,7 +54,6 @@ class GuessingViewController: UIViewController {
     
         // 1:1, slot number stored in slots[], actual char stored in lettersAlreadyOnBoard[]
         if !slots.contains(Int(num)) {
-            lettersAlreadyOnBoard.append(letter)
             slots.append(Int(num))
             counter+=1
         }
@@ -51,8 +62,8 @@ class GuessingViewController: UIViewController {
     counter = 0
     
     // For every slot, assign the letterButtons to the char determined in above loop
-    for i in 0 ... slots.count-1 {
-        letterButtons[slots[i]].setTitle(String(lettersAlreadyOnBoard[i]), for: UIControlState.normal)
+    for i in 0 ... answer.count-1 {
+        letterButtons[slots[i]].setTitle(String(answer[answer.index(answer.startIndex, offsetBy: i)]), for: UIControlState.normal)
     }
     
     // Fill in remaining empty slots with random letters
@@ -60,7 +71,6 @@ class GuessingViewController: UIViewController {
     while counter < 14 {
         if !slots.contains(counter) {
             let chosenLetter = alphabet[alphabet.index(alphabet.startIndex, offsetBy: Int(arc4random_uniform(26)))]
-            lettersAlreadyOnBoard.append(chosenLetter)
             letterButtons[counter].setTitle(chosenLetter, for: UIControlState.normal)
             counter+=1
         } else {
@@ -89,7 +99,7 @@ class GuessingViewController: UIViewController {
         
         incorrectGuessLabel.isHidden = true
         
-        if guessedLetterIndex < 8 {
+        if guessedLetterIndex < answer.count {
             // Assign letter to label
             guessedLetterLabels[guessedLetterIndex].text = sender.titleLabel!.text
             guessedLetterIndex+=1
@@ -149,7 +159,7 @@ class GuessingViewController: UIViewController {
     // Display of "Incorrect Guess!" should GO AWAY after player hits delete again
     @IBAction func sendGuess(_ sender: Any) {
         // TODO: It would be easy to automatically check guess rather than requiring them to press guess
-        for i in 0 ... 7 {
+        for i in 0 ... answer.count-1 {
             if guessedLetterLabels[i].text! != " " {
                 guess += guessedLetterLabels[i].text!
             }
