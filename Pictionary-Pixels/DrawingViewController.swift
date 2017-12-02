@@ -46,6 +46,8 @@ class DrawingViewController: UIViewController {
     
     var other_isSwiping = false
     var otherLastPoint = CGPoint(x: 0, y: 0)
+    
+    var answerString = "hello"
   
   // assuming this stays same for both views, across app lifecycle, set in viewDidLoad
   var viewFrameSize: CGSize?
@@ -132,6 +134,8 @@ class DrawingViewController: UIViewController {
     viewFrameSize = mainImageView.frame.size
     // Do any additional setup after loading the view, typically from a nib.
     self.multipeerService.delegate = self as? MultipeerServiceManagerDelegate
+    currentWordLabel.text = answerString
+    
   }
   
   override func didReceiveMemoryWarning() {
@@ -206,6 +210,10 @@ extension DrawingViewController: MultipeerServiceManagerDelegate {
             }
             else if message["reset"] != nil {
                 self.mainImageView.image = nil
+            } else if let answer = message["answer"] {
+                self.answerString = answer as! String
+            } else if message["newRound"] != nil {
+                self.currentWordLabel.text = self.answerString
             }
         }
     }

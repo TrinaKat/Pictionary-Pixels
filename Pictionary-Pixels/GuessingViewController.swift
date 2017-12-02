@@ -102,6 +102,9 @@ class GuessingViewController: UIViewController {
         answer = words[Int(answer_num)] as! String
         print("The chosen answer is:")
         print(answer)
+        
+        let dictionary:NSDictionary = ["answer": answer]
+        multipeerService.sendMessage(message: dictionary)
 
         print("Using following word array in PointsView:")
         print(words)
@@ -268,6 +271,9 @@ class GuessingViewController: UIViewController {
                     
                     // reload the screen
                     self.loadData()
+                    let dictionary:NSDictionary = ["newRound": "true"]
+                    self.multipeerService.sendMessage(message: dictionary)
+                    
                 }
                 // TODO: notify everyone by displaying "Correct Guess by <device_name>!" on all screens
             } else {
