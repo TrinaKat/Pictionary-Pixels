@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0264AF221FD092C1006E9B74 /* MultipeerServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264AF211FD092C1006E9B74 /* MultipeerServiceManager.swift */; };
+		5C2686661FD2CEA6005995FC /* words.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C2686651FD2CEA6005995FC /* words.json */; };
 		5C3284DF1FB08FD0006DFC58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3284DE1FB08FD0006DFC58 /* AppDelegate.swift */; };
 		5C3284E41FB08FD0006DFC58 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C3284E21FB08FD0006DFC58 /* Main.storyboard */; };
 		5C3284E61FB08FD0006DFC58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C3284E51FB08FD0006DFC58 /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		0264AF211FD092C1006E9B74 /* MultipeerServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerServiceManager.swift; sourceTree = "<group>"; };
+		5C2686651FD2CEA6005995FC /* words.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = words.json; path = "Pictionary-Pixels/words.json"; sourceTree = "<group>"; };
 		5C3284DB1FB08FD0006DFC58 /* Pictionary-Pixels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pictionary-Pixels.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C3284DE1FB08FD0006DFC58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C3284E31FB08FD0006DFC58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 		5C3284D21FB08FD0006DFC58 = {
 			isa = PBXGroup;
 			children = (
+				5C2686651FD2CEA6005995FC /* words.json */,
 				5C3284DD1FB08FD0006DFC58 /* Pictionary-Pixels */,
 				5C3284F21FB08FD0006DFC58 /* Pictionary-PixelsTests */,
 				5C3284DC1FB08FD0006DFC58 /* Products */,
@@ -202,6 +205,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C2686661FD2CEA6005995FC /* words.json in Resources */,
 				5C3284E91FB08FD0006DFC58 /* LaunchScreen.storyboard in Resources */,
 				5C3284E61FB08FD0006DFC58 /* Assets.xcassets in Resources */,
 				5C3284E41FB08FD0006DFC58 /* Main.storyboard in Resources */,
@@ -384,7 +388,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 875DEKZMKR;
 				INFOPLIST_FILE = "Pictionary-Pixels/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks $(CONFIGURATION_BUILD_DIR)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.2K3X.Pictionary-Pixels";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -400,7 +404,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 875DEKZMKR;
 				INFOPLIST_FILE = "Pictionary-Pixels/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks $(CONFIGURATION_BUILD_DIR)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.2K3X.Pictionary-Pixels";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

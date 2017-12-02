@@ -19,7 +19,7 @@ class GuessingViewController: UIViewController {
     @IBOutlet weak var scoreLabel: UILabel!
     
     var hiddenLetterLabels = 0
-    let answer = "hello"
+    let answer = "aaaaaaa"
     var letterButtonCount: Int = 12
     let alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y","z"]
     
