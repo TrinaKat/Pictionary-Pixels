@@ -31,6 +31,7 @@ class GuessingViewController: UIViewController {
     
     func loadData() {
         // Do any additional setup after loading the view.
+        updateGuessStatus(toState: 0)
         
         // Initialize variables
         guessedLetterIndex = 0
