@@ -161,9 +161,9 @@ class GuessingViewController: UIViewController {
 
     // Delete all assigned guessedLetterLabels
     // Make all corresponding letterButtons available again
-    @IBAction func clear(_ sender: Any) {
+    @IBAction func clearAll(_ sender: Any) {
         incorrectGuessLabel.isHidden = true
-
+        
         for i in 0 ... 7 {
             guessedLetterLabels[i].text = " "
         }
@@ -175,7 +175,7 @@ class GuessingViewController: UIViewController {
         
         guessedLetterIndex = 0
     }
-  
+
   /*
   // MARK: - Navigation
 
