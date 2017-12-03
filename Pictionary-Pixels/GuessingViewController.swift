@@ -19,6 +19,9 @@ class GuessingViewController: UIViewController {
     @IBOutlet weak var guessStatusLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     
+    var seconds = 30
+    var timer = Timer()
+    
     var hiddenLetterLabels = 0
     let answer = "hello"
     var letterButtonCount: Int = 12
@@ -113,10 +116,29 @@ class GuessingViewController: UIViewController {
         }
     }
     
+    func runTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(GuessingViewController.updateTimer)), userInfo: nil, repeats: true)
+    }
+    
+    func updateTimer() {
+        if (seconds < 1) {
+            timer.invalidate()
+            DispatchQueue.main.async() {
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let newViewController = storyBoard.instantiateViewController(withIdentifier: "GuessingView")
+                self.present(newViewController, animated: true, completion: nil)
+            }
+        } else {
+            seconds -= 1
+            timeLeftLabel.text = ":\(seconds)"
+        }
+    }
+    
   override func viewDidLoad() {
     super.viewDidLoad()
     score = 0
     self.loadData()
+    self.runTimer()
   }
 
   override func didReceiveMemoryWarning() {
