@@ -382,17 +382,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-<<<<<<< HEAD
-				DEVELOPMENT_TEAM = 875DEKZMKR;
-				INFOPLIST_FILE = "Pictionary-Pixels/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.2K3X.Pictionary-Pixels";
-=======
 				DEVELOPMENT_TEAM = A2BZWZ9483;
 				INFOPLIST_FILE = "Pictionary-Pixels/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "YunXu.Pictionary-Pixels";
->>>>>>> 9fd9eb76a7ff1d287188370ea58c4f83d0f71e3a
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
@@ -405,17 +398,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-<<<<<<< HEAD
-				DEVELOPMENT_TEAM = 875DEKZMKR;
-				INFOPLIST_FILE = "Pictionary-Pixels/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.2K3X.Pictionary-Pixels";
-=======
 				DEVELOPMENT_TEAM = A2BZWZ9483;
 				INFOPLIST_FILE = "Pictionary-Pixels/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "YunXu.Pictionary-Pixels";
->>>>>>> 9fd9eb76a7ff1d287188370ea58c4f83d0f71e3a
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
