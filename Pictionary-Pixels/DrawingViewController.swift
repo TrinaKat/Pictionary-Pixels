@@ -202,7 +202,7 @@ class DrawingViewController: UIViewController {
             currColor = backColor.cgColor
             
             // Send peers stroke color and brush width
-            let dictionary:NSDictionary = ["brush_width": brushWidth, "stroke_color": "currColor"]
+            let dictionary:NSDictionary = ["brush_width": brushWidth, "stroke_color": colorButton.currentTitle ?? "black"]
             multipeerService.sendMessage(message: dictionary)
             
             // Deselect last selected color, unless that is same as current
