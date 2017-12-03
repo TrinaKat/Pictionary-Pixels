@@ -161,6 +161,7 @@ class DrawingViewController: UIViewController {
         
         // TODO: initialize this in points view, or hopefully get this updated when drawer loads before guesser does (everytime guesser loads, updates answer
         currentWordLabel.text = answer
+        pointsLabel.text = "Score: " + String(score)
         winnerLabel.isHidden = true
     }
   
@@ -249,6 +250,7 @@ class DrawingViewController: UIViewController {
         }
         if (segue.identifier == "DrawingToGuessing") {
             if let dest = segue.destination as? GuessingViewController {
+                dest.winningScore = rounds as! Int
                 dest.multipeerService = multipeerService
             }
         }

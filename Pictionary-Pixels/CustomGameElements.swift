@@ -11,6 +11,8 @@ import UIKit
 var devices : [String]?
 var drawerIndex = 0
 var answer = "hello"
+var score = 0
+var winningScore = 42
 
 // IBInspectable allows you to add custom attributes to Interface Builder!
 // now all buttons have an option for corner radius, border width and color

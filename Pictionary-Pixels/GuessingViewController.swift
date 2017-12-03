@@ -81,7 +81,6 @@ class GuessingViewController: UIViewController {
     var guessedLetterIndex = 0
     var deleteChar = " "
     var guess = ""
-    var score = 0
     var winningScore = 42 // Set this to number of rounds
     
     // Used to determine answer string
@@ -215,6 +214,7 @@ class GuessingViewController: UIViewController {
         
         // Clear any past drawings
         inputImageView.image = nil
+        scoreLabel.text = "Score: " + String(score)
     }
     
     func disableAllButtons() {
@@ -261,7 +261,6 @@ class GuessingViewController: UIViewController {
     print("I LALALALALLALALALALALAL")
     print("I LALALALALLALALALALALAL")
     print("I LALALALALLALALALALALAL")
-    score = 0
     winnerLabel.isHidden = true
     
     // Get words with wifi/cellular
@@ -308,6 +307,7 @@ class GuessingViewController: UIViewController {
         }
         if (segue.identifier == "GuessingToDrawing") {
             if let dest = segue.destination as? DrawingViewController {
+                dest.rounds = winningScore
                 dest.multipeerService = multipeerService
             }
         }
