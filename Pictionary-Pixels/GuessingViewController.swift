@@ -70,6 +70,9 @@ class GuessingViewController: UIViewController {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var winnerLabel: UILabel!
     
+    var seconds = 30
+    var timer = Timer()
+    
     // Constants
     var letterButtonCount: Int = 12
     let alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y","z"]
@@ -199,6 +202,24 @@ class GuessingViewController: UIViewController {
         }
     }
     
+    func runTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(GuessingViewController.updateTimer)), userInfo: nil, repeats: true)
+    }
+
+    func updateTimer() {
+        if (seconds < 1) {
+            timer.invalidate()
+            DispatchQueue.main.async() {
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let newViewController = storyBoard.instantiateViewController(withIdentifier: "GuessingView")
+                self.present(newViewController, animated: true, completion: nil)
+            }
+        } else {
+            seconds -= 1
+            timeLeftLabel.text = ":\(seconds)"
+        }
+    }
+    
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -219,6 +240,7 @@ class GuessingViewController: UIViewController {
     // Get words with wifi/cellular
     self.readUrlJSON()
     self.loadData()
+    self.runTimer()
   }
 
   override func didReceiveMemoryWarning() {
