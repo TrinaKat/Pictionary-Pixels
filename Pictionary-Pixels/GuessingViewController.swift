@@ -102,21 +102,18 @@ class GuessingViewController: UIViewController {
         } else {
             words = url_words
         }
+        print("Using following word array in PointsView:")
+        print(words)
         
         let answer_num = arc4random_uniform(UInt32(words.count))
         answer = words[Int(answer_num)] as! String
         print("The chosen answer is:")
         print(answer)
         
-        let dictionary:NSDictionary = ["answer": answer]
+        // Send answer to all peers
+        let dictionary:NSDictionary = ["answer": answer, "newRound": "true"]
         multipeerService.sendMessage(message: dictionary)
-        
-        let dict2:NSDictionary = ["newRound": "true"]
-        self.multipeerService.sendMessage(message: dict2)
 
-        print("Using following word array in PointsView:")
-        print(words)
-        
         // Do any additional setup after loading the view.
         updateGuessStatus(toState: 0)
         
@@ -149,7 +146,7 @@ class GuessingViewController: UIViewController {
             guessedLetterLabels[i].text = " "
         }
         
-        // generating keyboard
+        // Generating keyboard
         var counter: Int = 0
         var slots = [Int]()
         
