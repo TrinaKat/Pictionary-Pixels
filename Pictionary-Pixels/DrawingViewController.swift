@@ -55,7 +55,6 @@ class DrawingViewController: UIViewController {
     var swiped = false
     
     // Answer string supplied by guessing view
-    var answerString = "hello"
   
     // Assuming this stays same for both views, across app lifecycle, set in viewDidLoad
     // TODO: check that the guessing/drawing views are the same size, looks a little off
@@ -160,8 +159,8 @@ class DrawingViewController: UIViewController {
         //runTimer()
         self.multipeerService.delegate = self
         
-        // TODO: initialize this in points view, or hopefully get this updated when drawer loads before guesser does (everytime guesser loads, updates answerString
-        currentWordLabel.text = answerString
+        // TODO: initialize this in points view, or hopefully get this updated when drawer loads before guesser does (everytime guesser loads, updates answer
+        currentWordLabel.text = answer
         winnerLabel.isHidden = true
     }
   
@@ -248,6 +247,11 @@ class DrawingViewController: UIViewController {
                 dest.multipeerService = multipeerService
             }
         }
+        if (segue.identifier == "DrawingToGuessing") {
+            if let dest = segue.destination as? GuessingViewController {
+                dest.multipeerService = multipeerService
+            }
+        }
     }
 }
     
@@ -259,12 +263,14 @@ extension DrawingViewController: MultipeerServiceManagerDelegate {
         OperationQueue.main.addOperation {
             print("INSIDE OPERATION QUEUE")
             // Messages from guessers
-            if let answer = message["answer"] {
-                self.answerString = answer as! String
+            if let newAnswer = message["answer"] {
+                print("NEW DRAWERS ANSWER \(answer) \n \n")
+                answer = newAnswer as! String
             }
             
             if message["newRound"] != nil {
-                self.currentWordLabel.text = self.answerString
+                self.currentWordLabel.text = answer
+                print("LABEL \(answer) \n \n")
                 self.mainImageView.image = nil
             }
             
@@ -277,6 +283,11 @@ extension DrawingViewController: MultipeerServiceManagerDelegate {
                     // Transition to Points view
                     self.performSegue(withIdentifier: "DrawingToPointsSegue", sender: self)
                 }
+            }
+            
+            if message["updateIndex"] != nil {
+                drawerIndex = message["updateIndex"] as! Int
+                self.performSegue(withIdentifier: "DrawingToGuessing", sender: self)
             }
         }
     }

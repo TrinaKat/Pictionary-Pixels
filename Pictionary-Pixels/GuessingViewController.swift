@@ -77,7 +77,6 @@ class GuessingViewController: UIViewController {
     let alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y","z"]
     
     // Variables
-    var answer: String = "hello"
     var hiddenLetterLabels = 0
     var guessedLetterIndex = 0
     var deleteChar = " "
@@ -90,13 +89,9 @@ class GuessingViewController: UIViewController {
     var url_words: [Any] = []
     var local_words: [Any] = []
     
-    func loadData() {
-        // Choose answer string
-        // Backup if getting words from URL didn't work (takes time)
-        // Next round will try to access url_words again
-        // TODO: keep track of used words
+    func chooseNewWord() {
         self.readLocalJSON()
-
+        
         if url_words.count <= 0  && local_words.count > 0{
             words = local_words
         } else if local_words.count <= 0 {
@@ -114,8 +109,36 @@ class GuessingViewController: UIViewController {
         print(answer)
         
         // Send answer to all peers
-        let dictionary:NSDictionary = ["answer": answer, "newRound": "true"]
+        let dictionary:NSDictionary = ["answer": answer, "newRound": "true", "updateIndex": drawerIndex]
         multipeerService.sendMessage(message: dictionary)
+    }
+    
+    func loadData() {
+        // Choose answer string
+        // Backup if getting words from URL didn't work (takes time)
+        // Next round will try to access url_words again
+        // TODO: keep track of used words
+//        self.readLocalJSON()
+//
+//        if url_words.count <= 0  && local_words.count > 0{
+//            words = local_words
+//        } else if local_words.count <= 0 {
+//            let hard_coded_words = ["this", "is", "hard", "coded", "mochi", "stickers", "candy", "ucla", "bruins"]
+//            words = hard_coded_words
+//        } else {
+//            words = url_words
+//        }
+//        print("Using following word array in PointsView:")
+//        print(words)
+//
+//        let answer_num = arc4random_uniform(UInt32(words.count))
+//        answer = words[Int(answer_num)] as! String
+//        print("The chosen answer is:")
+//        print(answer)
+//
+//        // Send answer to all peers
+//        let dictionary:NSDictionary = ["answer": answer, "newRound": "true", "updateIndex": drawerIndex]
+//        multipeerService.sendMessage(message: dictionary)
 
         // Do any additional setup after loading the view.
         guessStatusLabel.isHidden = false
@@ -283,6 +306,11 @@ class GuessingViewController: UIViewController {
                 dest.multipeerService = multipeerService
             }
         }
+        if (segue.identifier == "GuessingToDrawing") {
+            if let dest = segue.destination as? DrawingViewController {
+                dest.multipeerService = multipeerService
+            }
+        }
     }
 
     // Get letter on pushed button
@@ -314,6 +342,7 @@ class GuessingViewController: UIViewController {
             }
             // Check guess string against answer string
             if guess == answer {
+                drawerIndex = (1 + drawerIndex) % (devices?.count)!
                 score+=1
                 scoreLabel.text = "Score: " + String(score)
                 
@@ -334,16 +363,25 @@ class GuessingViewController: UIViewController {
                     DispatchQueue.main.asyncAfter(deadline: when) {
                         self.performSegue(withIdentifier: "GuessingToPointsSegue", sender: self)
                     }
+                    drawerIndex = 0
                 } else {
                     updateGuessStatus(toState: CORRECT_GUESS)
-                    
+                    chooseNewWord()
+                    print("\(UIDevice.current.name) \n")
+                    print("DRAWER INDEX: \(drawerIndex)")
+                    print("CURRENT ARRAY ELEMENT: \(devices![drawerIndex])")
+                    if (UIDevice.current.name == devices![drawerIndex]) {
+                        self.performSegue(withIdentifier: "GuessingToDrawing", sender: self)
+                    } else {
                     // Waits until correct guess label is displayed before loading new round
-                    let when = DispatchTime.now() + 1
-                    DispatchQueue.main.asyncAfter(deadline: when) {
-                        // reload the screen
-                        self.loadData() // generates new answer and sends to drawer
+                        let when = DispatchTime.now() + 1
+                        DispatchQueue.main.asyncAfter(deadline: when) {
+                            // reload the screen
+                            self.loadData() // generates new answer and sends to drawer
+                        }
                     }
                 }
+                
             } else {
                 updateGuessStatus(toState: INCORRECT_GUESS)
                 guess = ""
@@ -465,6 +503,13 @@ extension GuessingViewController: MultipeerServiceManagerDelegate{
                 let when = DispatchTime.now() + 2
                 DispatchQueue.main.asyncAfter(deadline: when) {
                     self.performSegue(withIdentifier: "GuessingToPointsSegue", sender: self)
+                }
+            }
+            
+            if message["updateIndex"] != nil {
+                drawerIndex = message["updateIndex"] as! Int
+                if (UIDevice.current.name == devices![drawerIndex]) {
+                    self.performSegue(withIdentifier: "GuessingToDrawing", sender: self)
                 }
             }
             
