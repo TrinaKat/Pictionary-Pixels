@@ -495,6 +495,12 @@ extension GuessingViewController: MultipeerServiceManagerDelegate{
     func messageReceived(manager: MultipeerServiceManager, message: NSDictionary) {
         OperationQueue.main.addOperation {
             // message
+            
+            if let newAnswer = message["answer"] {
+                print("NEW DRAWERS ANSWER \(answer) \n \n")
+                answer = newAnswer as! String
+            }
+            
             if message["gameOver"] != nil {
                 self.winnerLabel.isHidden = false
                 self.updateGuessStatus(toState: self.GAME_OVER)
@@ -510,6 +516,8 @@ extension GuessingViewController: MultipeerServiceManagerDelegate{
                 drawerIndex = message["updateIndex"] as! Int
                 if (UIDevice.current.name == devices![drawerIndex]) {
                     self.performSegue(withIdentifier: "GuessingToDrawing", sender: self)
+                } else {
+                    self.loadData()
                 }
             }
             

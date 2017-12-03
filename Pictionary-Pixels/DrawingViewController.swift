@@ -287,6 +287,7 @@ extension DrawingViewController: MultipeerServiceManagerDelegate {
             
             if message["updateIndex"] != nil {
                 drawerIndex = message["updateIndex"] as! Int
+                self.currentWordLabel.isHidden = true
                 self.performSegue(withIdentifier: "DrawingToGuessing", sender: self)
             }
         }
