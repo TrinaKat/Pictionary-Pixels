@@ -157,7 +157,7 @@ class DrawingViewController: UIViewController {
 
         // Do any additional setup after loading the view, typically from a nib.
         viewFrameSize = mainImageView.frame.size
-        runTimer()
+        //runTimer()
         self.multipeerService.delegate = self
         
         // TODO: initialize this in points view, or hopefully get this updated when drawer loads before guesser does (everytime guesser loads, updates answerString
@@ -240,11 +240,24 @@ class DrawingViewController: UIViewController {
             timeLeftLabel.text = ":\(seconds)"
         }
     }
+    
+    // Transition back to points view
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "DrawingToPointsSegue") {
+            if let dest = segue.destination as? PointsViewController {
+                dest.multipeerService = multipeerService
+            }
+        }
+    }
 }
     
 extension DrawingViewController: MultipeerServiceManagerDelegate {
     func messageReceived(manager: MultipeerServiceManager, message: NSDictionary) {
+        print("REACHED DRAWING VIEW MESSAGE RECEIVED")
+        print("MESSAGE CONTAINS: ")
+        print(message)
         OperationQueue.main.addOperation {
+            print("INSIDE OPERATION QUEUE")
             // Messages from guessers
             if let answer = message["answer"] {
                 self.answerString = answer as! String
@@ -256,12 +269,14 @@ extension DrawingViewController: MultipeerServiceManagerDelegate {
             }
             
             if message["gameOver"] != nil {
+                self.clear(self)
                 self.winnerLabel.isHidden = false
                 
-                // Transition to PointsViewController
-                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let newViewController = storyBoard.instantiateViewController(withIdentifier: "PointsViewController")
-                self.present(newViewController, animated: true, completion: nil)
+                let when = DispatchTime.now() + 2
+                DispatchQueue.main.asyncAfter(deadline: when) {
+                    // Transition to Points view
+                    self.performSegue(withIdentifier: "DrawingToPointsSegue", sender: self)
+                }
             }
         }
     }

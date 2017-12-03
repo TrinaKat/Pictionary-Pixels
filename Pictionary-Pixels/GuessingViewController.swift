@@ -275,6 +275,15 @@ class GuessingViewController: UIViewController {
         guessStatusLabel.textColor = UIColor.black
       }
     }
+    
+    // Transitions back to points view
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "GuessingToPointsSegue") {
+            if let dest = segue.destination as? PointsViewController {
+                dest.multipeerService = multipeerService
+            }
+        }
+    }
 
     // Get letter on pushed button
     // Assign it to the first available guessedLetterLabel
@@ -317,10 +326,13 @@ class GuessingViewController: UIViewController {
                     
                     // Let all peers know that someone won the game
                     // Wait until winner label is displayed before navigating to points view
+                    let dictionary:NSDictionary = ["gameOver": "true"]
+                    self.multipeerService.sendMessage(message: dictionary)
+                    
+                    // Segue to Points view
                     let when = DispatchTime.now() + 2
                     DispatchQueue.main.asyncAfter(deadline: when) {
-                        let dictionary:NSDictionary = ["gameOver": "true"]
-                        self.multipeerService.sendMessage(message: dictionary)
+                        self.performSegue(withIdentifier: "GuessingToPointsSegue", sender: self)
                     }
                 } else {
                     updateGuessStatus(toState: CORRECT_GUESS)
@@ -446,10 +458,14 @@ extension GuessingViewController: MultipeerServiceManagerDelegate{
         OperationQueue.main.addOperation {
             // message
             if message["gameOver"] != nil {
-                // Transition to PointsViewController
-                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let newViewController = storyBoard.instantiateViewController(withIdentifier: "PointsViewController")
-                self.present(newViewController, animated: true, completion: nil)
+                self.winnerLabel.isHidden = false
+                self.updateGuessStatus(toState: self.GAME_OVER)
+                
+                // Segue to Points view
+                let when = DispatchTime.now() + 2
+                DispatchQueue.main.asyncAfter(deadline: when) {
+                    self.performSegue(withIdentifier: "GuessingToPointsSegue", sender: self)
+                }
             }
             
             if let point = message["new_point"] {

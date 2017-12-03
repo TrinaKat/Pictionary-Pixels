@@ -289,6 +289,7 @@
                         <outlet property="timeLeftLabel" destination="b0q-2A-u1e" id="HAB-tO-hwz"/>
                         <outlet property="winnerLabel" destination="D8g-rV-cgd" id="N1a-Xn-k3u"/>
                         <outlet property="yellowButton" destination="uSn-IH-aon" id="wPl-5q-xpo"/>
+                        <segue destination="soJ-b2-fSh" kind="show" identifier="DrawingToPointsSegue" id="Xt2-V2-7ob"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p0W-36-j7o" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -864,6 +865,7 @@
                         <outletCollection property="letterButtons" destination="7C8-ip-scm" collectionClass="NSMutableArray" id="y7E-ky-aaN"/>
                         <outletCollection property="letterButtons" destination="RSS-fE-5um" collectionClass="NSMutableArray" id="Evz-Rq-2de"/>
                         <outletCollection property="letterButtons" destination="ZcS-XC-bIx" collectionClass="NSMutableArray" id="HOG-Se-igM"/>
+                        <segue destination="soJ-b2-fSh" kind="show" identifier="GuessingToPointsSegue" id="qrk-sh-Y8a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uFg-9o-eRh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -873,7 +875,7 @@
         <!--Home View Controller-->
         <scene sceneID="djQ-lw-MaE">
             <objects>
-                <viewController id="qYy-aT-CdV" customClass="HomeViewController" customModule="Pictionary_Pixels" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qYy-aT-CdV" customClass="HomeViewController" customModule="Pictionary_Pixels" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="q1y-hy-jir"/>
                         <viewControllerLayoutGuide type="bottom" id="Uuq-aG-XEY"/>
@@ -1039,4 +1041,7 @@
             <point key="canvasLocation" x="-668" y="196.55172413793105"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="qrk-sh-Y8a"/>
+    </inferredMetricsTieBreakers>
 </document>
