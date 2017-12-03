@@ -244,6 +244,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;device_name&gt; wins!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D8g-rV-cgd">
+                                <rect key="frame" x="30" y="191" width="316" height="84"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="35"/>
+                                <color key="textColor" red="0.22894871899999999" green="0.14097002189999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -252,6 +258,7 @@
                             <constraint firstAttribute="trailing" secondItem="84t-fE-93J" secondAttribute="trailing" id="6Ql-OE-lx1"/>
                             <constraint firstItem="7B3-k0-pm5" firstAttribute="top" secondItem="84t-fE-93J" secondAttribute="bottom" constant="12" id="9QU-qK-PGJ"/>
                             <constraint firstItem="7B3-k0-pm5" firstAttribute="centerX" secondItem="AIm-2J-3hm" secondAttribute="centerX" id="BMt-m0-pd9"/>
+                            <constraint firstItem="D8g-rV-cgd" firstAttribute="leading" secondItem="AIm-2J-3hm" secondAttribute="leading" constant="30" id="CN7-kg-SYA"/>
                             <constraint firstItem="ceY-gO-mZE" firstAttribute="centerY" secondItem="b0q-2A-u1e" secondAttribute="centerY" id="CxM-Zq-4BT"/>
                             <constraint firstItem="b0q-2A-u1e" firstAttribute="centerX" secondItem="AIm-2J-3hm" secondAttribute="centerX" id="Dzq-Kw-uTb"/>
                             <constraint firstItem="hgn-x4-hFP" firstAttribute="leading" secondItem="AIm-2J-3hm" secondAttribute="leadingMargin" constant="5" id="GSX-xN-Bs4"/>
@@ -263,6 +270,8 @@
                             <constraint firstItem="84t-fE-93J" firstAttribute="top" secondItem="AIm-2J-3hm" secondAttribute="top" id="aVb-df-LRN"/>
                             <constraint firstItem="oeZ-y5-meg" firstAttribute="centerX" secondItem="AIm-2J-3hm" secondAttribute="centerX" id="c4m-Wy-rz8"/>
                             <constraint firstItem="oeZ-y5-meg" firstAttribute="top" secondItem="7B3-k0-pm5" secondAttribute="bottom" constant="15" id="dtV-HB-Q7t"/>
+                            <constraint firstItem="D8g-rV-cgd" firstAttribute="centerY" secondItem="84t-fE-93J" secondAttribute="centerY" id="f6J-6j-Qlf"/>
+                            <constraint firstItem="D8g-rV-cgd" firstAttribute="centerX" secondItem="AIm-2J-3hm" secondAttribute="centerX" id="lrm-nS-Xtb"/>
                         </constraints>
                     </view>
                     <connections>
@@ -278,12 +287,13 @@
                         <outlet property="pointsLabel" destination="ceY-gO-mZE" id="TQG-2f-vaY"/>
                         <outlet property="redButton" destination="oJo-kv-7ym" id="sNJ-cZ-SzJ"/>
                         <outlet property="timeLeftLabel" destination="b0q-2A-u1e" id="HAB-tO-hwz"/>
+                        <outlet property="winnerLabel" destination="D8g-rV-cgd" id="N1a-Xn-k3u"/>
                         <outlet property="yellowButton" destination="uSn-IH-aon" id="wPl-5q-xpo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p0W-36-j7o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="175" y="-145"/>
+            <point key="canvasLocation" x="173.59999999999999" y="-145.27736131934034"/>
         </scene>
         <!--Guessing View Controller-->
         <scene sceneID="0e3-jO-2Nq">
@@ -858,7 +868,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uFg-9o-eRh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="173.59999999999999" y="586.95652173913049"/>
+            <point key="canvasLocation" x="174" y="586"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="djQ-lw-MaE">

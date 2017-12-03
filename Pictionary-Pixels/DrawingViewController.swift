@@ -36,6 +36,7 @@ class DrawingViewController: UIViewController {
     // TODO: pointsLabel, timer
     @IBOutlet weak var pointsLabel: UILabel!
     @IBOutlet weak var timeLeftLabel: UILabel!
+    @IBOutlet weak var winnerLabel: UILabel!
     
     // TODO: Keep this updated on first entry
     @IBOutlet weak var currentWordLabel: UILabel!
@@ -158,6 +159,7 @@ class DrawingViewController: UIViewController {
         
         // TODO: initialize this in points view, or hopefully get this updated when drawer loads before guesser does (everytime guesser loads, updates answerString
         currentWordLabel.text = answerString
+        winnerLabel.isHidden = true
     }
   
     override func didReceiveMemoryWarning() {
@@ -233,11 +235,13 @@ extension DrawingViewController: MultipeerServiceManagerDelegate {
             }
             
             if message["gameOver"] != nil {
-                // TODO: game over restart game handling
-                print("draw GAME OVER GAME OVER GAME OVER GAME OVER")
+                self.winnerLabel.isHidden = false
+                
+                // Transition to PointsViewController
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let newViewController = storyBoard.instantiateViewController(withIdentifier: "PointsViewController")
+                self.present(newViewController, animated: true, completion: nil)
             }
-            
-            // TODO add win handling
         }
     }
     
