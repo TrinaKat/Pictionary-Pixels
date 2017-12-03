@@ -68,6 +68,7 @@ class GuessingViewController: UIViewController {
     @IBOutlet var letterButtons: [GameButton]!
     @IBOutlet weak var guessStatusLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var winnerLabel: UILabel!
     
     // Constants
     var letterButtonCount: Int = 12
@@ -121,6 +122,7 @@ class GuessingViewController: UIViewController {
         guessedLetterIndex = 0
         deleteChar = " "
         guess = ""
+        winnerLabel.isHidden = true
         
         // Enable all the buttons
         deleteButton.isEnabled = true
@@ -184,6 +186,19 @@ class GuessingViewController: UIViewController {
         inputImageView.image = nil
     }
     
+    func disableAllButtons() {
+        for i in 0 ... letterButtonCount-1 {
+            letterButtons[i].isEnabled = false
+            letterButtons[i].alpha = 0.3
+
+            deleteButton.isEnabled = false
+            deleteButton.alpha = 0.3
+
+            clearButton.isEnabled = false
+            clearButton.alpha = 0.3
+        }
+    }
+    
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -191,6 +206,7 @@ class GuessingViewController: UIViewController {
     self.multipeerService.delegate = self
     viewFrameSize = inputImageView.frame.size
     winningScore = rounds as! Int
+    score = 0
     
     // Get words with wifi/cellular
     self.readUrlJSON()
@@ -253,40 +269,36 @@ class GuessingViewController: UIViewController {
             }
             // Check guess string against answer string
             if guess == answer {
-                updateGuessStatus(toState: CORRECT_GUESS)
                 score+=1
                 scoreLabel.text = "Score: " + String(score)
                 
                 // Disable all the buttons
-                for i in 0 ... letterButtonCount-1 {
-                    letterButtons[i].isEnabled = false
-                    letterButtons[i].alpha = 0.3
-                    
-                    deleteButton.isEnabled = false
-                    deleteButton.alpha = 0.3
-                    
-                    clearButton.isEnabled = false
-                    clearButton.alpha = 0.3
-                }
+                disableAllButtons()
                 
-                // Waits until correctGuessLabel is displayed before loading new round
-                let when = DispatchTime.now() + 2
-                DispatchQueue.main.asyncAfter(deadline: when) {
-                    // Check if guesser won game
-                    if self.score == self.winningScore {
-                        // TODO: everyone transitions to end game screen
-                        let dictionary:NSDictionary = ["gameOver": "true"]
-                        self.multipeerService.sendMessage(message: dictionary)
-                        
-                        // TODO: game over restart game handling
-                        print("guess GAME OVER GAME OVER GAME OVER GAME OVER")
+                if score == winningScore {
+                    winnerLabel.isHidden = false
+                    
+                    // Make below use multipeer
+                    // Wait until winner label is displayed before navigating to points view
+                    let when = DispatchTime.now() + 2
+                    DispatchQueue.main.asyncAfter(deadline: when) {
+                        // Check if guesser won game and if so transition to PointsViewController
+                        if self.score == self.winningScore {
+                            let dictionary:NSDictionary = ["gameOver": "true"]
+                            self.multipeerService.sendMessage(message: dictionary)
+                        }
+                    // Make above use multipeer
                     }
+                } else {
+                    updateGuessStatus(toState: CORRECT_GUESS)
                     
-                    // reload the screen
-                    self.loadData() // generates new answer and sends to drawer
-                    
+                    // Waits until correct guess label is displayed before loading new round
+                    let when = DispatchTime.now() + 1
+                    DispatchQueue.main.asyncAfter(deadline: when) {
+                        // reload the screen
+                        self.loadData() // generates new answer and sends to drawer
+                    }
                 }
-                // TODO: notify everyone by displaying "Correct Guess by <device_name>!" on all screens
             } else {
                 updateGuessStatus(toState: INCORRECT_GUESS)
                 guess = ""
