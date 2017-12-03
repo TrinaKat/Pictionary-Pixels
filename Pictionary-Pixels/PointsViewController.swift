@@ -30,6 +30,8 @@ class PointsViewController: UIViewController {
         
         // Get words with wifi/cellular
         self.readUrlJSON()
+        
+        score = 0
 
     }
 
@@ -43,6 +45,7 @@ class PointsViewController: UIViewController {
         if (segue.identifier == "DrawingViewSegue") {
             if let dest = segue.destination as? DrawingViewController {
                 dest.multipeerService = multipeerService
+                dest.rounds = rounds
 //                dest.startAnswer = answer
             }
         } else if (segue.identifier == "GuessingViewSegue") {
@@ -187,11 +190,10 @@ extension PointsViewController : MultipeerServiceManagerDelegate {
                 print("RECEIVED ANSWER: \(answer)")
             }
             
-            if message["roundPoints"] != nil {                
+            if message["roundPoints"] != nil {
                 self.rounds = message.object(forKey: "roundPoints") as! Int
                 // Everyone else becomes a guesser
                 if UIDevice.current.name == devices![0] {
-                    print("TRANSITIONS TO DRAWING")
                     self.performSegue(withIdentifier: "DrawingViewSegue", sender: self)
                 } else {
                     self.performSegue(withIdentifier: "GuessingViewSegue", sender: self)
