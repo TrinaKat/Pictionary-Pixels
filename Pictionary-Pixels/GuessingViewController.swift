@@ -227,7 +227,15 @@ class GuessingViewController: UIViewController {
     self.multipeerService.delegate = self
     viewFrameSize = inputImageView.frame.size
     winningScore = rounds as! Int
+    print("I LALALALALLALALALALALAL")
+    print("I LALALALALLALALALALALAL")
+    print("I LALALALALLALALALALALAL")
+    print(winningScore)
+    print("I LALALALALLALALALALALAL")
+    print("I LALALALALLALALALALALAL")
+    print("I LALALALALLALALALALALAL")
     score = 0
+    winnerLabel.isHidden = true
     
     // Get words with wifi/cellular
     self.readUrlJSON()
@@ -300,16 +308,12 @@ class GuessingViewController: UIViewController {
                 if score == winningScore {
                     winnerLabel.isHidden = false
                     
-                    // Make below use multipeer
+                    // Let all peers know that someone won the game
                     // Wait until winner label is displayed before navigating to points view
                     let when = DispatchTime.now() + 2
                     DispatchQueue.main.asyncAfter(deadline: when) {
-                        // Check if guesser won game and if so transition to PointsViewController
-                        if self.score == self.winningScore {
-                            let dictionary:NSDictionary = ["gameOver": "true"]
-                            self.multipeerService.sendMessage(message: dictionary)
-                        }
-                    // Make above use multipeer
+                        let dictionary:NSDictionary = ["gameOver": "true"]
+                        self.multipeerService.sendMessage(message: dictionary)
                     }
                 } else {
                     updateGuessStatus(toState: CORRECT_GUESS)
@@ -434,6 +438,13 @@ extension GuessingViewController: MultipeerServiceManagerDelegate{
     func messageReceived(manager: MultipeerServiceManager, message: NSDictionary) {
         OperationQueue.main.addOperation {
             // message
+            if message["gameOver"] != nil {
+                // Transition to PointsViewController
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let newViewController = storyBoard.instantiateViewController(withIdentifier: "PointsViewController")
+                self.present(newViewController, animated: true, completion: nil)
+            }
+            
             if let point = message["new_point"] {
                 self.lastPoint = ((point as? NSValue)?.cgPointValue)!
             }
