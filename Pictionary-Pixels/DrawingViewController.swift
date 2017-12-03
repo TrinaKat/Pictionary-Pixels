@@ -39,7 +39,9 @@ class DrawingViewController: UIViewController {
     
     // TODO: Keep this updated on first entry
     @IBOutlet weak var currentWordLabel: UILabel!
-
+    var seconds = 30
+    var timer = Timer()
+    
     // For continuous brush strokes
     // Store last point drawn
     var lastPoint = CGPoint(x: 0, y: 0)
@@ -154,6 +156,7 @@ class DrawingViewController: UIViewController {
 
         // Do any additional setup after loading the view, typically from a nib.
         viewFrameSize = mainImageView.frame.size
+        runTimer()
         self.multipeerService.delegate = self
         
         // TODO: initialize this in points view, or hopefully get this updated when drawer loads before guesser does (everytime guesser loads, updates answerString
@@ -217,6 +220,24 @@ class DrawingViewController: UIViewController {
     let dictionary:NSDictionary = ["reset": "true"]
     multipeerService.sendMessage(message: dictionary)
   }
+    
+    func runTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(GuessingViewController.updateTimer)), userInfo: nil, repeats: true)
+    }
+
+    func updateTimer() {
+        if (seconds < 1) {
+            timer.invalidate()
+            DispatchQueue.main.async() {
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let newViewController = storyBoard.instantiateViewController(withIdentifier: "DrawingView")
+                self.present(newViewController, animated: true, completion: nil)
+            }
+        } else {
+            seconds -= 1
+            timeLeftLabel.text = ":\(seconds)"
+        }
+    }
 }
     
 extension DrawingViewController: MultipeerServiceManagerDelegate {
