@@ -8,6 +8,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Avenir.ttc">
+            <string>Avenir-Black</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -21,22 +26,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Lh-FN-DH1">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="3Lh-FN-DH1">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="cLX-iX-DS8">
+                                <rect key="frame" x="111" y="107" width="153" height="121"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pictionary Pixels" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pQE-x5-dYy">
-                                <rect key="frame" x="83.5" y="316.5" width="208.5" height="33.5"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="30" y="473" width="315" height="164"/>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="60"/>
+                                <color key="textColor" red="0.96636152836533451" green="1" blue="0.9993630958835128" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="pQE-x5-dYy" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Mpj-Xi-t4w"/>
-                            <constraint firstItem="pQE-x5-dYy" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ysF-L0-GWu"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="3Lh-FN-DH1" secondAttribute="bottom" id="2wh-Ub-3p7"/>
+                            <constraint firstItem="3Lh-FN-DH1" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="EW0-bV-PMV"/>
+                            <constraint firstItem="pQE-x5-dYy" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="30" id="Kro-O6-Yyd"/>
+                            <constraint firstItem="pQE-x5-dYy" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Roa-RD-FZa"/>
+                            <constraint firstItem="3Lh-FN-DH1" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="bGk-9l-Sk3"/>
+                            <constraint firstAttribute="trailing" secondItem="pQE-x5-dYy" secondAttribute="trailing" constant="30" id="dip-6r-pH2"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="pQE-x5-dYy" secondAttribute="bottom" constant="30" id="j4Q-MO-UFW"/>
+                            <constraint firstAttribute="trailing" secondItem="3Lh-FN-DH1" secondAttribute="trailing" id="kmu-M2-aBO"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -45,4 +59,8 @@
             <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="background" width="1080" height="1920"/>
+        <image name="icon" width="145" height="146"/>
+    </resources>
 </document>

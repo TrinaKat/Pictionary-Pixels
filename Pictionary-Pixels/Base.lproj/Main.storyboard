@@ -894,6 +894,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="czW-GT-IAt">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Players:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="195" translatesAutoresizingMaskIntoConstraints="NO" id="J9v-xg-YYX">
                                 <rect key="frame" x="157" y="323.5" width="60" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -902,9 +905,12 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8KL-ej-79v" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
                                 <rect key="frame" x="116" y="243.5" width="143" height="48"/>
+                                <color key="backgroundColor" red="0.9718843272698896" green="1" blue="0.97370178986707578" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
-                                <state key="normal" title="Start Game"/>
+                                <state key="normal" title="Start Game">
+                                    <color key="titleShadowColor" red="0.88311924645303563" green="0.91386010362694303" blue="0.9132780623650496" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                         <integer key="value" value="3"/>
@@ -926,8 +932,12 @@
                         <constraints>
                             <constraint firstItem="J9v-xg-YYX" firstAttribute="centerY" secondItem="Od4-Mt-W1M" secondAttribute="centerY" id="J3Z-8y-pxr"/>
                             <constraint firstItem="J9v-xg-YYX" firstAttribute="top" secondItem="8KL-ej-79v" secondAttribute="bottom" constant="32" id="Jve-23-Lt0"/>
+                            <constraint firstItem="czW-GT-IAt" firstAttribute="leading" secondItem="Od4-Mt-W1M" secondAttribute="leading" id="K8C-oe-mGH"/>
+                            <constraint firstItem="Uuq-aG-XEY" firstAttribute="top" secondItem="czW-GT-IAt" secondAttribute="bottom" id="OoH-nh-3nB"/>
                             <constraint firstItem="8KL-ej-79v" firstAttribute="centerX" secondItem="Od4-Mt-W1M" secondAttribute="centerX" id="cY5-Yf-ygD"/>
                             <constraint firstItem="J9v-xg-YYX" firstAttribute="centerX" secondItem="Od4-Mt-W1M" secondAttribute="centerX" id="kog-cf-NID"/>
+                            <constraint firstItem="czW-GT-IAt" firstAttribute="top" secondItem="Od4-Mt-W1M" secondAttribute="top" id="smb-Id-fUi"/>
+                            <constraint firstAttribute="trailing" secondItem="czW-GT-IAt" secondAttribute="trailing" id="yEY-MS-0Aa"/>
                         </constraints>
                     </view>
                     <connections>
@@ -950,14 +960,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="JaM-Dx-YBY">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="NIL-R6-KlV">
                                 <rect key="frame" x="126" y="241.5" width="123" height="184"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XPH-Bs-968" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="123" height="48"/>
+                                        <color key="backgroundColor" red="0.96636152836533451" green="1" blue="0.9993630958835128" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                         <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
-                                        <state key="normal" title="5 Points"/>
+                                        <state key="normal" title="5 Points">
+                                            <color key="titleShadowColor" red="0.80852195716414743" green="0.83666612694300513" blue="0.83613325084262968" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                 <integer key="value" value="3"/>
@@ -976,9 +992,12 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jOJ-sz-ckt" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="68" width="123" height="48"/>
+                                        <color key="backgroundColor" red="0.96636152836533451" green="1" blue="0.9993630958835128" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                         <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
-                                        <state key="normal" title="10 Points"/>
+                                        <state key="normal" title="10 Points">
+                                            <color key="titleShadowColor" red="0.83469164071646329" green="0.8637467616580311" blue="0.86319663778992861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                 <integer key="value" value="3"/>
@@ -997,9 +1016,12 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vin-jq-nHF" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="136" width="123" height="48"/>
+                                        <color key="backgroundColor" red="0.96636152836533451" green="1" blue="0.9993630958835128" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                         <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
-                                        <state key="normal" title="20 Points"/>
+                                        <state key="normal" title="20 Points">
+                                            <color key="titleShadowColor" red="0.87776013337879455" green="0.90831444300518138" blue="0.90773593379736661" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                 <integer key="value" value="3"/>
@@ -1023,7 +1045,7 @@
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                     <bool key="isElement" value="NO"/>
                                 </accessibility>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="45"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -1033,10 +1055,14 @@
                             <accessibilityTraits key="traits" notEnabled="YES"/>
                         </accessibility>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="JaM-Dx-YBY" secondAttribute="trailing" id="0Aw-hi-5ti"/>
                             <constraint firstItem="NIL-R6-KlV" firstAttribute="top" secondItem="Rum-Fc-BYC" secondAttribute="bottom" constant="28" id="2Ne-Zv-cRH"/>
+                            <constraint firstItem="jne-1E-Us8" firstAttribute="top" secondItem="JaM-Dx-YBY" secondAttribute="bottom" id="3mo-Wk-G1H"/>
                             <constraint firstItem="NIL-R6-KlV" firstAttribute="centerX" secondItem="OyV-Yd-XO3" secondAttribute="centerX" id="6sw-8P-59t"/>
+                            <constraint firstItem="JaM-Dx-YBY" firstAttribute="top" secondItem="OyV-Yd-XO3" secondAttribute="top" id="VW4-mu-qTQ"/>
                             <constraint firstItem="Rum-Fc-BYC" firstAttribute="centerX" secondItem="OyV-Yd-XO3" secondAttribute="centerX" id="Y2y-mU-qDc"/>
                             <constraint firstItem="NIL-R6-KlV" firstAttribute="centerY" secondItem="OyV-Yd-XO3" secondAttribute="centerY" id="eWT-FU-JLs"/>
+                            <constraint firstItem="JaM-Dx-YBY" firstAttribute="leading" secondItem="OyV-Yd-XO3" secondAttribute="leading" id="i3p-1L-3Yp"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1051,9 +1077,12 @@
             <point key="canvasLocation" x="-668" y="196.55172413793105"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="background" width="1080" height="1920"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Xt2-V2-7ob"/>
-        <segue reference="6r3-W8-wbn"/>
-        <segue reference="OSq-s5-DNB"/>
+        <segue reference="Am3-Mi-gQR"/>
+        <segue reference="9fb-Ye-qwQ"/>
+        <segue reference="wwV-CH-PRY"/>
     </inferredMetricsTieBreakers>
 </document>
