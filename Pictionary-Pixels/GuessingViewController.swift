@@ -100,7 +100,7 @@ class GuessingViewController: UIViewController {
         } else {
             words = url_words
         }
-        print("Using following word array in PointsView:")
+        print("Using following word array in GuessingView:")
         print(words)
         
         let answer_num = arc4random_uniform(UInt32(words.count))

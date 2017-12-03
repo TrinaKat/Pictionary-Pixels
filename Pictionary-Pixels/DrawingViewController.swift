@@ -12,7 +12,7 @@ class DrawingViewController: UIViewController {
     
     // Passed in from PointsView
     var multipeerService: MultipeerServiceManager!
-    var rounds: Any!
+//    var startAnswer: String!
 
     // MARK: Properties
 
@@ -160,7 +160,7 @@ class DrawingViewController: UIViewController {
         self.multipeerService.delegate = self
         
         // TODO: initialize this in points view, or hopefully get this updated when drawer loads before guesser does (everytime guesser loads, updates answer
-        currentWordLabel.text = answer
+        self.currentWordLabel.text = answer //startAnswer
         winnerLabel.isHidden = true
     }
   
