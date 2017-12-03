@@ -16,6 +16,7 @@ class HomeViewController: UIViewController {
     
     @IBAction func startPressed(_ sender: Any) {
         multipeerService.stopAdvertisingSelf()
+        multipeerService.chooseDrawer()
     }
 
     override func viewDidLoad() {

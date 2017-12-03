@@ -51,6 +51,14 @@ class MultipeerServiceManager : NSObject {
         self.serviceAdvertiser.stopAdvertisingPeer()
         self.serviceBrowser.stopBrowsingForPeers()
         if (session.connectedPeers.count > 0) {
+            guard var deviceOrdering = devices else {
+                print("No device ordering set yet!")
+                return
+            }
+            for i in 0..<session.connectedPeers.count {
+                deviceOrdering.append(session.connectedPeers[i].displayName)
+            }
+            deviceOrdering.append(myPeerId.displayName)
             do {
                 try self.session.send("startGame".data(using: .utf8)!, toPeers: session.connectedPeers, with: .reliable)
             }

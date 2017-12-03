@@ -8,6 +8,8 @@
 
 import UIKit
 
+var devices: [String]?
+
 // IBInspectable allows you to add custom attributes to Interface Builder!
 // now all buttons have an option for corner radius, border width and color
 // IBDesignable renders these custom attribute changes in the storyboard live
