@@ -94,7 +94,7 @@ class GuessingViewController: UIViewController {
         if url_words.count <= 0  && local_words.count > 0{
             words = local_words
         } else if local_words.count <= 0 {
-            let hard_coded_words = ["this", "is", "hard", "coded", "mochi", "stickers", "candy", "ucla", "bruins"]
+            let hard_coded_words = ["hello", "world", "tea", "mochi", "stickers", "candy", "ucla", "bruins", "computer", "keyboard", "mouse", "cup", "bottle", "chips", "napkin", "earbuds", "mirror", "shadow", "photo", "horse", "cat", "dog", "cow", "goat", "corgi", "squirrel", "unicorn", "stairs", "ladder", "phone", "book", "driver", "nail", "neck", "hand", "harp", "football", "soccer", "tennis", "swimmer", "golf", "ticket", "magic", "snake", "braces", "crutches", "cast", "singer", "desk", "cape", "hero", "fish", "dancer", "pie", "cupcake", "teacher", "student", "star", "adult", "airplane", "apple", "pear", "peach", "baby", "backpack", "bathtub", "bird", "button", "carrot", "chess", "circle", "clock", "clown", "coffee", "comet", "compass", "diamond", "drums", "ears", "elephant", "feather", "fire", "garden", "gloves", "grapes", "hammer", "highway", "spider", "kitchen", "knife", "map", "maze", "money", "rich", "needle", "onion", "painter", "perfume", "prison", "potato", "rainbow", "record", "robot", "rocket", "rope", "sandwich", "shower", "spoon", "sword", "teeth", "tongue", "triangle", "umbrella", "vacuum", "vampire", "werewolf", "water", "window", "worm", "bones", "cannon", "whistle", "brick", "volcano", "stamp", "flowers", "boat", "rain", "stretch", "farm", "soap", "tape", "suit", "tie", "egg", "bucket", "monkey", "shark", "pizza", "couch", "skirt", "cactus", "milk", "cookie", "bait", "boil", "wax", "comb", "mask", "stick", "bat", "cloud", "sneeze", "sick", "you", "saw", "shoe", "staple", "butter", "bell", "sponge", "train", "mail", "thunder", "cheese", "turkey", "snow", "mountain", "giraffe", "ceiling", "drawing", "fishing", "penguin", "hat", "balloon", "earring", "garbage", "ketchup", "nametag", "waffle", "music", "concert", "comic", "check", "zebra", "zit", "yolk", "quilt", "open", "lemon", "kiss", "jar", "archer", "bow", "igloo", "lion", "lake", "idea", "wedding", "crown"]
             words = hard_coded_words
         } else {
             words = url_words
@@ -113,32 +113,6 @@ class GuessingViewController: UIViewController {
     }
     
     func loadData() {
-        // Choose answer string
-        // Backup if getting words from URL didn't work (takes time)
-        // Next round will try to access url_words again
-        // TODO: keep track of used words
-//        self.readLocalJSON()
-//
-//        if url_words.count <= 0  && local_words.count > 0{
-//            words = local_words
-//        } else if local_words.count <= 0 {
-//            let hard_coded_words = ["this", "is", "hard", "coded", "mochi", "stickers", "candy", "ucla", "bruins"]
-//            words = hard_coded_words
-//        } else {
-//            words = url_words
-//        }
-//        print("Using following word array in PointsView:")
-//        print(words)
-//
-//        let answer_num = arc4random_uniform(UInt32(words.count))
-//        answer = words[Int(answer_num)] as! String
-//        print("The chosen answer is:")
-//        print(answer)
-//
-//        // Send answer to all peers
-//        let dictionary:NSDictionary = ["answer": answer, "newRound": "true", "updateIndex": drawerIndex]
-//        multipeerService.sendMessage(message: dictionary)
-
         // Do any additional setup after loading the view.
         guessStatusLabel.isHidden = false
         updateGuessStatus(toState: CONTINUE_GUESSING)
