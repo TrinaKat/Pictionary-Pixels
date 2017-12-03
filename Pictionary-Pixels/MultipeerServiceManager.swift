@@ -37,12 +37,22 @@ class MultipeerServiceManager : NSObject {
     // Used by all views to send data to other peers
     func sendMessage(message: NSDictionary){
         if session.connectedPeers.count > 0 {
+            //store the devices
             do {
                 try self.session.send(NSKeyedArchiver.archivedData(withRootObject: message), toPeers: session.connectedPeers, with: MCSessionSendDataMode.reliable)
             } catch {
                 NSLog("\(error)")
             }
         }
+    }
+    
+    func storeDevices() -> [String] {
+//        let total_players:Int = session.connectedPeers.count + 1
+//        starter = Int(arc4random_uniform(UInt32(total_players)))
+        devices = session.connectedPeers.map{$0.displayName}
+        devices?.append(myPeerId.displayName)
+        print("\n\n\n\n\n start button pressed \n\n\n\n\n\n\n \(devices) \n\n\n\n\n")
+        return devices!
     }
     
     override init() {

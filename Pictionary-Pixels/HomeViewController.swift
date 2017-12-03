@@ -35,7 +35,8 @@ class HomeViewController: UIViewController {
     // Peers on start screen will handle message in messageReceived()
     @IBAction func startPressed(_ sender: Any) {
         // Pass dictionary on to all players
-        let dictionary:NSDictionary = ["startGame": "true"]
+        let deviceArr = multipeerService.storeDevices()
+        let dictionary:NSDictionary = ["startGame": deviceArr]
         multipeerService.sendMessage(message: dictionary)
     }
     
@@ -54,13 +55,14 @@ extension HomeViewController : MultipeerServiceManagerDelegate {
     func messageReceived(manager: MultipeerServiceManager, message: NSDictionary) {
         OperationQueue.main.addOperation {
             // Peers who receive "startGame" message should segue to the PointsView
-            if message["startGame"] != nil {
+            if let deviceOrdering = message["startGame"] as? [String] {
+                devices = deviceOrdering
+                print("\n\n\n\n\n\n\n \(devices) \n\n\n\n\n")
                 self.performSegue(withIdentifier: "PointsViewSegue", sender: self)
             }
             // Any other messages are unimportant on this view and thus ignored
         }
     }
-    
     
     func connectedDevicesChanged(manager: MultipeerServiceManager, connectedDevices: [String]) {
         OperationQueue.main.addOperation {
