@@ -9,19 +9,20 @@
 import UIKit
 
 class PointsViewController: UIViewController {
-//    var multipeerService: MultipeerServiceManager!
-    let multipeerService = MultipeerServiceManager()
+    var multipeerService: MultipeerServiceManager!
+    var rounds = 42
     
-  @IBOutlet weak var PlayToTextField: UITextField!
-  @IBOutlet weak var leastPointsButton: GameButton!
-  @IBOutlet weak var averagePointsButton: GameButton!
-  @IBOutlet weak var mostPointsButton: GameButton!
+    @IBOutlet weak var PlayToTextField: UITextField!
+    @IBOutlet weak var leastPointsButton: GameButton!
+    @IBOutlet weak var averagePointsButton: GameButton!
+    @IBOutlet weak var mostPointsButton: GameButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.multipeerService.delegate = self as? MultipeerServiceManagerDelegate
-
+        
         // Do any additional setup after loading the view.
+        self.multipeerService.delegate = self
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,66 +30,65 @@ class PointsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // Send MultipeerServiceManager with segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if (segue.identifier == "DrawingViewSegue") {
+            if let dest = segue.destination as? DrawingViewController {
+                dest.multipeerService = multipeerService
+                dest.rounds = rounds
+            }
+        } else if (segue.identifier == "GuessingViewSegue") {
+            if let dest = segue.destination as? GuessingViewController {
+                dest.multipeerService = multipeerService
+                dest.rounds = rounds
+            }
+        }
     }
-    */
     
     // MARK: Actions
+    // TODO: Send first answerString to both guest/drawer views!
     @IBAction func drawFor5(_ sender: GameButton) {
         print("Least")
-        
-        let dictionary:NSDictionary = ["roundPoints": 5] //, "words": self.words]
+        let dictionary:NSDictionary = ["roundPoints": 5]
         multipeerService.sendMessage(message: dictionary)
+        
+        rounds = 5
+        
+        self.performSegue(withIdentifier: "DrawingViewSegue", sender: self)
     }
     
     @IBAction func drawFor10(_ sender: GameButton) {
         print("10 Pts 4 u")
         let dictionary:NSDictionary = ["roundPoints": 10]
         multipeerService.sendMessage(message: dictionary)
+        
+        rounds = 10
+        
+        self.performSegue(withIdentifier: "DrawingViewSegue", sender: self)
     }
     
     @IBAction func drawFor20(_ sender: GameButton) {
         print("Most")
         let dictionary:NSDictionary = ["roundPoints": 20]
         multipeerService.sendMessage(message: dictionary)
+        
+        rounds = 20
+        
+        self.performSegue(withIdentifier: "DrawingViewSegue", sender: self)
     }
 }
 
 extension PointsViewController : MultipeerServiceManagerDelegate {
     func messageReceived(manager: MultipeerServiceManager, message: NSDictionary) {
         OperationQueue.main.addOperation {
-            // message
             if message["roundPoints"] != nil {
-                // TODO: need to load drawer first so on guesser load it works, but many answer strings generated????
-//                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//                let newViewController = storyBoard.instantiateViewController(withIdentifier: "DrawingView") as! DrawingViewController
-//                self.present(newViewController, animated: true, completion: nil)
+                // Debugging print statements
+                print("Received point value from button!!!")
+                print(message["roundPoints"] ?? 42)
+                
+                // Everyone else becomes a guesser
+                self.performSegue(withIdentifier: "GuessingViewSegue", sender: self)
             }
-            
-//            let points = message["roundPoints"]
-//            // What if nil
-//            if points as! Int == 5 {
-//                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//                let newViewController = storyBoard.instantiateViewController(withIdentifier: "DrawingView") as! DrawingViewController
-//                self.present(newViewController, animated: true, completion: nil)
-//            } else if points as! Int == 10 {
-//                print("10 away from awesome")
-////                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-////                let newViewController = storyBoard.instantiateViewController(withIdentifier: "GuessingView") as! GuessingViewController
-////                self.present(newViewController, animated: true, completion: nil)
-//            } else if points as! Int == 20 {
-//                print("That 20 good life")
-////                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-////                let newViewController = storyBoard.instantiateViewController(withIdentifier: "MessageView") as! MessageViewController
-////                self.present(newViewController, animated: true, completion: nil)
-//            }
         }
     }
     

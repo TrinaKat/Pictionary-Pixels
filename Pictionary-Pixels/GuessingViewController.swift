@@ -10,8 +10,10 @@ import UIKit
 
 class GuessingViewController: UIViewController {
     
-//    var multipeerService: MultipeerServiceManager!
-    let multipeerService = MultipeerServiceManager()
+    var multipeerService: MultipeerServiceManager!
+//    let multipeerService = MultipeerServiceManager()
+    
+    var rounds: Any!
     
     var words: [Any] = []
     var url_words: [Any] = []

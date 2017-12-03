@@ -10,8 +10,10 @@ import UIKit
 
 class DrawingViewController: UIViewController {
     
-//    var multipeerService: MultipeerServiceManager!
-    let multipeerService = MultipeerServiceManager()
+    var multipeerService: MultipeerServiceManager!
+//    let multipeerService = MultipeerServiceManager()
+    
+    var rounds: Any!
 
   // MARK: Properties
   

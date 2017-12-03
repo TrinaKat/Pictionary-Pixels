@@ -11,6 +11,8 @@ import MultipeerConnectivity
 
 protocol MultipeerServiceManagerDelegate {
     func connectedDevicesChanged(manager : MultipeerServiceManager, connectedDevices: [String])
+    
+    // Used by devices to handle/respond to messages sent from other peers
     func messageReceived(manager: MultipeerServiceManager, message: NSDictionary)
 }
 
@@ -19,6 +21,7 @@ class MultipeerServiceManager : NSObject {
     // Service type must be a unique string, at most 15 characters long
     // and can contain only ASCII lowercase letters, numbers and hyphens.
     private let MultipeerServiceType = "game-starter"
+    
     var delegate : MultipeerServiceManagerDelegate?
     
     private let myPeerId = MCPeerID(displayName: UIDevice.current.name)
@@ -31,8 +34,8 @@ class MultipeerServiceManager : NSObject {
         return session
     }()
     
+    // Used by all views to send data to other peers
     func sendMessage(message: NSDictionary){
-        //NSLog("sendMessage: \(message)")
         if session.connectedPeers.count > 0 {
             do {
                 try self.session.send(NSKeyedArchiver.archivedData(withRootObject: message), toPeers: session.connectedPeers, with: MCSessionSendDataMode.reliable)
@@ -60,31 +63,16 @@ class MultipeerServiceManager : NSObject {
         self.serviceBrowser.stopBrowsingForPeers()
     }
     
-//    func stopAdvertisingSelf() {
-//        NSLog("%@", "Stopped advertising \(UIDevice.current.name) and all other players")
-//        self.serviceAdvertiser.stopAdvertisingPeer()
-//        self.serviceBrowser.stopBrowsingForPeers()
-//        if session.connectedPeers.count > 0 {
-//            do {
-//                let message:NSDictionary = ["startGame": "true"]
-//                try self.session.send(NSKeyedArchiver.archivedData(withRootObject: message), toPeers: session.connectedPeers, with: MCSessionSendDataMode.reliable)
-//            } catch {
-//                NSLog("%@", "Error: Could not stop advertising all players: \(error)")
-//                NSLog("\(error)")
-//            }
-//        }
-//    }
-    
 }
 
 extension MultipeerServiceManager : MCNearbyServiceAdvertiserDelegate {
     
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didNotStartAdvertisingPeer error: Error) {
-        NSLog("%@", "didNotStartAdvertisingPeer: \(error)")
+//        NSLog("%@", "didNotStartAdvertisingPeer: \(error)")
     }
     
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
-        NSLog("%@", "didReceiveInvitationFromPeer \(peerID)")
+//        NSLog("%@", "didReceiveInvitationFromPeer \(peerID)")
         if let wd = UIApplication.shared.delegate?.window {
             var vc = wd!.rootViewController
             if (vc is UINavigationController) {
@@ -101,12 +89,12 @@ extension MultipeerServiceManager : MCNearbyServiceAdvertiserDelegate {
 extension MultipeerServiceManager : MCNearbyServiceBrowserDelegate {
     
     func browser(_ browser: MCNearbyServiceBrowser, didNotStartBrowsingForPeers error: Error) {
-        NSLog("%@", "didNotStartBrowsingForPeers: \(error)")
+//        NSLog("%@", "didNotStartBrowsingForPeers: \(error)")
     }
     
     func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
-        NSLog("%@", "foundPeer: \(peerID)")
-        NSLog("%@", "invitePeer: \(peerID)")
+//        NSLog("%@", "foundPeer: \(peerID)")
+//        NSLog("%@", "invitePeer: \(peerID)")
         if let wd = UIApplication.shared.delegate?.window {
             var vc = wd!.rootViewController
             if (vc is UINavigationController) {
@@ -119,7 +107,7 @@ extension MultipeerServiceManager : MCNearbyServiceBrowserDelegate {
     }
     
     func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
-        NSLog("%@", "lostPeer: \(peerID)")
+//        NSLog("%@", "lostPeer: \(peerID)")
     }
     
 }
@@ -127,26 +115,27 @@ extension MultipeerServiceManager : MCNearbyServiceBrowserDelegate {
 extension MultipeerServiceManager : MCSessionDelegate {
     
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
-        NSLog("%@", "peer \(peerID) didChangeState: \(state)")
+//        NSLog("%@", "peer \(peerID) didChangeState: \(state)")
         self.delegate?.connectedDevicesChanged(manager: self, connectedDevices:
             session.connectedPeers.map{$0.displayName})
     }
     
+    // When peers send data, forwarded to other peers at messageReceived() for handling
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
-        NSLog("%@", "didReceiveData: \(data)")
+//        NSLog("%@", "didReceiveData: \(data)")
         self.delegate?.messageReceived(manager: self, message: NSKeyedUnarchiver.unarchiveObject(with: data) as! NSDictionary)
     }
     
     func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
-        NSLog("%@", "didReceiveStream")
+//        NSLog("%@", "didReceiveStream")
     }
     
     func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress) {
-        NSLog("%@", "didStartReceivingResourceWithName")
+//        NSLog("%@", "didStartReceivingResourceWithName")
     }
     
     func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
-        NSLog("%@", "didFinishReceivingResourceWithName")
+//        NSLog("%@", "didFinishReceivingResourceWithName")
     }
     
 }
