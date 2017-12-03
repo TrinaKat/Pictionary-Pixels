@@ -10,46 +10,41 @@ import UIKit
 
 class GuessingViewController: UIViewController {
     
+    // Passed in from PointsView
     var multipeerService: MultipeerServiceManager!
-//    let multipeerService = MultipeerServiceManager()
-    
     var rounds: Any!
     
-    var words: [Any] = []
-    var url_words: [Any] = []
-    var local_words: [Any] = []
-    
-    var other_isSwiping = false
-    var otherLastPoint = CGPoint(x: 0, y: 0)
-    
-    // current selected color and other settings
+    // Get drawing from drawing view on guessing view
+    // Used for replicating drawing on guessing view
+    var lastPoint = CGPoint(x: 0, y: 0)
     var currColor: CGColor = UIColor.black.cgColor
     var brushWidth: CGFloat = 8.0
-    
-    // assuming this stays same for both views, across app lifecycle, set in viewDidLoad
     var viewFrameSize: CGSize?
     
     // DRAWING MAGIC
+    // Draws line between 2 points
     func drawLine(from p1: CGPoint, to p2: CGPoint) {
-        // starts empty, want to draw into mainImageView
+        // Starts empty, want to draw into mainImageView
         // CGContext = 2D drawing environment, with drawing parameters / device info
-        // needed to render drawing correctly for destination (e.g. app window, PDF)
+        // Needed to render drawing correctly for destination (e.g. app window, PDF)
         guard let frameSize = viewFrameSize else {
-            print("size of view frame not initialized yet!")
+            print("Guess Size of view frame not initialized yet!")
             return
         }
+        
         UIGraphicsBeginImageContext(frameSize)
         guard let context = UIGraphicsGetCurrentContext() else {
             print("No image context to draw to!")
             return
         }
+        
         inputImageView.image?.draw(in: CGRect(x: 0, y: 0, width: frameSize.width, height: frameSize.height))
         
-        // add the line data to context from p1 to p2 (p1, p2 very close together)
+        // Add the line data to context from p1 to p2 (p1, p2 very close together)
         context.move(to: p1)
         context.addLine(to: p2)
         
-        // other settings for drawing
+        // Other settings for drawing
         context.setLineCap(CGLineCap.round)
         context.setLineWidth(brushWidth)
         context.setStrokeColor(currColor)
@@ -58,12 +53,13 @@ class GuessingViewController: UIViewController {
         // MAGIC METHOD to actually form the line
         context.strokePath()
         
-        // wrap up drawing context, render newly drawn line in mainImageView
-        // basically captures what is put on screen into actual graphics and put in a view
+        // Wrap up drawing context, render newly drawn line in mainImageView
+        // Basically captures what is put on screen into actual graphics and put in a view
         inputImageView.image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
     }
     
+    // Handle all guessing functionality
     @IBOutlet weak var inputImageView: UIImageView!
     @IBOutlet weak var timeLeftLabel: UILabel!
     @IBOutlet var guessedLetterLabels: [GameLetter]!
@@ -73,16 +69,23 @@ class GuessingViewController: UIViewController {
     @IBOutlet weak var guessStatusLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     
-    var hiddenLetterLabels = 0
-    var answer: String = "hello"
+    // Constants
     var letterButtonCount: Int = 12
     let alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y","z"]
     
+    // Variables
+    var answer: String = "hello"
+    var hiddenLetterLabels = 0
     var guessedLetterIndex = 0
     var deleteChar = " "
     var guess = ""
     var score = 0
-    var winningScore = 3 // TODO: set this with button press
+    var winningScore = 42 // Set this to number of rounds
+    
+    // Used to determine answer string
+    var words: [Any] = []
+    var url_words: [Any] = []
+    var local_words: [Any] = []
     
     func loadData() {
         // Choose answer string
@@ -179,23 +182,29 @@ class GuessingViewController: UIViewController {
                 counter+=1
             }
         }
+        
+        // Clear any past drawings
+        inputImageView.image = nil
     }
     
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    // Do any additional setup after loading the view, typically from a nib.
+    self.multipeerService.delegate = self
+    viewFrameSize = inputImageView.frame.size
+    winningScore = rounds as! Int
+    
     // Get words with wifi/cellular
     self.readUrlJSON()
-    
     self.loadData()
-    
-    self.multipeerService.delegate = self as? MultipeerServiceManagerDelegate
   }
 
   override func didReceiveMemoryWarning() {
       super.didReceiveMemoryWarning()
       // Dispose of any resources that can be recreated.
   }
+    
     // MARK: Actions
   
     // helper just for the status label
@@ -269,9 +278,11 @@ class GuessingViewController: UIViewController {
                     // Check if guesser won game
                     if self.score == self.winningScore {
                         // TODO: everyone transitions to end game screen
-                        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                        let messageController = storyBoard.instantiateViewController(withIdentifier: "MessageView") as! MessageViewController
-                        self.present(messageController, animated: true, completion: nil)
+                        let dictionary:NSDictionary = ["gameOver": "true"]
+                        self.multipeerService.sendMessage(message: dictionary)
+                        
+                        // TODO: game over restart game handling
+                        print("guess GAME OVER GAME OVER GAME OVER GAME OVER")
                     }
                     
                     // reload the screen
@@ -327,19 +338,9 @@ class GuessingViewController: UIViewController {
         guessedLetterIndex = 0
     }
 
-  /*
-  // MARK: - Navigation
-
-  // In a storyboard-based application, you will often want to do a little preparation before navigation
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      // Get the new view controller using segue.destinationViewController.
-      // Pass the selected object to the new view controller.
-  }
-  */
-    
-    // Test JSON parsing
+    // Get JSON data from a local JSON file
+    // Backup if web server is down
     func readLocalJSON() {
-        //        print("Getting word data locally")
         if let path = Bundle.main.path(forResource: "words", ofType: "json") {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
@@ -348,21 +349,15 @@ class GuessingViewController: UIViewController {
                     let json =  try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
                     
                     // JSONObjectWithData returns AnyObject so the first thing to do is to downcast to dictionary type
-                    //                    print("Entire json file contents:")
-                    //                    print(json)
-                    
-                    // Print all the key/value from the json
-                    //                    let jsonDictionary =  json
-                    //                    print("Mapping key - values in json:")
-                    //                    for (key, value) in jsonDictionary {
-                    //                        print("\(key) - \(value) ")
-                    //                    }
-                    
-                    // e.g to get a word
-                    //                    print("Getting words array from json:")
+                    // Print all the key/values from the JSON
+                    // let jsonDictionary =  json
+                    // for (key, value) in jsonDictionary {
+                    //      print("\(key) - \(value) ")
+                    // }
+
                     let json_words = json["words"]  as! [Any]
-                    //                    print(json_words)
-                    //                    print(json_words[0])
+                    // print(json_words)
+                    // print(json_words[0])
                     local_words = json_words
                     
                 } catch let error {
@@ -378,18 +373,17 @@ class GuessingViewController: UIViewController {
         }
     }
     
+    // Read a JSON from a URL via wifi/cellular data
     func readUrlJSON() {
-        //        print("Getting word data from server via wifi/cellular")
         let url = URL(string: "https://pictionary-pixels.herokuapp.com/")
         URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
             guard let data = data, error == nil else { return }
             
             do {
-                //                print("Getting words array and individual words from url")
                 let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
                 let json_words = json["words"]  as! [Any]
-                //                print(json_words)
-                //                print(json_words[0])
+                // print(json_words)
+                // print(json_words[0])
                 self.url_words = json_words
             } catch let error as NSError {
                 print(error)
@@ -409,19 +403,28 @@ extension GuessingViewController: MultipeerServiceManagerDelegate{
     func messageReceived(manager: MultipeerServiceManager, message: NSDictionary) {
         OperationQueue.main.addOperation {
             // message
-            if let point = message["newPoint"] {
-                self.other_isSwiping = true
-                self.otherLastPoint = ((point as? NSValue)?.cgPointValue)!
+            if let point = message["new_point"] {
+                self.lastPoint = ((point as? NSValue)?.cgPointValue)!
             }
-            else if let point = message["drawPoint"] {
-                self.drawLine(from: self.otherLastPoint, to: ((point as? NSValue)?.cgPointValue)!)
-                self.otherLastPoint = ((point as? NSValue)?.cgPointValue)!
+            
+            if let point = message["current_point"] {
+                self.drawLine(from: self.lastPoint, to: ((point as? NSValue)?.cgPointValue)!)
+                self.lastPoint = ((point as? NSValue)?.cgPointValue)!
             }
-            else if let point = message["endPoint"] {
-                self.other_isSwiping = false
-                self.drawLine(from: self.otherLastPoint, to: ((point as? NSValue)?.cgPointValue)!)
+            
+            if let point = message["last_point"] {
+                self.drawLine(from: self.lastPoint, to: ((point as? NSValue)?.cgPointValue)!)
             }
-            else if message["reset"] != nil {
+            
+            if let width = message["brush_width"] {
+                self.brushWidth = width as! CGFloat
+            }
+            
+            if let color = message["stroke_color"] {
+                self.currColor = color as! CGColor
+            }
+            
+            if message["reset"] != nil {
                 self.inputImageView.image = nil
             }
         }
