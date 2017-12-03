@@ -469,7 +469,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7C8-ip-scm" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
-                                                        <rect key="frame" x="61" y="0.0" width="52" height="34"/>
+                                                        <rect key="frame" x="61" y="0.0" width="52.5" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                         <state key="normal" title="1">
                                                             <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -490,7 +490,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h4i-by-CcM" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
-                                                        <rect key="frame" x="121" y="0.0" width="53" height="34"/>
+                                                        <rect key="frame" x="121.5" y="0.0" width="53" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                         <state key="normal" title="2">
                                                             <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -511,7 +511,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mc1-Bk-3th" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
-                                                        <rect key="frame" x="182" y="0.0" width="52.5" height="34"/>
+                                                        <rect key="frame" x="182.5" y="0.0" width="52" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                         <state key="normal" title="3">
                                                             <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -563,7 +563,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZcS-XC-bIx" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
-                                                        <rect key="frame" x="61" y="0.0" width="52" height="34"/>
+                                                        <rect key="frame" x="61" y="0.0" width="52.5" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                         <state key="normal" title="5">
                                                             <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -584,7 +584,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oha-wS-2yb" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
-                                                        <rect key="frame" x="121" y="0.0" width="53" height="34"/>
+                                                        <rect key="frame" x="121.5" y="0.0" width="53" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                         <state key="normal" title="6">
                                                             <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -605,7 +605,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K0M-w1-eF2" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
-                                                        <rect key="frame" x="182" y="0.0" width="52.5" height="34"/>
+                                                        <rect key="frame" x="182.5" y="0.0" width="52" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                         <state key="normal" title="7">
                                                             <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -657,7 +657,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5yX-mm-ccT" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
-                                                        <rect key="frame" x="61" y="0.0" width="52" height="34"/>
+                                                        <rect key="frame" x="61" y="0.0" width="52.5" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                         <state key="normal" title="9">
                                                             <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -678,7 +678,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cUE-fc-ufV" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
-                                                        <rect key="frame" x="121" y="0.0" width="53" height="34"/>
+                                                        <rect key="frame" x="121.5" y="0.0" width="53" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                         <state key="normal" title="10">
                                                             <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -699,7 +699,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvU-P1-LGe" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
-                                                        <rect key="frame" x="182" y="0.0" width="52.5" height="34"/>
+                                                        <rect key="frame" x="182.5" y="0.0" width="52" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                         <state key="normal" title="11">
                                                             <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -794,9 +794,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;device_name&gt; wins!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uUf-vv-fBE">
-                                <rect key="frame" x="28" y="176" width="319" height="114"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;device_name&gt; wins!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uUf-vv-fBE">
+                                <rect key="frame" x="30" y="191" width="314" height="84"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="35"/>
                                 <color key="textColor" red="0.22894871897709512" green="0.14097002192972308" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -806,6 +805,7 @@
                         <constraints>
                             <constraint firstItem="ubW-1T-qrk" firstAttribute="centerX" secondItem="NJk-XC-wAa" secondAttribute="centerX" id="0Bh-1t-bKb"/>
                             <constraint firstItem="DlA-mw-bYV" firstAttribute="top" secondItem="VcD-Dp-BFi" secondAttribute="bottom" constant="12" id="3NA-xB-eJR"/>
+                            <constraint firstItem="uUf-vv-fBE" firstAttribute="leading" secondItem="NJk-XC-wAa" secondAttribute="leading" constant="30" id="D04-Zz-haX"/>
                             <constraint firstItem="fNu-dg-xZ0" firstAttribute="centerX" secondItem="NJk-XC-wAa" secondAttribute="centerX" id="GTt-0l-aML"/>
                             <constraint firstItem="VcD-Dp-BFi" firstAttribute="leading" secondItem="NJk-XC-wAa" secondAttribute="leading" id="H5M-bU-a2i"/>
                             <constraint firstItem="VcD-Dp-BFi" firstAttribute="height" secondItem="NJk-XC-wAa" secondAttribute="height" multiplier="0.7" id="IEa-Jw-Pik"/>
@@ -818,10 +818,12 @@
                             <constraint firstAttribute="trailingMargin" secondItem="DlA-mw-bYV" secondAttribute="trailing" id="cEZ-6M-1Gt"/>
                             <constraint firstItem="DlA-mw-bYV" firstAttribute="leading" secondItem="NJk-XC-wAa" secondAttribute="leadingMargin" id="gD2-EE-JMH"/>
                             <constraint firstItem="ubW-1T-qrk" firstAttribute="top" secondItem="DlA-mw-bYV" secondAttribute="bottom" constant="12" id="hBP-GO-VcO"/>
+                            <constraint firstItem="uUf-vv-fBE" firstAttribute="centerY" secondItem="VcD-Dp-BFi" secondAttribute="centerY" id="jHn-ub-DpP"/>
                             <constraint firstItem="DlA-mw-bYV" firstAttribute="top" secondItem="fNu-dg-xZ0" secondAttribute="bottom" constant="12" id="kIJ-nj-oJT"/>
                             <constraint firstItem="w8n-pB-DkH" firstAttribute="centerY" secondItem="ypf-6t-kkJ" secondAttribute="centerY" id="pdX-p8-M1g"/>
                             <constraint firstItem="fNu-dg-xZ0" firstAttribute="leading" secondItem="NJk-XC-wAa" secondAttribute="leadingMargin" constant="40" id="phc-N9-Bnl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="w8n-pB-DkH" secondAttribute="trailing" constant="5" id="tVl-GW-W90"/>
+                            <constraint firstItem="uUf-vv-fBE" firstAttribute="centerX" secondItem="NJk-XC-wAa" secondAttribute="centerX" id="xKM-Um-Hjn"/>
                         </constraints>
                     </view>
                     <connections>
