@@ -12,7 +12,6 @@ class GuessingViewController: UIViewController {
     
     // Passed in from PointsView
     var multipeerService: MultipeerServiceManager!
-    var rounds: Any!
     
     // Get drawing from drawing view on guessing view
     // Used for replicating drawing on guessing view
@@ -119,7 +118,8 @@ class GuessingViewController: UIViewController {
         multipeerService.sendMessage(message: dictionary)
 
         // Do any additional setup after loading the view.
-        updateGuessStatus(toState: 0)
+        guessStatusLabel.isHidden = false
+        updateGuessStatus(toState: CONTINUE_GUESSING)
         
         // Initialize variables
         guessedLetterIndex = 0
@@ -136,6 +136,11 @@ class GuessingViewController: UIViewController {
         for i in 0 ... letterButtonCount-1 {
             letterButtons[i].isEnabled = true
             letterButtons[i].alpha = 1.0
+        }
+        
+        // Re-enable all 8 letters
+        for i in 0 ... 7 {
+            guessedLetterLabels[i].isHidden = false
         }
         
         // Initializing guessed letter labels
@@ -226,13 +231,20 @@ class GuessingViewController: UIViewController {
     // Do any additional setup after loading the view, typically from a nib.
     self.multipeerService.delegate = self
     viewFrameSize = inputImageView.frame.size
-    winningScore = rounds as! Int
+    print("I LALALALALLALALALALALAL")
+    print("I LALALALALLALALALALALAL")
+    print("I LALALALALLALALALALALAL")
+    print(winningScore)
+    print("I LALALALALLALALALALALAL")
+    print("I LALALALALLALALALALALAL")
+    print("I LALALALALLALALALALALAL")
     score = 0
+    winnerLabel.isHidden = true
     
     // Get words with wifi/cellular
     self.readUrlJSON()
     self.loadData()
-    self.runTimer()
+    //self.runTimer()
   }
 
   override func didReceiveMemoryWarning() {
@@ -243,7 +255,7 @@ class GuessingViewController: UIViewController {
     // MARK: Actions
   
     // helper just for the status label
-    let CONTINUE_GUESSING = 0, CORRECT_GUESS = 1, INCORRECT_GUESS = 2
+    let CONTINUE_GUESSING = 0, CORRECT_GUESS = 1, INCORRECT_GUESS = 2, GAME_OVER = 3
   
     func updateGuessStatus(toState state: Int) {
       switch (state) {
@@ -255,6 +267,8 @@ class GuessingViewController: UIViewController {
         guessStatusLabel.alpha = 1
         guessStatusLabel.text = "Incorrect Answer!"
         guessStatusLabel.textColor = UIColor.red
+      case GAME_OVER:
+        guessStatusLabel.isHidden = true
       default:
         guessStatusLabel.alpha = 0.4
         guessStatusLabel.text = "Keep Guessing..."
@@ -299,17 +313,14 @@ class GuessingViewController: UIViewController {
                 
                 if score == winningScore {
                     winnerLabel.isHidden = false
+                    updateGuessStatus(toState: GAME_OVER)
                     
-                    // Make below use multipeer
+                    // Let all peers know that someone won the game
                     // Wait until winner label is displayed before navigating to points view
                     let when = DispatchTime.now() + 2
                     DispatchQueue.main.asyncAfter(deadline: when) {
-                        // Check if guesser won game and if so transition to PointsViewController
-                        if self.score == self.winningScore {
-                            let dictionary:NSDictionary = ["gameOver": "true"]
-                            self.multipeerService.sendMessage(message: dictionary)
-                        }
-                    // Make above use multipeer
+                        let dictionary:NSDictionary = ["gameOver": "true"]
+                        self.multipeerService.sendMessage(message: dictionary)
                     }
                 } else {
                     updateGuessStatus(toState: CORRECT_GUESS)
@@ -434,6 +445,13 @@ extension GuessingViewController: MultipeerServiceManagerDelegate{
     func messageReceived(manager: MultipeerServiceManager, message: NSDictionary) {
         OperationQueue.main.addOperation {
             // message
+            if message["gameOver"] != nil {
+                // Transition to PointsViewController
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let newViewController = storyBoard.instantiateViewController(withIdentifier: "PointsViewController")
+                self.present(newViewController, animated: true, completion: nil)
+            }
+            
             if let point = message["new_point"] {
                 self.lastPoint = ((point as? NSValue)?.cgPointValue)!
             }

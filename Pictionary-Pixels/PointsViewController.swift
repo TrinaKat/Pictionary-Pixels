@@ -40,7 +40,7 @@ class PointsViewController: UIViewController {
         } else if (segue.identifier == "GuessingViewSegue") {
             if let dest = segue.destination as? GuessingViewController {
                 dest.multipeerService = multipeerService
-                dest.rounds = rounds
+                dest.winningScore = rounds
             }
         }
     }
@@ -81,11 +81,8 @@ class PointsViewController: UIViewController {
 extension PointsViewController : MultipeerServiceManagerDelegate {
     func messageReceived(manager: MultipeerServiceManager, message: NSDictionary) {
         OperationQueue.main.addOperation {
-            if message["roundPoints"] != nil {
-                // Debugging print statements
-                print("Received point value from button!!!")
-                print(message["roundPoints"] ?? 42)
-                
+            if message["roundPoints"] != nil {                
+                self.rounds = message.object(forKey: "roundPoints") as! Int
                 // Everyone else becomes a guesser
                 self.performSegue(withIdentifier: "GuessingViewSegue", sender: self)
             }
