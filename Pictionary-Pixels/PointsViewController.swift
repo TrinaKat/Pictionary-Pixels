@@ -54,7 +54,11 @@ class PointsViewController: UIViewController {
         
         rounds = 5
         
-        self.performSegue(withIdentifier: "DrawingViewSegue", sender: self)
+        if UIDevice.current.name == devices![0] {
+            self.performSegue(withIdentifier: "DrawingViewSegue", sender: self)
+        } else {
+            self.performSegue(withIdentifier: "GuessingViewSegue", sender: self)
+        }
     }
     
     @IBAction func drawFor10(_ sender: GameButton) {
@@ -64,7 +68,11 @@ class PointsViewController: UIViewController {
         
         rounds = 10
         
-        self.performSegue(withIdentifier: "DrawingViewSegue", sender: self)
+        if UIDevice.current.name == devices![0] {
+            self.performSegue(withIdentifier: "DrawingViewSegue", sender: self)
+        } else {
+            self.performSegue(withIdentifier: "GuessingViewSegue", sender: self)
+        }
     }
     
     @IBAction func drawFor20(_ sender: GameButton) {
@@ -74,7 +82,11 @@ class PointsViewController: UIViewController {
         
         rounds = 20
         
-        self.performSegue(withIdentifier: "DrawingViewSegue", sender: self)
+        if UIDevice.current.name == devices![0] {
+            self.performSegue(withIdentifier: "DrawingViewSegue", sender: self)
+        } else {
+            self.performSegue(withIdentifier: "GuessingViewSegue", sender: self)
+        }
     }
 }
 
@@ -87,7 +99,11 @@ extension PointsViewController : MultipeerServiceManagerDelegate {
                 print(message["roundPoints"] ?? 42)
                 
                 // Everyone else becomes a guesser
-                self.performSegue(withIdentifier: "GuessingViewSegue", sender: self)
+                if UIDevice.current.name == devices![0] {
+                    self.performSegue(withIdentifier: "DrawingViewSegue", sender: self)
+                } else {
+                    self.performSegue(withIdentifier: "GuessingViewSegue", sender: self)
+                }
             }
         }
     }
