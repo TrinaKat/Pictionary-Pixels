@@ -15,10 +15,13 @@ class MultipeerServiceManager : NSObject {
     // and can contain only ASCII lowercase letters, numbers and hyphens.
     private let MultipeerServiceType = "game-starter"
     var delegate : MultipeerServiceManagerDelegate?
+    var viewController : MultipeerServiceViewManager?
     
     private let myPeerId = MCPeerID(displayName: UIDevice.current.name)
     public let serviceAdvertiser : MCNearbyServiceAdvertiser
     public let serviceBrowser : MCNearbyServiceBrowser
+    public var starter : Int
+    public var rounds : Int
     
     lazy var session : MCSession = {
         let session = MCSession(peer: self.myPeerId, securityIdentity: nil, encryptionPreference: .required)
@@ -29,6 +32,8 @@ class MultipeerServiceManager : NSObject {
     override init() {
         self.serviceAdvertiser = MCNearbyServiceAdvertiser(peer: myPeerId, discoveryInfo: nil, serviceType: MultipeerServiceType)
         self.serviceBrowser = MCNearbyServiceBrowser(peer: myPeerId, serviceType: MultipeerServiceType)
+        self.starter = 0
+        self.rounds = 0
         super.init()
         self.serviceAdvertiser.delegate = self as MCNearbyServiceAdvertiserDelegate
         self.serviceAdvertiser.startAdvertisingPeer()
@@ -53,6 +58,24 @@ class MultipeerServiceManager : NSObject {
                 NSLog("%@", "Error: Could not stop advertising all players: \(error)")
             }
         }
+    }
+    
+    func start() {
+        NSLog("%@", "To the Game View")
+        print("/n/n/n/n/n/n/nTo the Game View /n/n/n/n/n")
+        if (session.connectedPeers.count > 0) {
+            do {
+                try self.session.send("toGame".data(using: .utf8)!, toPeers: session.connectedPeers, with: .reliable)
+            }
+            catch let error {
+                NSLog("%@", "Error: Could not go to Game View: \(error)")
+            }
+        }
+    }
+    
+    func chooseDrawer() {
+        let total_players:Int = session.connectedPeers.count
+        starter = Int(arc4random_uniform(UInt32(total_players)))
     }
     
 }
@@ -110,6 +133,8 @@ extension MultipeerServiceManager : MCSessionDelegate {
         NSLog("%@", "peer \(peerID) didChangeState: \(state)")
         self.delegate?.connectedDevicesChanged(manager: self, connectedDevices:
             session.connectedPeers.map{$0.displayName})
+        //self.viewController?.assignViews(manager: self, connectedDevices:
+            //session.connectedPeers.map{$0.displayName}, firstDrawer: starter)
     }
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
@@ -120,6 +145,11 @@ extension MultipeerServiceManager : MCSessionDelegate {
             self.serviceBrowser.stopBrowsingForPeers()
             self.delegate?.startGame(manager: self)
         }
+        
+        if (str == "toGame") {
+            self.viewController?.allToDraw(manager: self)
+        }
+        
     }
     
     func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
@@ -139,4 +169,9 @@ extension MultipeerServiceManager : MCSessionDelegate {
 protocol MultipeerServiceManagerDelegate {
     func connectedDevicesChanged(manager : MultipeerServiceManager, connectedDevices: [String])
     func startGame(manager: MultipeerServiceManager)
+}
+
+protocol MultipeerServiceViewManager {
+    //func assignViews(manager: MultipeerServiceManager, connectedDevices: [String], firstDrawer: Int)
+    func allToDraw(manager : MultipeerServiceManager)
 }

@@ -118,5 +118,4 @@ extension HomeViewController : MultipeerServiceManagerDelegate {
             self.present(newViewController, animated: true, completion: nil)
         }
     }
-    
 }

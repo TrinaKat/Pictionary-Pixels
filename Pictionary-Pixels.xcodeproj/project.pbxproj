@@ -93,13 +93,13 @@
 			isa = PBXGroup;
 			children = (
 				DA6750871FBA69EA006A5319 /* HomeViewController.swift */,
+				DA9B08351FD0D33200049792 /* PointsViewController.swift */,
 				DA6750831FB97F62006A5319 /* MessageViewController.swift */,
 				DA600FD61FB5A89B007D5C83 /* DrawingViewController.swift */,
 				DA6750851FB97FCC006A5319 /* GuessingViewController.swift */,
 				DA00F9C71FD09B8A00F4E7FE /* CustomGameElements.swift */,
 				5C3284DE1FB08FD0006DFC58 /* AppDelegate.swift */,
 				5C3284E21FB08FD0006DFC58 /* Main.storyboard */,
-				DA9B08351FD0D33200049792 /* PointsViewController.swift */,
 				5C3284E51FB08FD0006DFC58 /* Assets.xcassets */,
 				5C3284E71FB08FD0006DFC58 /* LaunchScreen.storyboard */,
 				5C3284EA1FB08FD0006DFC58 /* Info.plist */,
@@ -171,7 +171,6 @@
 				TargetAttributes = {
 					5C3284DA1FB08FD0006DFC58 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 875DEKZMKR;
 						ProvisioningStyle = Automatic;
 					};
 					5C3284EE1FB08FD0006DFC58 = {
@@ -386,7 +385,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 875DEKZMKR;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Pictionary-Pixels/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.2K3X.Pictionary-Pixels";
@@ -402,7 +401,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 875DEKZMKR;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Pictionary-Pixels/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.2K3X.Pictionary-Pixels";
