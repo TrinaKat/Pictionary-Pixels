@@ -325,12 +325,13 @@ class GuessingViewController: UIViewController {
                 disableAllButtons()
                 
                 if score == winningScore {
+                    winnerLabel.text = UIDevice.current.name + " WIN! "
                     winnerLabel.isHidden = false
                     updateGuessStatus(toState: GAME_OVER)
                     
                     // Let all peers know that someone won the game
                     // Wait until winner label is displayed before navigating to points view
-                    let dictionary:NSDictionary = ["gameOver": "true"]
+                    let dictionary:NSDictionary = ["gameOver": "\(UIDevice.current.name) WIN!"]
                     self.multipeerService.sendMessage(message: dictionary)
                     
                     // Segue to Points view
@@ -477,6 +478,7 @@ extension GuessingViewController: MultipeerServiceManagerDelegate{
             }
             
             if message["gameOver"] != nil {
+                self.winnerLabel.text = message["gameOver"] as? String
                 self.winnerLabel.isHidden = false
                 self.updateGuessStatus(toState: self.GAME_OVER)
                 

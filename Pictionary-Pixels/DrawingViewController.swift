@@ -279,6 +279,7 @@ extension DrawingViewController: MultipeerServiceManagerDelegate {
             
             if message["gameOver"] != nil {
                 self.clear(self)
+                self.winnerLabel.text = message["gameOver"] as? String
                 self.winnerLabel.isHidden = false
                 score = 0
                 
