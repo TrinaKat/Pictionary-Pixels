@@ -538,8 +538,29 @@ extension GuessingViewController: MultipeerServiceManagerDelegate{
                 self.brushWidth = width as! CGFloat
             }
             
-            if let _ = message["stroke_color"] {
-                self.currColor = UIColor.blue.cgColor
+            if let color_key = message["stroke_color"] {
+                let color = color_key as! String
+                if color == "black" {
+                    self.currColor = UIColor.black.cgColor
+                } else if color == "red" {
+                    self.currColor = UIColor.red.cgColor
+                } else if color == "orange" {
+                    self.currColor = UIColor.orange.cgColor
+                } else if color == "yellow" {
+                    self.currColor = UIColor.yellow.cgColor
+                } else if color == "green" {
+                    self.currColor = UIColor.green.cgColor
+                } else if color == "blue" {
+                    self.currColor = UIColor.blue.cgColor
+                } else if color == "magenta" {
+                    self.currColor = UIColor.magenta.cgColor
+                } else if color == "brown" {
+                    self.currColor = UIColor.brown.cgColor
+                } else if color == "Eraser" {
+                    self.currColor = UIColor.white.cgColor
+                } else {
+                    self.currColor = UIColor.purple.cgColor
+                }
             }
             
             if message["reset"] != nil {

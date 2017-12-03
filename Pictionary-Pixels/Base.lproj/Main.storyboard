@@ -40,7 +40,8 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="saY-Bl-msS" secondAttribute="height" multiplier="1:1" id="j89-9w-GVc"/>
                                                 </constraints>
-                                                <state key="normal">
+                                                <state key="normal" title="black">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="titleShadowColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -61,7 +62,8 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oJo-kv-7ym" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
                                                 <rect key="frame" x="66.5" y="2.5" width="56.5" height="56"/>
                                                 <color key="backgroundColor" red="0.98431372549019602" green="0.0" blue="0.031372549019607843" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal">
+                                                <state key="normal" title="red">
+                                                    <color key="titleColor" red="0.99877077281456417" green="1" blue="0.96573458177443816" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="titleShadowColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -76,7 +78,8 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Al3-3I-kAJ" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
                                                 <rect key="frame" x="133" y="2.5" width="56.5" height="56"/>
                                                 <color key="backgroundColor" red="0.98922836780548096" green="0.4153139591217041" blue="0.027450980392156862" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal">
+                                                <state key="normal" title="orange">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="titleShadowColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -91,7 +94,8 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uSn-IH-aon" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
                                                 <rect key="frame" x="199.5" y="2.5" width="56.5" height="56"/>
                                                 <color key="backgroundColor" red="0.95964610576629639" green="0.82745098039215681" blue="0.031372549019607843" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal">
+                                                <state key="normal" title="yellow">
+                                                    <color key="titleColor" red="0.99877077281456417" green="1" blue="0.96573458177443816" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="titleShadowColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -106,7 +110,8 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9mj-mR-1hH" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
                                                 <rect key="frame" x="266" y="2.5" width="57" height="56"/>
                                                 <color key="backgroundColor" red="0.086274509803921567" green="0.68607139587402344" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal">
+                                                <state key="normal" title="green">
+                                                    <color key="titleColor" red="0.99877077281456417" green="1" blue="0.96573458177443816" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="titleShadowColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -139,7 +144,8 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="efh-xU-EQY" secondAttribute="height" multiplier="1:1" id="syu-gf-NiO"/>
                                                 </constraints>
-                                                <state key="normal">
+                                                <state key="normal" title="blue">
+                                                    <color key="titleColor" red="0.95951217501452013" green="1" blue="0.95681615348736515" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="titleShadowColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -154,7 +160,8 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lOz-Td-M4e" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
                                                 <rect key="frame" x="66" y="2.5" width="56" height="56"/>
                                                 <color key="backgroundColor" red="0.9882352941176471" green="0.0" blue="0.99912583827972412" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal">
+                                                <state key="normal" title="magenta">
+                                                    <color key="titleColor" red="0.95951217501452013" green="1" blue="0.95681615348736515" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="titleShadowColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -169,7 +176,8 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sO2-ML-TbY" customClass="GameButton" customModule="Pictionary_Pixels" customModuleProvider="target">
                                                 <rect key="frame" x="132" y="2.5" width="56" height="56"/>
                                                 <color key="backgroundColor" red="0.42352941176470588" green="0.1803921568627451" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal">
+                                                <state key="normal" title="brown">
+                                                    <color key="titleColor" red="0.95951217501452013" green="1" blue="0.95681615348736515" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="titleShadowColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
