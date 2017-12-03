@@ -32,6 +32,9 @@ class DrawingViewController: UIViewController {
   @IBOutlet weak var pointsLabel: UILabel!
   @IBOutlet weak var timeLeftLabel: UILabel!
   @IBOutlet weak var currentWordLabel: UILabel!
+
+  var seconds = 30
+  var timer = Timer()
   // for making continuous brush strokes, store last point drawn
   var lastPoint = CGPoint(x: 0, y: 0)
   // current selected color and other settings
@@ -113,6 +116,7 @@ class DrawingViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     viewFrameSize = mainImageView.frame.size
+    runTimer()
     // Do any additional setup after loading the view, typically from a nib.
   }
   
@@ -164,4 +168,22 @@ class DrawingViewController: UIViewController {
   @IBAction func clear(_ sender: Any) {
       self.mainImageView.image = nil;
   }
+    
+    func runTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(GuessingViewController.updateTimer)), userInfo: nil, repeats: true)
+    }
+
+    func updateTimer() {
+        if (seconds < 1) {
+            timer.invalidate()
+            DispatchQueue.main.async() {
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let newViewController = storyBoard.instantiateViewController(withIdentifier: "DrawingView")
+                self.present(newViewController, animated: true, completion: nil)
+            }
+        } else {
+            seconds -= 1
+            timeLeftLabel.text = ":\(seconds)"
+        }
+    }
 }
