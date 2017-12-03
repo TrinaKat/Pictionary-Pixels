@@ -417,8 +417,8 @@ extension GuessingViewController: MultipeerServiceManagerDelegate{
                 self.brushWidth = width as! CGFloat
             }
             
-            if let color = message["stroke_color"] {
-                self.currColor = color as! CGColor
+            if let _ = message["stroke_color"] {
+                self.currColor = UIColor.blue.cgColor
             }
             
             if message["reset"] != nil {
