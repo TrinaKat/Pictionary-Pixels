@@ -57,12 +57,12 @@ class PointsViewController: UIViewController {
     // TODO: Send first answerString to both guest/drawer views!
     @IBAction func drawFor5(_ sender: GameButton) {
         print("Least")
-        let dictionary:NSDictionary = ["roundPoints": 5]
-        multipeerService.sendMessage(message: dictionary)
         
         rounds = 5
         
         self.chooseNewWord()
+        let dictionary:NSDictionary = ["answer": answer, "roundPoints": 5]
+        multipeerService.sendMessage(message: dictionary)
         
         if UIDevice.current.name == devices![0] {
             self.performSegue(withIdentifier: "DrawingViewSegue", sender: self)
@@ -73,12 +73,12 @@ class PointsViewController: UIViewController {
     
     @IBAction func drawFor10(_ sender: GameButton) {
         print("10 Pts 4 u")
-        let dictionary:NSDictionary = ["roundPoints": 10]
-        multipeerService.sendMessage(message: dictionary)
         
         rounds = 10
         
         self.chooseNewWord()
+        let dictionary:NSDictionary = ["answer": answer, "roundPoints": 10]
+        multipeerService.sendMessage(message: dictionary)
         
         if UIDevice.current.name == devices![0] {
             self.performSegue(withIdentifier: "DrawingViewSegue", sender: self)
@@ -89,12 +89,12 @@ class PointsViewController: UIViewController {
     
     @IBAction func drawFor20(_ sender: GameButton) {
         print("Most")
-        let dictionary:NSDictionary = ["roundPoints": 20]
-        multipeerService.sendMessage(message: dictionary)
         
         rounds = 20
         
         self.chooseNewWord()
+        let dictionary:NSDictionary = ["answer": answer, "roundPoints": 20]
+        multipeerService.sendMessage(message: dictionary)
         
         if UIDevice.current.name == devices![0] {
             self.performSegue(withIdentifier: "DrawingViewSegue", sender: self)
@@ -182,10 +182,16 @@ class PointsViewController: UIViewController {
 extension PointsViewController : MultipeerServiceManagerDelegate {
     func messageReceived(manager: MultipeerServiceManager, message: NSDictionary) {
         OperationQueue.main.addOperation {
+            if message["answer"] != nil {
+                answer = message["answer"] as! String
+                print("RECEIVED ANSWER: \(answer)")
+            }
+            
             if message["roundPoints"] != nil {                
                 self.rounds = message.object(forKey: "roundPoints") as! Int
                 // Everyone else becomes a guesser
                 if UIDevice.current.name == devices![0] {
+                    print("TRANSITIONS TO DRAWING")
                     self.performSegue(withIdentifier: "DrawingViewSegue", sender: self)
                 } else {
                     self.performSegue(withIdentifier: "GuessingViewSegue", sender: self)
