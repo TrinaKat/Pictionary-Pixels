@@ -81,7 +81,7 @@ class GuessingViewController: UIViewController {
     var guessedLetterIndex = 0
     var deleteChar = " "
     var guess = ""
-    var winningScore = 42 // Set this to number of rounds
+    var winningScore = 5 // Set this to number of rounds
     
     // Used to determine answer string
     var words: [Any] = []
@@ -291,6 +291,7 @@ class GuessingViewController: UIViewController {
         guessStatusLabel.textColor = UIColor.red
       case GAME_OVER:
         guessStatusLabel.isHidden = true
+        score = 0
       default:
         guessStatusLabel.alpha = 0.4
         guessStatusLabel.text = "Keep Guessing..."

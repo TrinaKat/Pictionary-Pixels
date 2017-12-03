@@ -12,6 +12,7 @@ class DrawingViewController: UIViewController {
     
     // Passed in from PointsView
     var multipeerService: MultipeerServiceManager!
+    var rounds = 5
 //    var startAnswer: String!
 
     // MARK: Properties
@@ -250,7 +251,7 @@ class DrawingViewController: UIViewController {
         }
         if (segue.identifier == "DrawingToGuessing") {
             if let dest = segue.destination as? GuessingViewController {
-                dest.winningScore = rounds as! Int
+                dest.winningScore = rounds
                 dest.multipeerService = multipeerService
             }
         }
@@ -279,6 +280,7 @@ extension DrawingViewController: MultipeerServiceManagerDelegate {
             if message["gameOver"] != nil {
                 self.clear(self)
                 self.winnerLabel.isHidden = false
+                score = 0
                 
                 let when = DispatchTime.now() + 2
                 DispatchQueue.main.asyncAfter(deadline: when) {
