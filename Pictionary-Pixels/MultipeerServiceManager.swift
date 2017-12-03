@@ -41,6 +41,7 @@ class MultipeerServiceManager : NSObject {
             do {
                 try self.session.send(NSKeyedArchiver.archivedData(withRootObject: message), toPeers: session.connectedPeers, with: MCSessionSendDataMode.reliable)
             } catch {
+                print("Send message didn't work")
                 NSLog("\(error)")
             }
         }
