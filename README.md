@@ -6,8 +6,7 @@ Multiplayer drawing and guessing game as an iOS app using real-time wireless com
 </p>
 
 ## How to Play
-Clone this git repo and build/deploy to your device(s)!  
-We don't have any plans to release it to the App Store as of now. 
+Clone this git repo and build/deploy to your device(s)! It probably won't be released to the App Store :(
 
 ## About the Game
 Pictionary Pixels is a fun, mobile twist on the game Pictionary. When out and about with friends, Pictionary is easily accessible on your phones with no need for any paper or pens! 
@@ -16,7 +15,6 @@ The game supports from 2-6 players. Rather than the team-based approach of Picti
 
 Once everyone has opened the app and joined the game (just by being in the same area on the same network), any player can click the `Start Game` button to advance everyone's app to the next page.
 
-### Joining the Game
 <!-- <h2 align="center"><strong>Joining the Game</strong></h2> -->
 <h3 align="center"><strong>Joining the Game</strong></h3>
 
@@ -39,12 +37,25 @@ Whoever guesses the word correctly first wins a point for that round. If the 30s
 <!-- <h2 align="center"><strong>Playing the Game</strong></h2> -->
 <h3 align="center"><strong>Playing the Game</strong></h3>
 INSERT DRAWER.MOV GUESSER.MOV
+points view > drawer draws using colors and clear all and eraser
+points view > guesser guesses wrong, clears, types wrong letter, deletes, guesses right
 
 The cycle continues until one player reaches the score threshold, and then the players can choose to stop playing or start over by choosing another point value to play to!
 
 <!-- <h2 align="center"><strong>Winning the Game</strong></h2> -->
 <h3 align="center"><strong>Winning the Game</strong></h3>
 INSERT GAMEOVER.MOV
+Past round times out > drawer draws > redirects to points view
+past round times out > guesser guesses right, wins game > redirects to points view
+
+## Features / Extended Instructions
+Points View: Choose how many points to play up to (5, 10, 20). Whoever wins that many points through correct guesses wins the game!
+
+Drawing View: Draw the given word on the screen! Use the `Clear All` button to clear the screen, or the `Eraser` to remove brush strokes! Use the colors to make your drawing easier to understand. Be sure to finish before time is up!
+
+Guessing View: Given 12 letters, try to guess what the drawing on the screen is before time is up! If you hit a wrong letter, you can `Delete` that letter or `Clear` all the letters if you feel you need to start over. Hurry and guess the word before the other players do! The correct word is displayed at the end of each round so everyone knows what it was.
+
+Game Over: The winner will be displayed on all screens and then players will be redirected to the Points View where they can start another game!
 
 ## How it Works 
 Through Apple's MultipeerConnectivity framework, nearby devices can connect via infrastructure Wi-Fi networks, peer-to-peer Wi-Fi, and Bluetooth personal area networks over which devices can communicate to make Pictionary Pixels possible! Devices send and respond to messages depending on what view they are on and what the message contains. 
