@@ -3,6 +3,10 @@ Multiplayer drawing and guessing game as an iOS app using real-time wireless com
 
 ![Launch Screen](https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/launchscreen.png)
 
+<p align="center">
+  <img width="200" src="https://github.com/TrinaKat/Pictionary-Pixels/blob/multipeer/launchscreen.png">
+</p>
+
 ## How to Play
 Clone this git repo and build/deploy to your device(s)! We don't have any plans to release it to the App Store as of now. 
 
