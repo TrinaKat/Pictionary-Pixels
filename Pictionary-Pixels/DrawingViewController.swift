@@ -298,6 +298,7 @@ extension DrawingViewController: MultipeerServiceManagerDelegate {
                 self.winnerLabel.text = message["gameOver"] as? String
                 self.winnerLabel.isHidden = false
                 self.canDraw = false
+                self.currColor = UIColor.white.cgColor
                 score = 0
                 
                 let when = DispatchTime.now() + 2
