@@ -19,6 +19,7 @@ Once everyone has opened the app and joined the game (just by being in the same 
 ### Joining the Game
 <p align="center">
   <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/joinGame.gif">
+  &nbsp&nbsp&nbsp&nbsp
   <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/joinGame2.gif">
 </p>
 
