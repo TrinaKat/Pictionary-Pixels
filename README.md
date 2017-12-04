@@ -1,10 +1,9 @@
 # Pictionary Pixels
 Multiplayer drawing and guessing game as an iOS app using real-time wireless communication.
 
-INSERT LAUNCH SCREEN
-![launch screen](https://github.com/TrinaKat/Pictionary-Pixels/blob/multipeer/launchscreen.png)
+![Launch Screen](https://github.com/TrinaKat/Pictionary-Pixels/blob/multipeer/launchscreen.png)
 
-![launch screen](https://rawgit.com/TrinaKat/Pictionary-Pixels/multipeer/launchscreen.png)
+![Launch Screen](./launchscreen.png = 100x)
 
 ## How to Play
 Clone this git repo and build/deploy to your device(s)! We don't have any plans to release it to the App Store as of now. 
