@@ -84,6 +84,7 @@ class GuessingViewController: UIViewController {
         // Do any additional setup after loading the view.
         guessStatusLabel.isHidden = false
         updateGuessStatus(toState: CONTINUE_GUESSING)
+        inputImageView.image = nil
         
         // Initialize variables
         guessedLetterIndex = 0

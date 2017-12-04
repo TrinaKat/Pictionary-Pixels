@@ -339,6 +339,7 @@ extension DrawingViewController: MultipeerServiceManagerDelegate {
                 drawerIndex = message["updateIndex"] as! Int
                 self.currentWordLabel.isHidden = true
                 self.canDraw = false
+                self.currColor = UIColor.white.cgColor
                 
                 // don't need to check: after a word, drawer always becomes guesser
                 self.performSegue(withIdentifier: "DrawingToGuessing", sender: self)
