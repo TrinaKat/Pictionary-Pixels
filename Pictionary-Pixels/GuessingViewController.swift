@@ -328,17 +328,18 @@ class GuessingViewController: UIViewController {
                     winnerLabel.isHidden = false
                     updateGuessStatus(toState: GAME_OVER)
                     
+                    drawerIndex = 0
                     // Let all peers know that someone won the game
                     // Wait until winner label is displayed before navigating to points view
-                    let dictionary:NSDictionary = ["gameOver": "true"]
+                    let dictionary:NSDictionary = ["gameOver": "true", "updateIndex": 0]
                     self.multipeerService.sendMessage(message: dictionary)
-                    
+
                     // Segue to Points view
                     let when = DispatchTime.now() + 2
                     DispatchQueue.main.asyncAfter(deadline: when) {
                         self.performSegue(withIdentifier: "GuessingToPointsSegue", sender: self)
                     }
-                    drawerIndex = 0
+                    
                 } else {
                     updateGuessStatus(toState: CORRECT_GUESS)
                     chooseNewWord()
