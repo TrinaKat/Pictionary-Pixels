@@ -168,7 +168,7 @@
 				TargetAttributes = {
 					5C3284DA1FB08FD0006DFC58 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = L2LQJE55V6;
+						DevelopmentTeam = W885KPZWSH;
 						ProvisioningStyle = Automatic;
 					};
 					5C3284EE1FB08FD0006DFC58 = {
@@ -382,10 +382,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = L2LQJE55V6;
+				DEVELOPMENT_TEAM = W885KPZWSH;
 				INFOPLIST_FILE = "Pictionary-Pixels/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.2K3X.Pictionary-Pixels";
+				PRODUCT_BUNDLE_IDENTIFIER = "trinakat.Pictionary-Pixels";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
@@ -398,10 +398,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = L2LQJE55V6;
+				DEVELOPMENT_TEAM = W885KPZWSH;
 				INFOPLIST_FILE = "Pictionary-Pixels/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.2K3X.Pictionary-Pixels";
+				PRODUCT_BUNDLE_IDENTIFIER = "trinakat.Pictionary-Pixels";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;

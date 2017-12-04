@@ -122,6 +122,7 @@ class GuessingViewController: UIViewController {
         deleteChar = " "
         guess = ""
         winnerLabel.isHidden = true
+        currColor = UIColor.black.cgColor
         
         // Enable all the buttons
         deleteButton.isEnabled = true
@@ -241,6 +242,8 @@ class GuessingViewController: UIViewController {
     self.readUrlJSON()
     self.loadData()
     //self.runTimer()
+    
+    winnerLabel.numberOfLines = 0;
   }
 
   override func didReceiveMemoryWarning() {
@@ -325,13 +328,14 @@ class GuessingViewController: UIViewController {
                 disableAllButtons()
                 
                 if score == winningScore {
+                    winnerLabel.text = UIDevice.current.name + " WINS! "
                     winnerLabel.isHidden = false
                     updateGuessStatus(toState: GAME_OVER)
                     
                     drawerIndex = 0
                     // Let all peers know that someone won the game
                     // Wait until winner label is displayed before navigating to points view
-                    let dictionary:NSDictionary = ["gameOver": "true", "updateIndex": 0]
+                    let dictionary:NSDictionary = ["gameOver": "\(UIDevice.current.name) WINS!", "updateIndex": 0]
                     self.multipeerService.sendMessage(message: dictionary)
 
                     // Segue to Points view
@@ -478,6 +482,7 @@ extension GuessingViewController: MultipeerServiceManagerDelegate{
             }
             
             if message["gameOver"] != nil {
+                self.winnerLabel.text = message["gameOver"] as? String
                 self.winnerLabel.isHidden = false
                 self.updateGuessStatus(toState: self.GAME_OVER)
                 
