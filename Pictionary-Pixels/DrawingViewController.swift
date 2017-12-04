@@ -55,6 +55,9 @@ class DrawingViewController: UIViewController {
     // Are continous strokes being made
     var swiped = false
     
+    // Disable drawing after game over
+    var canDraw = true
+    
     // Answer string supplied by guessing view
   
     // Assuming this stays same for both views, across app lifecycle, set in viewDidLoad
@@ -77,8 +80,10 @@ class DrawingViewController: UIViewController {
         }
 
         // Send new point being drawn to all peers
-        let dictionary:NSDictionary = ["new_point": NSValue(cgPoint: lastPoint)]
-        multipeerService.sendMessage(message: dictionary)
+        if canDraw {
+            let dictionary:NSDictionary = ["new_point": NSValue(cgPoint: lastPoint)]
+            multipeerService.sendMessage(message: dictionary)
+        }
     }
   
     // As finger moves, we draw line between every new point sensed and last point
@@ -92,8 +97,10 @@ class DrawingViewController: UIViewController {
             drawLine(from: lastPoint, to: currentPoint)
 
             // Send current point to all peers (they will call drawLine themselves)
-            let dictionary:NSDictionary = ["current_point": NSValue(cgPoint: currentPoint)]
-            multipeerService.sendMessage(message: dictionary)
+            if canDraw {
+                let dictionary:NSDictionary = ["current_point": NSValue(cgPoint: currentPoint)]
+                multipeerService.sendMessage(message: dictionary)
+            }
 
             // Make sure to update last point
             lastPoint = currentPoint
@@ -107,8 +114,10 @@ class DrawingViewController: UIViewController {
             drawLine(from: lastPoint, to: lastPoint)
 
             // Send last point to all peers
-            let dictionary:NSDictionary = ["last_point": NSValue(cgPoint: lastPoint)]
-            multipeerService.sendMessage(message: dictionary)
+            if canDraw {
+                let dictionary:NSDictionary = ["last_point": NSValue(cgPoint: lastPoint)]
+                multipeerService.sendMessage(message: dictionary)
+            }
         }
     }
   
@@ -204,8 +213,10 @@ class DrawingViewController: UIViewController {
             currColor = backColor.cgColor
             
             // Send peers stroke color and brush width
-            let dictionary:NSDictionary = ["brush_width": brushWidth, "stroke_color": colorButton.currentTitle ?? "black"]
-            multipeerService.sendMessage(message: dictionary)
+            if canDraw {
+                let dictionary:NSDictionary = ["brush_width": brushWidth, "stroke_color": colorButton.currentTitle ?? "black"]
+                multipeerService.sendMessage(message: dictionary)
+            }
             
             // Deselect last selected color, unless that is same as current
             if let lastColB = lastButtonHit, lastColB != colorButton {
@@ -220,8 +231,10 @@ class DrawingViewController: UIViewController {
   @IBAction func clear(_ sender: Any) {
       self.mainImageView.image = nil;
     
-    let dictionary:NSDictionary = ["reset": "true"]
-    multipeerService.sendMessage(message: dictionary)
+    if canDraw {
+        let dictionary:NSDictionary = ["reset": "true"]
+        multipeerService.sendMessage(message: dictionary)
+    }
   }
     
     func runTimer() {
@@ -275,12 +288,14 @@ extension DrawingViewController: MultipeerServiceManagerDelegate {
                 self.currentWordLabel.text = answer
                 print("LABEL \(answer) \n \n")
                 self.mainImageView.image = nil
+                self.canDraw = true
             }
             
             if message["gameOver"] != nil {
                 self.clear(self)
                 self.winnerLabel.text = message["gameOver"] as? String
                 self.winnerLabel.isHidden = false
+                self.canDraw = false
                 score = 0
                 
                 let when = DispatchTime.now() + 2
@@ -293,6 +308,7 @@ extension DrawingViewController: MultipeerServiceManagerDelegate {
             if message["updateIndex"] != nil {
                 drawerIndex = message["updateIndex"] as! Int
                 self.currentWordLabel.isHidden = true
+                self.canDraw = false
                 self.performSegue(withIdentifier: "DrawingToGuessing", sender: self)
             }
         }

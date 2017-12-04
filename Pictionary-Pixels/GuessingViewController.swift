@@ -122,6 +122,7 @@ class GuessingViewController: UIViewController {
         deleteChar = " "
         guess = ""
         winnerLabel.isHidden = true
+        currColor = UIColor.black.cgColor
         
         // Enable all the buttons
         deleteButton.isEnabled = true
