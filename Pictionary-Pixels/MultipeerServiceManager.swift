@@ -52,7 +52,7 @@ class MultipeerServiceManager : NSObject {
 //        starter = Int(arc4random_uniform(UInt32(total_players)))
         devices = session.connectedPeers.map{$0.displayName}
         devices?.append(myPeerId.displayName)
-        print("\n\n\n\n\n start button pressed \n\n\n\n\n\n\n \(devices) \n\n\n\n\n")
+        print("\n\n\n\n\n start button pressed \n\n\n\n\n\n\n \(devices!) \n\n\n\n\n")
         return devices!
     }
     

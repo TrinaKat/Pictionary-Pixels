@@ -11,6 +11,7 @@ import UIKit
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var connectionsLabel: UILabel!
+    @IBOutlet weak var startGameButton: GameButton!
     
     // Initialize instance of MultipeerServiceManager
     let multipeerService = MultipeerServiceManager()
@@ -57,7 +58,7 @@ extension HomeViewController : MultipeerServiceManagerDelegate {
             // Peers who receive "startGame" message should segue to the PointsView
             if let deviceOrdering = message["startGame"] as? [String] {
                 devices = deviceOrdering
-                print("\n\n\n\n\n\n\n \(devices) \n\n\n\n\n")
+                print("\n\n\n\n\n\n\n \(devices!) \n\n\n\n\n")
                 self.performSegue(withIdentifier: "PointsViewSegue", sender: self)
             }
             // Any other messages are unimportant on this view and thus ignored
@@ -68,8 +69,10 @@ extension HomeViewController : MultipeerServiceManagerDelegate {
         OperationQueue.main.addOperation {
             if connectedDevices.count == 0 {
                 self.connectionsLabel.text = "Players: Just you so far!"
+                self.startGameButton.isEnabled = false
             } else {
                 self.connectionsLabel.text = "Players: \(connectedDevices)"
+                self.startGameButton.isEnabled = true
             }
         }
     }

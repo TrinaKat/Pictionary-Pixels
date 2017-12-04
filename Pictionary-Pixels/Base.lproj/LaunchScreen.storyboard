@@ -30,12 +30,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="cLX-iX-DS8">
-                                <rect key="frame" x="111" y="107" width="153" height="121"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="cLX-iX-DS8">
+                                <rect key="frame" x="115" y="110" width="145" height="146"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pictionary Pixels" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pQE-x5-dYy">
-                                <rect key="frame" x="30" y="473" width="315" height="164"/>
+                                <rect key="frame" x="15" y="473" width="345" height="164"/>
                                 <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="60"/>
                                 <color key="textColor" red="0.96636152836533451" green="1" blue="0.9993630958835128" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -45,12 +44,13 @@
                         <constraints>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="3Lh-FN-DH1" secondAttribute="bottom" id="2wh-Ub-3p7"/>
                             <constraint firstItem="3Lh-FN-DH1" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="EW0-bV-PMV"/>
-                            <constraint firstItem="pQE-x5-dYy" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="30" id="Kro-O6-Yyd"/>
+                            <constraint firstItem="pQE-x5-dYy" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="15" id="Kro-O6-Yyd"/>
                             <constraint firstItem="pQE-x5-dYy" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Roa-RD-FZa"/>
+                            <constraint firstItem="cLX-iX-DS8" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Yfb-Nl-sG7"/>
                             <constraint firstItem="3Lh-FN-DH1" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="bGk-9l-Sk3"/>
-                            <constraint firstAttribute="trailing" secondItem="pQE-x5-dYy" secondAttribute="trailing" constant="30" id="dip-6r-pH2"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="pQE-x5-dYy" secondAttribute="bottom" constant="30" id="j4Q-MO-UFW"/>
                             <constraint firstAttribute="trailing" secondItem="3Lh-FN-DH1" secondAttribute="trailing" id="kmu-M2-aBO"/>
+                            <constraint firstItem="cLX-iX-DS8" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="90" id="yvc-tj-DGc"/>
                         </constraints>
                     </view>
                 </viewController>

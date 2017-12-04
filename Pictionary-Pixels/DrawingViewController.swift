@@ -12,7 +12,7 @@ class DrawingViewController: UIViewController {
     
     // Passed in from PointsView
     var multipeerService: MultipeerServiceManager!
-    var rounds = 5
+    var winningScore = 5
 //    var startAnswer: String!
 
     // MARK: Properties
@@ -42,7 +42,7 @@ class DrawingViewController: UIViewController {
     // TODO: Keep this updated on first entry
     @IBOutlet weak var currentWordLabel: UILabel!
     var seconds = 30
-    var timer = Timer()
+    var timer: Timer?
     
     // For continuous brush strokes
     // Store last point drawn
@@ -166,7 +166,7 @@ class DrawingViewController: UIViewController {
 
         // Do any additional setup after loading the view, typically from a nib.
         viewFrameSize = mainImageView.frame.size
-        //runTimer()
+        runTimer()
         self.multipeerService.delegate = self
         
         // TODO: initialize this in points view, or hopefully get this updated when drawer loads before guesser does (everytime guesser loads, updates answer
@@ -240,20 +240,41 @@ class DrawingViewController: UIViewController {
   }
     
     func runTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(GuessingViewController.updateTimer)), userInfo: nil, repeats: true)
+        if timer == nil {
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
+        }
     }
 
     func updateTimer() {
+        print("Countdown: \(seconds)")
         if (seconds < 1) {
-            timer.invalidate()
-            DispatchQueue.main.async() {
-                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let newViewController = storyBoard.instantiateViewController(withIdentifier: "DrawingView")
-                self.present(newViewController, animated: true, completion: nil)
+            if timer != nil {
+                timer!.invalidate()
+                timer = nil
+                print("Timer out of time!!!!")
             }
+            chooseNewWord()
+            guard let deviceOrdering = devices else {
+                print("NO devices stored!")
+                return
+            }
+            print("\(deviceOrdering), index \(drawerIndex)")
+            drawerIndex = (1 + drawerIndex) % deviceOrdering.count
+            let dictionary:NSDictionary = ["answer": answer, "newRound": "true", "updateIndex": drawerIndex]
+            multipeerService.sendMessage(message: dictionary)
+            
+            print("Rotate from running out of time! Call segue manually (not by a message).")
+            self.currentWordLabel.isHidden = true
+            self.canDraw = false
+            
+            // don't need to check: after a word, drawer always becomes guesser
+            self.performSegue(withIdentifier: "DrawingToGuessing", sender: self)
         } else {
             seconds -= 1
             timeLeftLabel.text = ":\(seconds)"
+            let dictionary:NSDictionary = ["curr_time": seconds]
+            multipeerService.sendMessage(message: dictionary)
+            print("Trying to guess \(answer).")
         }
     }
     
@@ -266,7 +287,7 @@ class DrawingViewController: UIViewController {
         }
         if (segue.identifier == "DrawingToGuessing") {
             if let dest = segue.destination as? GuessingViewController {
-                dest.winningScore = rounds
+                dest.winningScore = winningScore
                 dest.multipeerService = multipeerService
             }
         }
@@ -280,6 +301,12 @@ extension DrawingViewController: MultipeerServiceManagerDelegate {
         print(message)
         OperationQueue.main.addOperation {
             print("INSIDE OPERATION QUEUE")
+            // if entered here, will always leave DrawingVC
+            if self.timer != nil {
+                self.timer!.invalidate()
+                self.timer = nil
+                print("Nil the timer")
+            }
             // Messages from guessers
             if let newAnswer = message["answer"] {
                 print("NEW DRAWERS ANSWER \(answer) \n \n")
@@ -306,21 +333,23 @@ extension DrawingViewController: MultipeerServiceManagerDelegate {
                     // Transition to Points view
                     self.performSegue(withIdentifier: "DrawingToPointsSegue", sender: self)
                 }
-            }
-            
-            if message["updateIndex"] != nil {
+            }   // if gameOver, don't check for updateIndex at all
+            else if message["updateIndex"] != nil {
+                print("Rotate!")
                 drawerIndex = message["updateIndex"] as! Int
                 self.currentWordLabel.isHidden = true
                 self.canDraw = false
+                
+                // don't need to check: after a word, drawer always becomes guesser
                 self.performSegue(withIdentifier: "DrawingToGuessing", sender: self)
             }
         }
     }
     
-        func connectedDevicesChanged(manager: MultipeerServiceManager, connectedDevices: [String]) {
-            OperationQueue.main.addOperation {
-                // do nothing
-            }
+    func connectedDevicesChanged(manager: MultipeerServiceManager, connectedDevices: [String]) {
+        OperationQueue.main.addOperation {
+            // do nothing
         }
+    }
 }
 
