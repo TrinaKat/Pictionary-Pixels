@@ -18,6 +18,8 @@ Once everyone has opened the app and joined the game (just by being in the same 
 
 ### Joining the Game
 <h2 align="center"><strong>Joining the Game</strong></h2>
+<h3 align="center"><strong>Joining the Game</strong></h3>
+<h4 align="center"><strong>Joining the Game</strong></h4>
 
 <p align="center">
   <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/joinGame.gif">
