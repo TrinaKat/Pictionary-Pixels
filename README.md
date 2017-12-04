@@ -19,7 +19,17 @@ Once everyone has opened the app and joined the game (just by being in the same 
 ### Joining the Game
 <p align="center">
   <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/joinGame.gif">
+  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/joinGame2.gif">
 </p>
+
+<ul align="center">
+  <li><img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/joinGame.gif"></li> 
+  <li><img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/joinGame2.gif"></li>
+</ul>
+
+| ![Join Game TrinaKat](https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/joinGame.gif) | ![Join Game TrinaKinz](https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/joinGame2.gif) |
+|:---:|:---:|
+
 
 After conferring with other players, any player can choose which point value to play to. In other words, play continues until someone wins that many points! 
 
