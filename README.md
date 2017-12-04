@@ -55,11 +55,11 @@ Draw the given word on the screen! Use the `Clear All` button to clear the scree
 Given 12 letters, try to guess what the drawing on the screen is before time is up! If you hit a wrong letter, you can `Delete` that letter or `Clear` all the letters if you feel you need to start over. Hurry and guess the word before the other players do! The correct word is displayed at the end of each round so everyone knows what it was.
 
 #### Game Over
-Whoever reaches the number of points needed to win first wins teh game! The winner will be displayed on all screens and then players will be redirected to the Points View where they can start another game!
+Whoever reaches the number of points needed to win first wins the game! The winner will be displayed on all screens and then players will be redirected to the Points View where they can start another game!
 
 ## How it Works 
 Through Apple's MultipeerConnectivity framework, nearby devices can connect via infrastructure Wi-Fi networks, peer-to-peer Wi-Fi, and Bluetooth personal area networks over which devices can communicate to make Pictionary Pixels possible! Devices send and respond to messages depending on what view they are on and what the message contains. 
 
 Issues with connectivity can result in bugs and unsynchronized devices, resulting in poor gameplay. In this case, try restarting the game (double tap home button and swipe up on Pictionary Pixels and open the app again). As this game is built on the idea of devices in the same area sending data 
 
-In order to update the wordset without having to change anything with the app code, the app pulls JSON data from a web server over Wi-Fi/cellular data and uses that data to choose random words for gameplay!
+In order to update the word set without having to change anything with the app code, the app pulls JSON data from a web server over Wi-Fi/cellular data and uses that data to choose random words for gameplay!
