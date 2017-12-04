@@ -68,6 +68,7 @@ class GuessingViewController: UIViewController {
     @IBOutlet weak var guessStatusLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var winnerLabel: UILabel!
+    @IBOutlet weak var correctWordlabel: UILabel!
     
     // Constants
     var letterButtonCount: Int = 12
@@ -83,6 +84,7 @@ class GuessingViewController: UIViewController {
     func loadData() {
         // Do any additional setup after loading the view.
         guessStatusLabel.isHidden = false
+        correctWordlabel.isHidden = true
         updateGuessStatus(toState: CONTINUE_GUESSING)
         inputImageView.image = nil
         
@@ -92,6 +94,7 @@ class GuessingViewController: UIViewController {
         guess = ""
         winnerLabel.isHidden = true
         currColor = UIColor.black.cgColor
+        brushWidth = 8.0
         
         // Enable all the buttons
         deleteButton.isEnabled = true
@@ -188,6 +191,7 @@ class GuessingViewController: UIViewController {
     print("I LALALALALLALALALALALAL")
     print("I LALALALALLALALALALALAL")
     winnerLabel.isHidden = true
+    correctWordlabel.isHidden = true
     
     // Get words with wifi/cellular
     readUrlJSON()
@@ -212,12 +216,16 @@ class GuessingViewController: UIViewController {
         guessStatusLabel.alpha = 1
         guessStatusLabel.text = "Correct!"
         guessStatusLabel.textColor = UIColor.green
+        correctWordlabel.text = "Correct Word: \(answer)"
+        correctWordlabel.isHidden = false
       case INCORRECT_GUESS:
         guessStatusLabel.alpha = 1
         guessStatusLabel.text = "Incorrect Answer!"
         guessStatusLabel.textColor = UIColor.red
       case GAME_OVER:
         guessStatusLabel.isHidden = true
+        correctWordlabel.text = "Correct Word: \(answer)"
+        correctWordlabel.isHidden = false
         score = 0
       default:
         guessStatusLabel.alpha = 0.4
@@ -289,7 +297,7 @@ class GuessingViewController: UIViewController {
                     drawerIndex = 0
                     // Let all peers know that someone won the game
                     // Wait until winner label is displayed before navigating to points view
-                    let dictionary:NSDictionary = ["gameOver": "\(UIDevice.current.name) WINS!"]
+                    let dictionary:NSDictionary = ["gameOver": "\(UIDevice.current.name) WINS!", "device_name" : "\(UIDevice.current.name)"]
                     self.multipeerService.sendMessage(message: dictionary)
 
                     // Segue to Points view
@@ -302,16 +310,19 @@ class GuessingViewController: UIViewController {
                     updateGuessStatus(toState: CORRECT_GUESS)
                     chooseNewWord()
                     
-                    let dictionary:NSDictionary = ["answer": answer, "newRound": "true", "updateIndex": drawerIndex]
+                    let dictionary:NSDictionary = ["answer": answer, "newRound": "true", "updateIndex": drawerIndex, "device_name" : "\(UIDevice.current.name)"]
                     multipeerService.sendMessage(message: dictionary)
                     print("\(UIDevice.current.name) \n")
                     print("DRAWER INDEX: \(drawerIndex)")
                     print("CURRENT ARRAY ELEMENT: \(devices![drawerIndex])")
                     if (UIDevice.current.name == devices![drawerIndex]) {
-                        self.performSegue(withIdentifier: "GuessingToDrawing", sender: self)
+                        let when = DispatchTime.now() + 2
+                        DispatchQueue.main.asyncAfter(deadline: when) {
+                            self.performSegue(withIdentifier: "GuessingToDrawing", sender: self)
+                        }
                     } else {
                     // Waits until correct guess label is displayed before loading new round
-                        let when = DispatchTime.now() + 1
+                        let when = DispatchTime.now() + 2
                         DispatchQueue.main.asyncAfter(deadline: when) {
                             // reload the screen
                             self.loadData() // generates new answer and sends to drawer
@@ -387,6 +398,8 @@ extension GuessingViewController: MultipeerServiceManagerDelegate{
             if message["gameOver"] != nil {
                 self.winnerLabel.text = message["gameOver"] as? String
                 self.winnerLabel.isHidden = false
+                self.correctWordlabel.text = "Correct Word: \(answer)"
+                self.correctWordlabel.isHidden = false
                 self.updateGuessStatus(toState: self.GAME_OVER)
                 
                 // Segue to Points view
@@ -396,11 +409,19 @@ extension GuessingViewController: MultipeerServiceManagerDelegate{
                 }
             }   // shouldn't call gameOver and updateIndex at same time
             else if message["updateIndex"] != nil {
+                self.correctWordlabel.text = "Correct Word: \(answer)"
+                self.correctWordlabel.isHidden = false
                 drawerIndex = message["updateIndex"] as! Int
                 if (UIDevice.current.name == devices![drawerIndex]) {
-                    self.performSegue(withIdentifier: "GuessingToDrawing", sender: self)
+                    let when = DispatchTime.now() + 2
+                    DispatchQueue.main.asyncAfter(deadline: when) {
+                        self.performSegue(withIdentifier: "GuessingToDrawing", sender: self)
+                    }
                 } else {
-                    self.loadData()
+                    let when = DispatchTime.now() + 2
+                    DispatchQueue.main.asyncAfter(deadline: when) {
+                        self.loadData()
+                    }
                 }
             }
             

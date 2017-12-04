@@ -38,6 +38,7 @@ class DrawingViewController: UIViewController {
     @IBOutlet weak var pointsLabel: UILabel!
     @IBOutlet weak var timeLeftLabel: UILabel!
     @IBOutlet weak var winnerLabel: UILabel!
+    @IBOutlet weak var correctGuesserLabel: UILabel!
     
     // TODO: Keep this updated on first entry
     @IBOutlet weak var currentWordLabel: UILabel!
@@ -175,6 +176,8 @@ class DrawingViewController: UIViewController {
         winnerLabel.isHidden = true
         
         winnerLabel.numberOfLines = 0;
+        correctGuesserLabel.isHidden = true
+        correctGuesserLabel.numberOfLines = 0;
     }
   
     override func didReceiveMemoryWarning() {
@@ -264,11 +267,16 @@ class DrawingViewController: UIViewController {
             multipeerService.sendMessage(message: dictionary)
             
             print("Rotate from running out of time! Call segue manually (not by a message).")
+            self.correctGuesserLabel.text = "Not guessed by anyone :("
+            self.correctGuesserLabel.isHidden = false
             self.currentWordLabel.isHidden = true
             self.canDraw = false
             
             // don't need to check: after a word, drawer always becomes guesser
-            self.performSegue(withIdentifier: "DrawingToGuessing", sender: self)
+            let when = DispatchTime.now() + 2
+            DispatchQueue.main.asyncAfter(deadline: when) {
+                self.performSegue(withIdentifier: "DrawingToGuessing", sender: self)
+            }
         } else {
             seconds -= 1
             timeLeftLabel.text = ":\(seconds)"
@@ -324,6 +332,13 @@ extension DrawingViewController: MultipeerServiceManagerDelegate {
                 self.clear(self)
                 self.winnerLabel.text = message["gameOver"] as? String
                 self.winnerLabel.isHidden = false
+                if message["device_name"] != nil, let winner = message["device_name"] {
+                    self.correctGuesserLabel.text = "Guessed by \(winner)!"
+                    self.correctGuesserLabel.isHidden = false
+                } else {
+                    self.correctGuesserLabel.text = "Your word was guessed correctly!"
+                    self.correctGuesserLabel.isHidden = false
+                }
                 self.canDraw = false
                 self.currColor = UIColor.white.cgColor
                 score = 0
@@ -338,11 +353,21 @@ extension DrawingViewController: MultipeerServiceManagerDelegate {
                 print("Rotate!")
                 drawerIndex = message["updateIndex"] as! Int
                 self.currentWordLabel.isHidden = true
+                if message["device_name"] != nil, let winner = message["device_name"] {
+                    self.correctGuesserLabel.text = "Guessed by \(winner)!"
+                    self.correctGuesserLabel.isHidden = false
+                } else {
+                    self.correctGuesserLabel.text = "Your word was guessed correctly!"
+                    self.correctGuesserLabel.isHidden = false
+                }
                 self.canDraw = false
                 self.currColor = UIColor.white.cgColor
                 
                 // don't need to check: after a word, drawer always becomes guesser
-                self.performSegue(withIdentifier: "DrawingToGuessing", sender: self)
+                let when = DispatchTime.now() + 2
+                DispatchQueue.main.asyncAfter(deadline: when) {
+                    self.performSegue(withIdentifier: "DrawingToGuessing", sender: self)
+                }
             }
         }
     }
