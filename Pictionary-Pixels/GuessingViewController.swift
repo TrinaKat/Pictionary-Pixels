@@ -242,6 +242,8 @@ class GuessingViewController: UIViewController {
     self.readUrlJSON()
     self.loadData()
     //self.runTimer()
+    
+    winnerLabel.numberOfLines = 0;
   }
 
   override func didReceiveMemoryWarning() {
@@ -326,13 +328,13 @@ class GuessingViewController: UIViewController {
                 disableAllButtons()
                 
                 if score == winningScore {
-                    winnerLabel.text = UIDevice.current.name + " WIN! "
+                    winnerLabel.text = UIDevice.current.name + " WINS! "
                     winnerLabel.isHidden = false
                     updateGuessStatus(toState: GAME_OVER)
                     
                     // Let all peers know that someone won the game
                     // Wait until winner label is displayed before navigating to points view
-                    let dictionary:NSDictionary = ["gameOver": "\(UIDevice.current.name) WIN!"]
+                    let dictionary:NSDictionary = ["gameOver": "\(UIDevice.current.name) WINS!"]
                     self.multipeerService.sendMessage(message: dictionary)
                     
                     // Segue to Points view

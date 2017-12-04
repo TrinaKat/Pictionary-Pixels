@@ -173,6 +173,8 @@ class DrawingViewController: UIViewController {
         currentWordLabel.text = answer //startAnswer
         pointsLabel.text = "Score: " + String(score)
         winnerLabel.isHidden = true
+        
+        winnerLabel.numberOfLines = 0;
     }
   
     override func didReceiveMemoryWarning() {
