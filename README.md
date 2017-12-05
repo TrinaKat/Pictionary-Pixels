@@ -34,9 +34,7 @@ After conferring with other players, any player can choose which point value to 
   <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/startGame3.gif">
 </p>
 
-Pictionary Pixels is a round-based game, where each round there is a drawer and 1-5 guessers. The drawing is displayed on all screens with the drawer having options for brush colors and the guessers having a 12-letter letter set to help them guess what word is being drawn.
-
-Whoever guesses the word correctly first wins a point for that round. If the 30s timer runs out before anyone manages to guess correctly, no one wins a point for that round! The next round, the next player in the pre-determined ordering becomes the drawer and everyone else gets ready to guess! 
+Pictionary Pixels is a round-based game, where each round there is a drawer and 1-5 guessers. The drawing is displayed on all screens with the drawer having options for brush colors and the guessers having a 12-letter letter set to help them guess what word is being drawn. 
 
 <h3 align="center"><strong>Playing the Game</strong></h3>
 <p align="center">
@@ -47,15 +45,27 @@ Whoever guesses the word correctly first wins a point for that round. If the 30s
   <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/playGameG2.gif">
 </p>
 
-points view > drawer draws using colors and clear all and eraser
-points view > guesser guesses wrong, clears, types wrong letter, deletes, guesses right
+Whoever guesses the word correctly first wins a point for that round. If the 30s timer runs out before anyone manages to guess correctly, no one wins a point for that round! The next round, the next player in the pre-determined ordering becomes the drawer and everyone else gets ready to guess! 
+
+<h3 align="center"><strong>Beat the Clock!</strong></h3>
+<p align="center">
+  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/timeGame1.gif">
+  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/timeGame2.gif">
+  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/timeGame3.gif">
+</p>
 
 The cycle continues until one player reaches the score threshold, and then the players can choose to stop playing or start over by choosing another point value to play to!
 
 <h3 align="center"><strong>Winning the Game</strong></h3>
-INSERT GAMEOVER.MOV
-Past round times out > drawer draws > redirects to points view
-past round times out > guesser guesses right, wins game > redirects to points view
+<p align="center">
+  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/gameOver1.gif">
+  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/gameOver2.gif">
+  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/gameOver3.gif">
+</p>
 
 ## Features / Extended Instructions
 #### Points View
