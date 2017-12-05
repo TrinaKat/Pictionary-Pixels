@@ -5,6 +5,13 @@ Multiplayer drawing and guessing game as an iOS app using real-time wireless com
   <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/master/Pictionary-Media/launchscreen.png">
 </p>
 
+## Meet Team 2K3X
+* Katrina Wijaya
+* Katie Luangkote
+* Jason Xu
+* Jennifer Xu
+* Yun Xu
+
 ## How to Play
 Clone this git repo and build/deploy to your device(s)! It probably won't be released to the App Store :(
 
