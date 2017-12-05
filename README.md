@@ -6,11 +6,11 @@ Multiplayer drawing and guessing game as an iOS app using real-time wireless com
 </p>
 
 ## Meet Team 2K3X
-* **K**atrina Wijaya
-* **K**atie Luangkote
-* **J**ason Xu
-* **J**ennifer Xu
-* **Y**un Xu
+* **_K_**atrina Wijaya
+* **_K_**atie Luangkote
+* Jason **_X_**u
+* Jennifer **_X_**u
+* Yun **_X_**u
 
 ## How to Play
 Clone this git repo and build/deploy to your device(s)! It probably won't be released to the App Store :(
