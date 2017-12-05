@@ -390,11 +390,6 @@ extension GuessingViewController: MultipeerServiceManagerDelegate{
         OperationQueue.main.addOperation {
             // message
             
-            if let newAnswer = message["answer"] {
-                print("NEW DRAWERS ANSWER \(answer) \n \n")
-                answer = newAnswer as! String
-            }
-            
             if message["gameOver"] != nil {
                 self.winnerLabel.text = message["gameOver"] as? String
                 self.winnerLabel.isHidden = false
@@ -423,6 +418,11 @@ extension GuessingViewController: MultipeerServiceManagerDelegate{
                         self.loadData()
                     }
                 }
+            }
+            
+            if let newAnswer = message["answer"] {
+                print("NEW DRAWERS ANSWER \(answer) \n \n")
+                answer = newAnswer as! String
             }
             
             if let updatedTime = message["curr_time"] as? Int {
