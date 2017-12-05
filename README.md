@@ -26,7 +26,13 @@ Once everyone has opened the app and joined the game (just by being in the same 
 After conferring with other players, any player can choose which point value to play to. In other words, play continues until someone wins that many points! 
 
 <h3 align="center"><strong>Starting the Game</strong></h3>
-INSERT STARTGAME.MOV
+<p align="center">
+  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/startGame1.gif">
+  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/startGame2.gif">
+  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/startGame3.gif">
+</p>
 
 Pictionary Pixels is a round-based game, where each round there is a drawer and 1-5 guessers. The drawing is displayed on all screens with the drawer having options for brush colors and the guessers having a 12-letter letter set to help them guess what word is being drawn.
 
@@ -34,11 +40,11 @@ Whoever guesses the word correctly first wins a point for that round. If the 30s
 
 <h3 align="center"><strong>Playing the Game</strong></h3>
 <p align="center">
-  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/startGame1.gif">
+  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/playGameG1.gif">
   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/startGame2.gif">
+  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/playGameD.gif">
   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/startGame3.gif">
+  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/playGameG2.gif">
 </p>
 
 points view > drawer draws using colors and clear all and eraser
