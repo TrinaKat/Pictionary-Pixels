@@ -310,7 +310,7 @@ class GuessingViewController: UIViewController {
                     updateGuessStatus(toState: CORRECT_GUESS)
                     chooseNewWord()
                     
-                    let dictionary:NSDictionary = ["answer": answer, "newRound": "true", "updateIndex": drawerIndex, "device_name" : "\(UIDevice.current.name)"]
+                    let dictionary:NSDictionary = ["newRound": "true", "updateIndex": drawerIndex, "device_name" : "\(UIDevice.current.name)", "answer": answer]
                     multipeerService.sendMessage(message: dictionary)
                     print("\(UIDevice.current.name) \n")
                     print("DRAWER INDEX: \(drawerIndex)")
@@ -404,6 +404,11 @@ extension GuessingViewController: MultipeerServiceManagerDelegate{
                 }
             }   // shouldn't call gameOver and updateIndex at same time
             else if message["updateIndex"] != nil {
+                print("CURRENT ANSWER WHEN ROUND OVER \(answer) \n \n")
+                print("CURRENT ANSWER WHEN ROUND OVER \(answer) \n \n")
+                print("CURRENT ANSWER WHEN ROUND OVER \(answer) \n \n")
+                print("CURRENT ANSWER WHEN ROUND OVER \(answer) \n \n")
+                print("CURRENT ANSWER WHEN ROUND OVER \(answer) \n \n")
                 self.correctWordlabel.text = "Correct Word: \(answer)"
                 self.correctWordlabel.isHidden = false
                 drawerIndex = message["updateIndex"] as! Int
@@ -421,6 +426,10 @@ extension GuessingViewController: MultipeerServiceManagerDelegate{
             }
             
             if let newAnswer = message["answer"] {
+                print("NEW DRAWERS ANSWER \(answer) \n \n")
+                print("NEW DRAWERS ANSWER \(answer) \n \n")
+                print("NEW DRAWERS ANSWER \(answer) \n \n")
+                print("NEW DRAWERS ANSWER \(answer) \n \n")
                 print("NEW DRAWERS ANSWER \(answer) \n \n")
                 answer = newAnswer as! String
             }
