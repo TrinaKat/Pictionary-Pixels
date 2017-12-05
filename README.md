@@ -2,7 +2,7 @@
 Multiplayer drawing and guessing game as an iOS app using real-time wireless communication.
 
 <p align="center">
-  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/launchscreen.png">
+  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/master/Pictionary-Media/launchscreen.png">
 </p>
 
 ## How to Play
@@ -18,53 +18,53 @@ Once everyone has opened the app and joined the game (just by being in the same 
 <h3 align="center"><strong>Joining the Game</strong></h3>
 
 <p align="center">
-  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/joinGame1.gif">
+  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/master/Pictionary-Media/joinGame1.gif">
   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/joinGame2.gif">
+  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/master/Pictionary-Media/joinGame2.gif">
 </p>
 
 After conferring with other players, any player can choose which point value to play to. In other words, play continues until someone wins that many points! 
 
 <h3 align="center"><strong>Starting the Game</strong></h3>
 <p align="center">
-  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/startGame1.gif">
+  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/master/Pictionary-Media/startGame1.gif">
   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/startGame2.gif">
+  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/master/Pictionary-Media/startGame2.gif">
   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/startGame3.gif">
+  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/master/Pictionary-Media/startGame3.gif">
 </p>
 
 Pictionary Pixels is a round-based game, where each round there is a drawer and 1-5 guessers. The drawing is displayed on all screens with the drawer having options for brush colors and the guessers having a 12-letter letter set to help them guess what word is being drawn. 
 
 <h3 align="center"><strong>Playing the Game</strong></h3>
 <p align="center">
-  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/playGameG1.gif">
+  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/master/Pictionary-Media/playGameG1.gif">
   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/playGameD.gif">
+  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/master/Pictionary-Media/playGameD.gif">
   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/playGameG2.gif">
+  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/master/Pictionary-Media/playGameG2.gif">
 </p>
 
 Whoever guesses the word correctly first wins a point for that round. If the 30s timer runs out before anyone manages to guess correctly, no one wins a point for that round! The next round, the next player in the pre-determined ordering becomes the drawer and everyone else gets ready to guess! 
 
 <h3 align="center"><strong>Beat the Clock!</strong></h3>
 <p align="center">
-  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/timeGame1.gif">
+  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/master/Pictionary-Media/timeGame1.gif">
   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/timeGame2.gif">
+  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/master/Pictionary-Media/timeGame2.gif">
   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/timeGame3.gif">
+  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/master/Pictionary-Media/timeGame3.gif">
 </p>
 
 The cycle continues until one player reaches the score threshold, and then the players can choose to stop playing or start over by choosing another point value to play to!
 
 <h3 align="center"><strong>Winning the Game</strong></h3>
 <p align="center">
-  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/gameOver1.gif">
+  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/master/Pictionary-Media/gameOver1.gif">
   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/gameOver2.gif">
+  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/master/Pictionary-Media/gameOver2.gif">
   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/testREADME/Pictionary-Media/gameOver3.gif">
+  <img src="https://github.com/TrinaKat/Pictionary-Pixels/blob/master/Pictionary-Media/gameOver3.gif">
 </p>
 
 ## Features / Extended Instructions
